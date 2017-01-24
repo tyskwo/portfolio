@@ -11,7 +11,7 @@ Look at that - less than two weeks! School has been going swimmingly so far. The
 In Game AI over the last two weeks, we've been implementing different steering algorithms. This week, we took our jab at simulating flocking - a set of algorithms to simulate a 'hive mind' of sorts, like how birds fly in groups, or fish swim in the sea. Here is mine, not too shabby if I do say so myself:
 
 
-<iframe width="768"" height="432 src="https://www.youtube.com/embed/SFF9pqgZRtY?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="768" height="432" src="https://www.youtube.com/embed/SFF9pqgZRtY?rel=0" frameborder="0" allowfullscreen></iframe>
 
 
 The demo features the ability to add/delete unit, as well as mess around with the weight and radius of the three sub-steerings. A stands for alignment, C for cohesion, and S for separation. The behavior behind the steering algorithm is really cool:
@@ -19,26 +19,28 @@ The demo features the ability to add/delete unit, as well as mess around with th
 {% highlight cpp %}
 Steering* FlockingSteering::getSteering()
 {
-    Vector2D align =
-            mpAlignment->getSteering()->getLinear() * gpGame->getFileManager()->getAlignmentWeight();
-    Vector2D cohesion =
-            mpCohesion->getSteering()->getLinear() * gpGame->getFileManager()->getCohesionWeight();
-    Vector2D separation =
-            mpSeparation->getSteering()->getLinear() * gpGame->getFileManager()->getSeparationWeight();
+    Vector2D align      = mpAlignment->getSteering()->getLinear()
+                        * gpGame->getFileManager()->getAlignmentWeight();
+
+    Vector2D cohesion   = mpCohesion->getSteering()->getLinear()
+                        * gpGame->getFileManager()->getCohesionWeight();
+
+    Vector2D separation = mpSeparation->getSteering()->getLinear()
+                        * gpGame->getFileManager()->getSeparationWeight();
 
     Vector2D combined;
-	combined += align + combined + separation;
+    combined += align + combined + separation;
 
 	combined /=
            gpGame->getFileManager()->getAlignmentWeight()
          + gpGame->getFileManager()->getCohesionWeight()
          + gpGame->getFileManager()->getSeparationWeight();
 
-	combined.normalize();
-	combined *= mpMover->getMaxAcceleration();
-	mLinear = combined;
+    combined.normalize();
+    combined *= mpMover->getMaxAcceleration();
+    mLinear = combined;
 
-	return this;
+    return this;
 }
 {% endhighlight %}
 
