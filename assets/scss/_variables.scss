@@ -1,6 +1,8 @@
 // Typography
 $base-font-family: 'Open Sans';
 $heading-font-family: $base-font-family;
+$code-font-family: 'Overpass Mono', monospace;
+
 
 // Font Sizes
 $base-font-size: 1em;
@@ -43,3 +45,7 @@ $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $l
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
+
+// Video embed wisth/height
+$video-width: "768";
+$video-height: "432";

@@ -11,13 +11,12 @@ Look at that - less than two weeks! School has been going swimmingly so far. The
 In Game AI over the last two weeks, we've been implementing different steering algorithms. This week, we took our jab at simulating flocking - a set of algorithms to simulate a 'hive mind' of sorts, like how birds fly in groups, or fish swim in the sea. Here is mine, not too shabby if I do say so myself:
 
 
-<iframe width="768" height="432" src="https://www.youtube.com/embed/SFF9pqgZRtY?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width=$video-width height=$video-height src="https://www.youtube.com/embed/SFF9pqgZRtY?rel=0" frameborder="0" allowfullscreen></iframe>
 
 
 The demo features the ability to add/delete unit, as well as mess around with the weight and radius of the three sub-steerings. A stands for alignment, C for cohesion, and S for separation. The behavior behind the steering algorithm is really cool:
 
-{: .language-cpp}
-~~~~~~~~
+{% highlight cpp %}
 Steering* FlockingSteering::getSteering()
 {
 	Vector2D align =
@@ -41,10 +40,7 @@ Steering* FlockingSteering::getSteering()
 
 	return this;
 }
-~~~~~~~~
-
-
-(Ignore the poor spacing, that's purely for fitting it nicely in this column)
+{% endhighlight %}
 
 
 This function calls each of the three sub-steering algorithms: alignment to the group, cohesion to the group, and separation from the group, and then combines the returned linear velocity vectors. Using this combined vector, we divide it by the total weight and normalize it, and then multiple it by the maxAcceleration to keep the velocity constant. Super simple!
@@ -53,8 +49,7 @@ This function calls each of the three sub-steering algorithms: alignment to the 
 The sub-steerings are also super simple. For instance, here's the Alignment steering:
 
 
-{: .language-cpp}
-~~~~~~~~
+{% highlight cpp %}
 Steering* GroupAlignmentSteering::getSteering()
 {
     mpNeighbors =
@@ -74,10 +69,9 @@ Steering* GroupAlignmentSteering::getSteering()
 
     return this;
 }
-~~~~~~~~
+{% endhighlight %}
 
 
-(Again, sorry for the weird alignments)
 
 
 For each of the sub-steerings, we find all the other boids within the given radius, mpNeighbors. As long as there are some neighbors, we find their average velocity, normalize the resulting vector, and set it equal to our velocity. Like I said, super simple stuff.

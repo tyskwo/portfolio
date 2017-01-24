@@ -1,5 +1,6 @@
 //@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Overpass+Mono');
 
 body {
   color: $base-font-color;
@@ -90,7 +91,7 @@ code {
   background: none;
   border-radius: 0;
   border: none;
-  font-family: $base-font-family;
+  font-family: $code-font-family;
   font-size: 0.9em;
   margin: 0;
   padding: 0 5px;
