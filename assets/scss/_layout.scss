@@ -111,9 +111,10 @@ hr {
 .navbar {
   float: right;
   position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   pointer-events: all;
   cursor: pointer;
-  padding-bottom: 0%;
 
   li {
     display: inline-block;
@@ -291,21 +292,20 @@ hr {
   }
 }
 
-.PageNavigation {
+.page-navigation {
   padding-top: 30px;
   font-size: 14px;
-  //display: block;
   width: 100%;
   overflow: hidden;
 }
 
-.PageNavigation a {
+.page-navigation a {
   display: block;
   float: left;
   margin: 1em 0;
 }
 
-.PageNavigation .next {
+.page-navigation .next {
   float: right;
   width: auto;
 }
