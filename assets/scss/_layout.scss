@@ -113,7 +113,7 @@ hr {
   position: relative;
   pointer-events: all;
   cursor: pointer;
-  padding-top: 50%;
+  padding-bottom: 0%;
 
   li {
     display: inline-block;
@@ -306,5 +306,6 @@ hr {
 }
 
 .PageNavigation .next {
-  float: right !important;
+  float: right;
+  width: auto;
 }
