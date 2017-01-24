@@ -1,0 +1,58 @@
+
+# SEO settings
+title: "Tyler"
+title2: "Wood" # default: ""
+description: "Gameplay Programmer"
+keywords: "game, programmer, champlain, ai, gameplay"
+url: http://tyskwo.github.io/ # site url
+baseurl: null # apply repo name if use it under gh-pages branch
+# baseurl: null # apply null if repo name is something like username.github.io
+
+google_analytics: UA-XXXXX-XX
+repo: http://github.com/tyskwo/portfolio
+disqus_shortname: "tyskwo"
+twitter_username: "tyskwo"
+comments: false
+
+# Build settings
+permalink   : /:year/:title/
+markdown    : kramdown
+highlighter : rouge
+
+source: ./
+destination: ./_site
+
+# Sass configuration
+sass:
+  sass_dir: assets/scss
+  style: compressed # expanded
+
+# Author settings
+author:
+  name     : "Ty Wood"
+  job      : "Unemployed."
+  bio      : "Game Programming Senior at Champlain College, currently working on Office Mayhem."
+  thumb    : /images/author.jpg
+  email    : me@tyskwo.com
+  url      : http://tyskwo.github.io
+  github   : http://github.com/tyskwo
+  twitter  : http://twitter.com/tyskwo
+  linkedin : http://linkedin.com/in/tyskwo
+
+# social settings
+og_locale: "en_US"
+twitter_card: "summary_large_image"
+twitter_site: "@tyskwo"
+
+gems:
+  - bourbon
+  - jekyll-paginate
+
+# navbar pages
+navbar:
+  - slug : Resume
+    title: Resume
+  - slug : blog
+    title: Blog
+
+exclude: ["gulp", "node_modules", "bower", "bower_components", "config.rb", "src", "Gemfile", "Gemfile.lock", ".rvmrc", ".rbenv-version", "package.json", "gulpfile.js", "README.md", "Rakefile", "changelog.md"]
