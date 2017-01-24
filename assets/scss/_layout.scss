@@ -88,6 +88,13 @@ hr {
   .container {
     padding-bottom: 0;
   }
+
+  .helper {
+      #position: absolute;
+      #top: 50%;
+      display: table-cell;
+      vertical-align: middle;
+  }
 }
 
 .logo {
