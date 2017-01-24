@@ -11,7 +11,7 @@ Look at that - less than two weeks! School has been going swimmingly so far. The
 In Game AI over the last two weeks, we've been implementing different steering algorithms. This week, we took our jab at simulating flocking - a set of algorithms to simulate a 'hive mind' of sorts, like how birds fly in groups, or fish swim in the sea. Here is mine, not too shabby if I do say so myself:
 
 
-<iframe width={{ $video-width }} height={{ $video-height }} src="https://www.youtube.com/embed/SFF9pqgZRtY?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="768"" height="432 src="https://www.youtube.com/embed/SFF9pqgZRtY?rel=0" frameborder="0" allowfullscreen></iframe>
 
 
 The demo features the ability to add/delete unit, as well as mess around with the weight and radius of the three sub-steerings. A stands for alignment, C for cohesion, and S for separation. The behavior behind the steering algorithm is really cool:
@@ -53,13 +53,17 @@ The sub-steerings are also super simple. For instance, here's the Alignment stee
 Steering* GroupAlignmentSteering::getSteering()
 {
     mpNeighbors =
-       gpGame->getUnitManager()->getNeighbors(mpMover->getPosition(), gpGame->getFileManager()->getAlignmentRadius());
+       gpGame->getUnitManager()->getNeighbors(mpMover->getPosition(),
+                                              gpGame->getFileManager()->getAlignmentRadius());
 
     Vector2D linearVector = (0, 0);
 
     if (mpNeighbors.size() > 0)
     {
-	    for(unsigned int i = 0; i < mpNeighbors.size(); i++) { linearVector += mpNeighbors[i]->getVelocity(); }
+	    for(unsigned int i = 0; i < mpNeighbors.size(); i++)
+        {
+            linearVector += mpNeighbors[i]->getVelocity();
+        }
 
 	    linearVector /= mpNeighbors.size();
 	    linearVector.normalize();
