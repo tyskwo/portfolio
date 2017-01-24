@@ -293,8 +293,9 @@ hr {
 }
 
 .page-navigation {
-  padding-top: 30px;
-  font-size: 14px;
+  border-top: 0.2em solid lighten($light-gray-color, 13%);
+  padding-top: $base-spacing;
+  margin-top: $base-spacing;  font-size: 14px;
   width: 100%;
   overflow: hidden;
 }
