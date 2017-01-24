@@ -113,6 +113,7 @@ hr {
   position: relative;
   pointer-events: all;
   cursor: pointer;
+  padding-top: 50%;
 
   li {
     display: inline-block;
@@ -291,9 +292,10 @@ hr {
 }
 
 .PageNavigation {
+  padding-top: 30px;
   font-size: 14px;
   display: block;
-  width: auto;
+  width: 100%;
   overflow: hidden;
 }
 
