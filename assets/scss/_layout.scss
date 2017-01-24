@@ -294,7 +294,7 @@ hr {
 .PageNavigation {
   padding-top: 30px;
   font-size: 14px;
-  display: block;
+  //display: block;
   width: 100%;
   overflow: hidden;
 }
@@ -306,5 +306,5 @@ hr {
 }
 
 .PageNavigation .next {
-  float: right;
+  float: right !important;
 }
