@@ -7,4 +7,4 @@ permalink: /resume/
 //link resume here.
 
 {: style="text-align:center"}
-[![resume][/assets/images/ResumeTylerWood.png]](/assets/images/ResumeTylerWood.pdf)
+[![resume][{{ site.url }}/assets/images/ResumeTylerWood.png]]({{ site.url }}/assets/images/ResumeTylerWood.pdf)
