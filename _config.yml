@@ -30,8 +30,8 @@ sass:
 # Author settings
 author:
   name     : "Ty Wood"
-  job      : "Unemployed."
-  bio      : "Game Programming Senior at Champlain College, currently working on Office Mayhem."
+  job      : "Game Programming Senior at Champlain College"
+  bio      : "I'm currently working on Office Mayhem, and a hockey party game for the AppleTV."
   thumb    : /images/author.jpg
   email    : me@tyskwo.com
   url      : http://tyskwo.github.io
