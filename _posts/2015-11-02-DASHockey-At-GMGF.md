@@ -12,9 +12,9 @@ The Green Mountain Games Festival was this past Saturday, and I exhibited DASHoc
 
 On a tangent, now that it is released, I can talk about the AppleTV developer kit I received. Being a completely new platform, I was super excited to develop for it and explore the new UX opportunities with the Siri remote. So, over the past two weeks, I've been working on *DASHockey*.
 
-{% include image.html
-           img="{{ site.url }}assets/images/blog/2015/11/dashshotgoal.gif"
-           caption="A middle ground between air hockey and actual hockey." %}
+{: style="image-align: center"}
+![DASHockey gif]({{ site.url }}assets/images/blog/2015/11/dashshotgoal.gif)
+*A middle ground between air hockey and actual hockey.*
 
 I decided late in the game to present it at GMGF, and two days after, I'd consider it a success! I had over 30 people come by and check out DASHockey – some students, some professors, and even some industry vets! The consensus seemed to be that the controls were different but good, and after they got used to swiping and sliding, there were some really good matches. Goal-line saves, wicked bank shots, and a couple OT nail-biters.
 
