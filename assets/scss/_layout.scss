@@ -238,8 +238,8 @@ hr {
 
 .video-container {
 	position:relative;
-	padding-bottom:56.25%;
-	padding-top:30px;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
 	height:0;
 	overflow:hidden;
 
@@ -310,4 +310,14 @@ hr {
 .page-navigation .next {
   float: right;
   width: auto;
+}
+
+
+.image-wrapper {
+    text-align: center;
+
+    .image-caption {
+        color: $medium-gray-color;
+        margin-top: $small-spacing;
+    }
 }

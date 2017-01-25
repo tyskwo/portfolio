@@ -11,7 +11,7 @@ Look at that - less than two weeks! School has been going swimmingly so far. The
 In Game AI over the last two weeks, we've been implementing different steering algorithms. This week, we took our jab at simulating flocking - a set of algorithms to simulate a 'hive mind' of sorts, like how birds fly in groups, or fish swim in the sea. Here is mine, not too shabby if I do say so myself:
 
 
-<iframe width="768" height="432" src="https://www.youtube.com/embed/SFF9pqgZRtY?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="768" height="432" src="https://www.youtube.com/embed/SFF9pqgZRtY?rel=0" frameborder="0" allowfullscreen style="padding-top: 1.5em; padding-bottom: 1.5em;"></iframe>
 
 
 The demo features the ability to add/delete unit, as well as mess around with the weight and radius of the three sub-steerings. A stands for alignment, C for cohesion, and S for separation. The behavior behind the steering algorithm is really cool:
