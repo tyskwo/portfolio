@@ -5,8 +5,6 @@ comments: false
 description: "Over Halloween I exhibited DASHockey at the Green Mountain Games Festival, and it was an absolute blast."
 ---
 
-Aw man, where did the summer go? It is almost October at this point, and I am back on the banks of Lake Champlain. I realize my last post was way back in February, so I think a little recap is necessary. After finishing [*Orbit*]({{ site.url }}2014/introducing-Orbit!/)
-
 {: height="300px" width="225px" style="image-align: right"}
 ![GMGF Pass]({{ site.url }}assets/images/blog/2015/11/GMGFpass.jpg)
 
