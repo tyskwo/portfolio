@@ -19,11 +19,9 @@ teaser                   : # path of fallback teaser image, e.g. "/assets/images
 
 # Social Sharing
 twitter:
-  username               :
-facebook:
-  username               :
-  app_id                 :
-  publisher              :
+  username               : "tyskwo"
+github:
+  username               : "tyskwo"
 og_image                 : # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
@@ -36,10 +34,10 @@ social:
 # Site Author
 author:
   name             : "Tyler Wood"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "A game programmer soon to be graduating from Champlain College."
   location         : "Burlington VT"
-  email            :
+  email            : "me@tyskwo.com"
   uri              :
   bitbucket        :
   codepen          :
@@ -47,12 +45,12 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           :
+  github           : "tyskwo"
   google_plus      :
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         :
+  linkedin         : "tyskwo"
   pinterest        :
   soundcloud       :
   stackoverflow    : # "123456/username" (the last part of your profile url, e.g. http://stackoverflow.com/users/123456/username)

@@ -37,11 +37,19 @@
 
 
 
+  <meta name="twitter:site" content="@tyskwo">
+  <meta name="twitter:title" content="Time for a new project.">
+  <meta name="twitter:description" content="This, to date, is the coolest looking game I’ve created. But it’s time to move forward.">
+  <meta name="twitter:url" content="http://localhost:4000/Time-for-a-new-project">
 
-
+  
+    <meta name="twitter:card" content="summary">
+    
   
 
   
+
+
 
 
 
@@ -94,7 +102,10 @@
 
 <!-- insert favicons. use http://realfavicongenerator.net/ -->
 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+
 <!-- end custom head snippets -->
+
   </head>
 
   <body class="layout--single">
@@ -108,10 +119,13 @@
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Tyler Wood</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><p class="masthead__menu-item masthead__menu-item--lgl">TYLER</p>WOOD</a></li>
           
             
-            <li class="masthead__menu-item"><a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/">Quick-Start Guide</a></li>
+            <li class="masthead__menu-item"><a href="http://localhost:4000/portfolio">Portfolio</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
           
         </ul>
         <ul class="hidden-links hidden"></ul>
@@ -119,6 +133,7 @@
     </div>
   </div>
 </div>
+
 
     
 
@@ -132,9 +147,15 @@
 <div itemscope itemtype="http://schema.org/Person">
 
   
+    <div class="author__avatar">
+      
+        <img src="http://localhost:4000/assets/images/bio-photo.jpg" class="author__avatar" alt="Tyler Wood" itemprop="image">
+      
+    </div>
+  
 
   <div class="author__content">
-    <h3 class="author__name" itemprop="name">Tyler Wood</h3>
+    <!--<h3 class="author__name" itemprop="name">Tyler Wood</h3>-->
     
       <p class="author__bio" itemprop="description">
         A game programmer soon to be graduating from Champlain College.
@@ -154,7 +175,12 @@
       
 
       
-
+        <li>
+          <a href="mailto:me@tyskwo.com">
+            <meta itemprop="email" content="me@tyskwo.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
       
 
       
@@ -166,13 +192,27 @@
       
 
       
-
+        <li>
+          <a href="https://www.linkedin.com/in/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
       
 
       
 
       
 
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
       
 
       
@@ -267,7 +307,7 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Time for a new project. http://localhost:4000/Time-for-a-new-project" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=Time for a new project. http://localhost:4000/Time-for-a-new-project" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/Time-for-a-new-project" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -310,14 +350,19 @@
       <li><strong>Follow:</strong></li>
     
     
+      <li><a href="https://twitter.com/tyskwo"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
     
+    
+    
+      <li><a href="http://github.com/tyskwo"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
     
     
     <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2017 Tyler Wood. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2017 Tyler Wood.</div>
+
       </footer>
     </div>
 
