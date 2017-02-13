@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Introducing Orbit!"
 comments: false
 description: "The newest creation, with a focus on simplicity and challenge."
-keywords: "Orbit, mobile experimental, flash"
 ---
 
 {: height="450px" width="450px" style="image-align: center"}

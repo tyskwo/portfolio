@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Time for a new project."
 comments: false
 description: "This, to date, is the coolest looking game I've created. But it's time to move forward."

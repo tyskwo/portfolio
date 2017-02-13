@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Boom! Back already!"
 comments: false
 description: "Flocking is a mesmerizing AI algorithm. If only I can find a screensaver that utilizes it..."

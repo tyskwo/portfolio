@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Man does time fly."
 comments: false
 description: "Time for another little look-back on life."

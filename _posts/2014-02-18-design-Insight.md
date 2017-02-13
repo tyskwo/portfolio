@@ -1,9 +1,7 @@
 ---
-layout: post
 title: "Design Insight"
 comments: false
 description: "A little look into how I go about designing games, with a little example at the end."
-keywords: "lines, design, minimalist, experimental"
 ---
 
 So in my last (and first) post, I went into detail on how I personally design games.  And what better than to, like my wood shop teacher in junior high always said, show by example.

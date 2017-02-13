@@ -1,15 +1,7 @@
 ---
-layout: post
 title: "DASHockey at GMGF!"
 comments: false
 description: "Over Halloween I exhibited DASHockey at the Green Mountain Games Festival, and it was an absolute blast."
----
----
-title:  "DASHockey at GMGF!"
-header:
-  teaser: "https://farm5.staticflickr.com/4076/4940499208_b79b77fb0a_z.jpg"
-categories:
-  - School
 ---
 
 ![image-right]({{ site.url }}{{ site.baseurl }}/assets/images/blog/2015/11/GMGFpass.jpg){: .align-right}

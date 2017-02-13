@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "School is Back in Session"
 comments: false
 description: "The first (of probably many) life check-ins."
