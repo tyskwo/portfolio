@@ -4,8 +4,7 @@ comments: false
 description: "The newest creation, with a focus on simplicity and challenge."
 ---
 
-{: height="450px" width="450px" style="image-align: center"}
-![Orbit gif]({{ site.url }}assets/images/blog/2014/02/orbitintro.gif)
+![Orbit gif]({{ site.url }}assets/images/blog/2014/02/orbitintro.gif){: height="450px" width="450px"  .align-center}
 
 
 Let me be the first to introduce you to [Orbit!]({{ site.url }}portfolio/orbit/) Being the latest creation from the depths of my mind, I'm partly entitled to say this is my favorite. The task was to create all the graphics through Flash's graphic class, so everything in the game (apart from the text) is generated through code. It was a nice little challenge to have as little going on graphically, but still be able to distinguish between elements while playing.
