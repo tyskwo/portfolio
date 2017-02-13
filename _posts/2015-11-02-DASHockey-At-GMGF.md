@@ -4,18 +4,24 @@ title: "DASHockey at GMGF!"
 comments: false
 description: "Over Halloween I exhibited DASHockey at the Green Mountain Games Festival, and it was an absolute blast."
 ---
+---
+title:  "DASHockey at GMGF!"
+header:
+  teaser: "https://farm5.staticflickr.com/4076/4940499208_b79b77fb0a_z.jpg"
+categories:
+  - School
+---
 
-{: height="300px" width="225px" style="text-align: right"}
-![GMGF Pass]({{ site.url }}assets/images/blog/2015/11/GMGFpass.jpg)
+![image-right]({{ site.url }}{{ site.baseurl }}/assets/images/blog/2015/11/GMGFpass.jpg){: .align-right}
 
 The Green Mountain Games Festival was this past Saturday, and I exhibited DASHockey at it. For some background, GMGF is a student-run, school-hosted event at Champlain College to help foster a developer community in Vermont. This year, there were 25 developers, four guest speakers, and almost 250 people across the floor. This being its second year, I would consider that quite the success.
 
 On a tangent, now that it is released, I can talk about the AppleTV developer kit I received. Being a completely new platform, I was super excited to develop for it and explore the new UX opportunities with the Siri remote. So, over the past two weeks, I've been working on *DASHockey*.
 
-{: style="text-align: center"}
-![DASHockey gif]({{ site.url }}assets/images/blog/2015/11/dashshotgoal.gif)
-
-*A middle ground between air hockey and actual hockey.*
+<figure class="align-center">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/blog/2015/11/dashshotgoal.gif" alt="">
+  <figcaption>A middle ground between air hockey and actual hockey.</figcaption>
+</figure>
 
 I decided late in the game to present it at GMGF, and two days after, I'd consider it a success! I had over 30 people come by and check out DASHockey – some students, some professors, and even some industry vets! The consensus seemed to be that the controls were different but good, and after they got used to swiping and sliding, there were some really good matches. Goal-line saves, wicked bank shots, and a couple OT nail-biters.
 
