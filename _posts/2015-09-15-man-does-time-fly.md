@@ -1,8 +1,8 @@
 ---
 title: "Man does time fly."
-comments: false
 description: "Time for another little look-back on life."
 ---
+
 
 So it's been nine months since my last post. That's a little long. Sophomore year has wrapped up, and so has the summer. I released [*Flip*](https://itunes.apple.com/us/app/flip-a-gravity-game/id908133039?mt=8), and that was quite the adventure! It did better than I thought it would, and I gained so much valuable knowledge. It actually was picked up by a design studio in Boston and we're in the process of revamping its graphics and design. Very exciting and completely new territory for me!
 

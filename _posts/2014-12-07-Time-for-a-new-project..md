@@ -1,8 +1,8 @@
 ---
 title: "Time for a new project."
-comments: false
 description: "This, to date, is the coolest looking game I've created. But it's time to move forward."
 ---
+
 
 Been a little since my last post, so I figured I'd give an update on where I am in life. I'm really close to finishing Flip; only need to tune up the tutorial, some sprucing up and then release. Final projects are finishing up for my classes now, so there's that. Crunch time is so much fun. In all seriousness though, I'm excited for my Graphics Programming final project: it is literally to create as beautiful a game as you can in four weeks; and I'm proud to show it off now.
 

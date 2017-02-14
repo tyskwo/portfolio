@@ -1,0 +1,17 @@
+---
+title: "One Final Push."
+description: "_'Wooooaaaahhhh we're nine-tenths of the way there!'_"
+---
+
+We have successfully challenged vertical slice, and I believe we are one of two teams to do so: this is quite the accomplishment. With that, we are allowed to present Monday to put forth our case for letting our project continue next semester. Thus begins the last push. With four days left, I feel relaxed. Not safe – I really don't know what the faculty will think of _Office Mayhem_ - but I'm not stressed. The team has structured its schedule really well, and what's left is more-or-less the presentation itself and some small polishes with UI and controls. Most of our feedback for our last presentation was about concepts to add – which basically boiled down to more mayhem, and interplay between the systems – not about the prototype in its current state, which is really uplifting. Our peers are more focused on what we will add to the game, which at some level shows they want the game to go through, or at least expect it to. I'm not superstitious, but I also don't want to jinx anything.
+
+[The last time I showed you _Office Mayhem_,](https://tyskwo.com/2016/11/03/3-2-1/) we had the core game loop completed, and were focusing on fun. On that front, I think we've made tremendous progress over the past two weeks. Since then, we've removed as much player friction as we could: the controls have been tightened, the item detection system was rewritten, sounds have been refined (and more added), and dashing and throwing have been tweaked in accordance with feedback from QA. Most importantly, we have completely reworked the UI: it is now more out-of-the-way without losing information, while being more concise for players. In addition to the friction removal, we've rewritten the score screen to be more coherent and grounded within the office environment, added the background soundtrack written by [Richard](http://richardkingcapstone.blogspot.com), balanced the point system to try to balance strategies we've observed at QA, and created a new menu traversal system to prevent player abuse. The largest addition, though, is a tutorial that is individual to each player, allowing them to learn the game at their own pace. Jeremy did a great job with it, as it only includes enough to become comfortable with the controls and learn how to play the game, while allowing the player to still explore and discover little nuances of the game (like throwing items out, or copying outboxes).
+
+<figure class="align-center">
+ <img src="{{ site.url }}{{ site.baseurl }}/assets/images/blog/2016/11/stress_test.png">
+  <figcaption>We're good testers! Stress testing the item creation systems, as well as profiling performance. This was still running at 60FPS. And yes, purple player is somewhere in that sea of trashcans.</figcaption>
+</figure>
+
+For Monday, we have our plate full: we want this presentation to be as stellar as it can be. [Katie](https://www.linkedin.com/in/kathrynleahbullock) is working on the trailer, and it is shaping up to be great. We need to decide what and how we want to present, but I'm excited. We have some small surprises planned; we'll see how they go. After the presentation, the faculty demo our games Tuesday, and we find out who goes through that night. I'll be quiet until then. For now, here's the current state of the slice; we're pretty proud of it:
+
+{% include video id="spb2KO982HA" provider="youtube" %}

@@ -1,8 +1,8 @@
 ---
 title: "Boom! Back already!"
-comments: false
 description: "Flocking is a mesmerizing AI algorithm. If only I can find a screensaver that utilizes it..."
 ---
+
 
 Look at that - less than two weeks! School has been going swimmingly so far. The weather is starting to cool down, the days are getting a little shorter, and the work is getting a little harder.
 

@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Minesweeper Update - Tyler Wood</title>
+
+
+
+
+<meta name="description" content="The Minesweeper challenge is underway, and I’m making good headway!">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Tyler Wood">
+<meta property="og:title" content="Minesweeper Update">
+
+
+  <link rel="canonical" href="http://localhost:4000/2016/minesweeper-update/">
+  <meta property="og:url" content="http://localhost:4000/2016/minesweeper-update/">
+
+
+
+  <meta property="og:description" content="The Minesweeper challenge is underway, and I’m making good headway!">
+
+
+
+  <meta name="twitter:site" content="@tyskwo">
+  <meta name="twitter:title" content="Minesweeper Update">
+  <meta name="twitter:description" content="The Minesweeper challenge is underway, and I’m making good headway!">
+  <meta name="twitter:url" content="http://localhost:4000/2016/minesweeper-update/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-09-12T00:00:00-04:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Tyler Wood",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tyler Wood Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><p class="masthead__menu-item masthead__menu-item--lgl">TYLER</p>WOOD</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="http://localhost:4000/assets/images/bio-photo.jpg" class="author__avatar" alt="Tyler Wood" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <!--<h3 class="author__name" itemprop="name">Tyler Wood</h3>-->
+    
+      <p class="author__bio" itemprop="description">
+        A game programmer soon to be graduating from Champlain College.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Burlington VT</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:me@tyskwo.com">
+            <meta itemprop="email" content="me@tyskwo.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Minesweeper Update">
+    <meta itemprop="description" content="I have made good headway before the deadline this coming Friday. The ‘brain’ is at the point where it is achieving 94% of a perfect score on the given parameters over 900 games. It’s best was a whopping 98.9% (45870/46360). Let’s dig into the details.">
+    <meta itemprop="datePublished" content="September 12, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Minesweeper Update
+</h1>
+          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2016.09.12</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>I have made good headway before the deadline this coming Friday. The ‘brain’ is at the point where it is achieving <em><code class="highlighter-rouge">94%</code></em> of a perfect score on the given parameters over <em><code class="highlighter-rouge">900</code></em> games. It’s best was a whopping <em><code class="highlighter-rouge">98.9% (45870/46360)</code></em>. Let’s dig into the details.</p>
+
+<p>I have a <code class="highlighter-rouge">MineBrain</code> class that encompasses all of the logic so that it is separate from anything else that might be done in the DLL. In the main class of the DLL, there is a <code class="highlighter-rouge">makeDecision</code> method that has an <code class="highlighter-rouge">Event</code> as a parameter. This event is an enum that can be one of four options: <code class="highlighter-rouge">INIT_EVENT, CLEANUP_EVENT, GAME_RESET_EVENT, PICK_A_CELL_EVENT</code>. Most of the magic happens in the last one.</p>
+
+<p>The brain has three vectors: one to hold all of the revealed tiles in the map, one to hold all of the flagged tiles (or tiles we know are bombs), and one for safe tiles – a stockpile of tiles we know aren’t a bomb and aren’t revealed. In the<code class="highlighter-rouge">PICK_A_CELL_EVENT</code>, we first check if it’s the first move. If it is, we store a reference to the board (so we don’t need to constantly pass it back and forth), and we pick a tile: but not any tile. Although the research isn’t conclusive, <a href="http://www.minesweeper.info/wiki/Strategy#First_Click">this article shows</a> that picking a corner tile is the best bet for games where the first click is a given such as our case. For my brain, I just chose the bottom right as it is the easiest index to return. After the first turn, we read the board a cell at a time, finding safe cells based on the number of adjacent unrevealed cells and the number of mines adjacent to that cell. Each turn, if possible, we pick a cell from the safe list. If we can’t, we try to find more. If we can’t do that either, we resort to probability, which find the cell with the highest ratio of adjacent mines to unrevealed tiles (i.e. a cell with 2 tiles and 7 unknown is a decently safe bet as opposed to a 4 tile, 5 unknown one).</p>
+
+<p>This current algorithm, like I said, is pretty solid with the parameters that were given with the project. If we up the difficulty to something akin to ‘official’ <em>Minesweeper</em>, we don’t fare as well. Not horrible. I created a rating system to determine whether or not my algorithm is improving with each tweak. This is equal to: the average score of the <em><code class="highlighter-rouge">900</code></em> games (<em><code class="highlighter-rouge">10</code></em> trials of <em><code class="highlighter-rouge">90</code></em>, 30 small, 30 medium, 30 large) divided by the max possible score (which is equal to the number of tiles - the number of mines * 2 (a win nets you twice the amount of points), for each size, multiplied by 30 each because of the 30 games), multiplied by a difficulty ratio, which is the number of mines divided by the number of cells.</p>
+
+<p>So for instance, if our large map is <em><code class="highlighter-rouge">25x25</code></em> with <em><code class="highlighter-rouge">131</code></em> mines, or medium is <em><code class="highlighter-rouge">16x16</code></em> with <em><code class="highlighter-rouge">40</code></em> mines, and our small is <em><code class="highlighter-rouge">9x9</code></em> with <em><code class="highlighter-rouge">10</code></em> mines, here’s how our difficulty and max score equations look:</p>
+
+<p>*`Difficulty = (131/625 + 40/256 + 10/81) / 3 = 0.163</p>
+
+<p>Max Score = (625 - 131) * 30 * 2 + (256 - 40) * 30 * 2 + (81-10) * 30 * 2 = 40,080`*</p>
+
+<p>Thus, if our average score over the 900 games was 13201, our rating would be: <em><code class="highlighter-rouge">13201/40080 * 0.163 * 100 = 5.37</code></em></p>
+
+<p>Confusing? Maybe, but it allows me to consistently gauge the skill of my AI regardless of the difficulty of the parameters from game to game. In fact, this allows me to see if my AI performs better on more difficult parameters than easier parameters, and vice versa. The rating is out of 10, where 10 would be a perfect score on a map of all mines - 1, making the scale exponential: a 5.37 is pretty good if you graph it on a e^x graph and look at the ratio of the two side.</p>
+
+<p>So far, I have created three ‘generations’ of my brain, with at least one more planned before the deadline Friday. Here’s how they have performed so far, with the class parameters and <em>Minesweeper</em> parameters (the legend stays consistent for each column):</p>
+
+<p><img src="http://localhost:4000/assets/images/blog/2016/09/minesweeper_stats.png" alt="minesweeper-stats" style="width: 900px" class="align-center" /></p>
+
+<p>As you can see, the average rating goes up over the generations, which show that overall the brain is getting better. There are some tradeoffs though. For class, we are strictly looking at most points, which would point to generation 2 and 3 being pretty neck-and-neck. If we were going just off win percentage, generation 3 is the best bet, but if we were going for percent of perfect score, it would again be a split between generation 2 and 3. It’s interesting to see how they differ in games won too. For comparison sake, I rewrote the probability calculation and took into account some other factors (like edge and corner cases, remaining mines, etc.) for gen 2. For gen 3, I changed the starting point (from middle to bottom right), as well as tried to guess more intelligently when picking an adjacent tile to the lowest probability found. I was able to increase all metrics in both parameter sets from gen 1 to gen 3: the class parameters saw a <em><code class="highlighter-rouge">0.05</code></em> rating increase, a <em><code class="highlighter-rouge">5.22%</code></em> win percentage increase, and a <em><code class="highlighter-rouge">0.87%</code></em> percent perfect score increase. The <em>Minesweeper</em> parameters saw a <em><code class="highlighter-rouge">1.18</code></em>, <em><code class="highlighter-rouge">8.67%</code></em>, and <em><code class="highlighter-rouge">7.23%</code></em> increase, respectively, which shows that the brain is indeed getting better at higher difficulties, which I think is arguably more impressive.</p>
+
+<p>For generation 4, more goal is to better account for guessing. If you read my last post (of which there are a dozen sources, most of which were also used when writing the brain), you’d know it pays to guess well. I’m going to try my hand in implementing <a href="https://nothings.org/games/minesweeper/">something akin to this source</a> to further bolster my attempts at guessing correctly more often when it comes to it. I’m hoping if I succeed, my DLL will do pretty well. It seems to be on its way already.</p>
+
+<p> </p>
+
+<p>But no matter how hard I try, probability is just that, and <a href="http://tyskwo.com/2016/09/06/how-to-solve-minesweeper-hint-you-cant/">you can’t solve <em>Minesweeper.</em></a></p>
+
+        
+      </section>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=Minesweeper Update http://localhost:4000/2016/minesweeper-update/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2016/minesweeper-update/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2016/minesweeper-update/&title=Minesweeper Update" class="btn btn--reddit" title="Share on Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2016/minesweeper-update/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      <footer class="page__meta">
+        
+        
+
+
+      </footer>
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2016/how-to-solve-minesweeper/" class="pagination--pager" title="How to solve Minesweeper. (Hint: you can’t).
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2016/minesweeper-the-final-act/" class="pagination--pager" title="Minesweeper: The Final Act
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/tyskwo"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/tyskwo"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Tyler Wood.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

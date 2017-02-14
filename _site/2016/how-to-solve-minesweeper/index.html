@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>How to solve Minesweeper. (Hint: you can’t). - Tyler Wood</title>
+
+
+
+
+<meta name="description" content="It’s time to create a Minesweeper agent. Apparently, Minesweeper is at the cutting edge of mathematics.">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Tyler Wood">
+<meta property="og:title" content="How to solve Minesweeper. (Hint: you can’t).">
+
+
+  <link rel="canonical" href="http://localhost:4000/2016/how-to-solve-minesweeper/">
+  <meta property="og:url" content="http://localhost:4000/2016/how-to-solve-minesweeper/">
+
+
+
+  <meta property="og:description" content="It’s time to create a Minesweeper agent. Apparently, Minesweeper is at the cutting edge of mathematics.">
+
+
+
+  <meta name="twitter:site" content="@tyskwo">
+  <meta name="twitter:title" content="How to solve Minesweeper. (Hint: you can’t).">
+  <meta name="twitter:description" content="It’s time to create a Minesweeper agent. Apparently, Minesweeper is at the cutting edge of mathematics.">
+  <meta name="twitter:url" content="http://localhost:4000/2016/how-to-solve-minesweeper/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-09-06T00:00:00-04:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Tyler Wood",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tyler Wood Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><p class="masthead__menu-item masthead__menu-item--lgl">TYLER</p>WOOD</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="http://localhost:4000/assets/images/bio-photo.jpg" class="author__avatar" alt="Tyler Wood" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <!--<h3 class="author__name" itemprop="name">Tyler Wood</h3>-->
+    
+      <p class="author__bio" itemprop="description">
+        A game programmer soon to be graduating from Champlain College.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Burlington VT</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:me@tyskwo.com">
+            <meta itemprop="email" content="me@tyskwo.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="How to solve Minesweeper. (Hint: you can’t).">
+    <meta itemprop="description" content="Yes, there are cases in Minesweeper where you have to guess. With that, it is impossible to be able to solve Minesweeper 100% of the time using algorithms alone, especially at higher difficulties. Even though we can’t win every game on logic alone, that doesn’t mean an AI agent can take the smartest moves possible to mitigate these situations.">
+    <meta itemprop="datePublished" content="September 06, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">How to solve Minesweeper. (Hint: you can’t).
+</h1>
+          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2016.09.06</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p><a href="http://www.minesweeper.info/archive/MinesweeperStrategy/mine_guess.html">Yes, there are cases in Minesweeper where you have to guess.</a> With that, it is impossible to be able to solve Minesweeper 100% of the time using algorithms alone, especially at higher difficulties. Even though we can’t win every game on logic alone, that doesn’t mean an AI agent can take the smartest moves possible to mitigate these situations.</p>
+
+<p>Based on preliminary research, there are two basic fields of Minesweeper AI: linear algebra and pattern matching:</p>
+
+<p>Linear algebra methods include reading in the entire playing field at once, setting up a matrix of the board, with the end column being the number of apparent mines in the row, and then performing a reduce row echelon to solve the matrix and get a list of cells that are mines and a list of cells that aren’t mines. See this page for a great write-up on the details of the implementation. The main problem with this method is that it is computationally expensive: on larger boards it seems to take n^2 time where n is the number of cells. On the other hand, matrices are inherently computer-friendly: they are easy to store and easy to traverse. These two points offset each other enough that neither of them really effect my choice. <a href="http://quantum-p.livejournal.com/19616.html">Here’s a great resource about using matrices and linear algebra as applied to Minesweeper.</a></p>
+
+<p>Likewise, pattern matching has its pros and cons. It consists of looking at each cell individually, but there are certain times where these patterns can’t correctly assume adjacent mines. There are more advanced patterns that look at surrounding cells, but these need to be checked for symmetrical natures (think the pattern, but rotated, or mirrored). As such, there will be times where it takes longer to find a move. I think pattern matching might be the ‘easier-to-wrap-my-head-around’ approach. <a href="http://computronium.org/minesweeper/basics.html">Here are a couple of resources</a> on <a href="http://www.minesweeper.info/archive/MinesweeperStrategy/website.html">pattern matching and the numerous patterns</a> found <a href="http://www.personal.kent.edu/~bherzog/tips.html">in Minesweeper.</a></p>
+
+<p>After this round of preliminary research, I’m going to first try to implement pattern matching. but if it becomes to spaghetti-like (if X is true, and Y is false, but Z is also true, do A), I think it would make sense to try to implement the linear algebra method, as it would be more concise, even if more complicated in theory. Regardless of which method I end up implementing, <a href="http://www.minesweeper.info/archive/MinesweeperStrategy/mine_guess.html">there are cases in Minesweeper where you have to guess.</a> There’s no way around it. With our supplied version of Minesweeper, there is no timer, so time in not a factor, and thus our only focus is being as robust and win as often as possible. Therefore, the end-game moves where guessing is necessary are arguably the most important to get right for this assignment. There are ways to improve our odds: Monte Carlo distributions, Bayesian inference, and simple statistics can get us far. Of course, <a href="http://www.dartmouth.edu/~aryeh/uploads/MinesweeperProbability.pdf">there are a ton</a> of <a href="http://math.stackexchange.com/questions/42494/odds-of-winning-at-minesweeper-with-perfect-play">studies and resources</a> on <a href="http://www.minesweeper.info/archive/MinesweeperStrategy/mine_guess.html">how to best guess in Minesweeper.</a></p>
+
+<p>I have a game plan of how to complete the agent. Obviously, I need to store a list of flagged mines, as well as cells that have a mine adjacent and aren’t ‘finished.’ Regardless, I have a ton of resources on hand to make the agent as efficient as possible. It seems that the best bots can get a ~40% win rate on the expert difficulty. We’ll see how close mine gets to that. I seriously suggest taking at the numerous links in this post, it’s kind of crazy to think that Minesweeper is at the cutting edge of mathematics.</p>
+
+<p>I know there aren’t any pictures or diagrams here, but there will be plenty for the postmortem describing how I went about ‘solving’ Minesweeper. It’ll be pretty to look at. Hopefully.</p>
+
+        
+      </section>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=How to solve Minesweeper. (Hint: you can't). http://localhost:4000/2016/how-to-solve-minesweeper/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2016/how-to-solve-minesweeper/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2016/how-to-solve-minesweeper/&title=How to solve Minesweeper. (Hint: you can't)." class="btn btn--reddit" title="Share on Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2016/how-to-solve-minesweeper/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      <footer class="page__meta">
+        
+        
+
+
+      </footer>
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2016/WWDC-and-the-rest-of-summer/" class="pagination--pager" title="WWDC16, and the rest of summer.
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2016/minesweeper-update/" class="pagination--pager" title="Minesweeper Update
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/tyskwo"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/tyskwo"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Tyler Wood.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

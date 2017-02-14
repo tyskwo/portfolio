@@ -1,0 +1,18 @@
+---
+title: "Gin Rummy: Right Before the Finish Line"
+description: "The end of the Gin Rummy competition is near, but is all calm on the water? Sadly, no, but it doesn't just affect me."
+---
+
+I had this great post written up, it had stats, code snippets, comparisons to other classmates' AIs, and reasonings as to why I included some features but not others. But then we had class this morning, and we ran into a bug that was almost universal where the AIs would pick up the discard pile, but immediately discard it (which isn't allowed in Gin Rummy), and the opponent would do the same, causing this card to loop from player one -> discard -> player two -> discard -> player one, ad infinitum. The final submission for the assignment is Friday, and myself and a [couple](https://gauzewave.wordpress.com) of [other](http://eric.sundaemonth.com/blog/blogs/) students have tasked ourselves to finding the root of this issue. Working with three separate code bases, we can easily test theories against multiple AIs, and more quickly pinpoint the cause. Right now, we think there might be an issue with us receiving the most recent hand from the game when the Discard_Request event is thrown. We're still investigating though.
+
+As for how my actual AI is holding up:
+
+I created a simple AI for testing purposes that always draws from the deck and simply discards the largest deadwood card. Version one of my AI is decidedly better than this. It currently separates the cards into clusters of meld opportunities, and each turn checks the top discarded card to see if it completes a cluster. If it does, it picks it up, else it draws from the deck. Currently for discarding each turn, I check the highest deadwood card and do some simple checks to see if it's a card the opponent might need, but this is where I will focus most of my energy before the final submission as it is currently pretty rudimentary and not very accurate. First and foremost though, we need to fix the looping bug before we get anywhere.
+
+![Example AI]({{ site.url }}{{ site.baseurl }}/assets/images/blog/2016/10/ginstatistics.png){: style="width: 400px" .align-right}
+
+I played 10 rounds of 100 games between my AI and the basic AI, and I averaged a 72.9% win rate, which is pretty decent. Testing other classmates' AIs against this AI, I saw results from the low 60s to mid 70s, so I seem to fall a little better than average, and I have plans on how to improve mine. It all centers around better discards: if I can limit the amount of cards I discard that the opponent can use next turn, I can then better my odds of lowering my deadwood count. I am already collecting all of the discards picked up by my opponent; the magic lies in finding what melds s/he might be trying for. That's my goal to implement by Friday.
+
+The biggest drawback to this project is the non-implementation of undercutting and laying off of cards, because that takes a lot of the strategy out from deciding when to knock. With this implementation, it is foolish not to knock right away as there is no possibility of undercutting. Because of this, it basically is a race to see who can lower their deadwood the quickest, which in my opinion greatly simplifies the nuances of the strategy of gin rummy.
+
+The final report for this project will be out sometime next week, and will be a more behind-the-scenes look into how I architected my 'GinBrain,' complete with code snippets and more statistics. Hopefully between then and now, I can iterate on my AI as well as find the root of the cause of the looping bug. If so, we'll be able to run a true tournament and see who's AI reigns supreme.

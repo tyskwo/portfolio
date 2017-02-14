@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>A Quick Foray into Unity Editor Extensions - Tyler Wood</title>
+
+
+
+
+<meta name="description" content="I am by no means an expert, but it’s a good tutorial, I swear!">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Tyler Wood">
+<meta property="og:title" content="A Quick Foray into Unity Editor Extensions">
+
+
+  <link rel="canonical" href="http://localhost:4000/2016/quick-foray-into-unity-editor-extensions/">
+  <meta property="og:url" content="http://localhost:4000/2016/quick-foray-into-unity-editor-extensions/">
+
+
+
+  <meta property="og:description" content="I am by no means an expert, but it’s a good tutorial, I swear!">
+
+
+
+  <meta name="twitter:site" content="@tyskwo">
+  <meta name="twitter:title" content="A Quick Foray into Unity Editor Extensions">
+  <meta name="twitter:description" content="I am by no means an expert, but it’s a good tutorial, I swear!">
+  <meta name="twitter:url" content="http://localhost:4000/2016/quick-foray-into-unity-editor-extensions/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-10-02T00:00:00-04:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Tyler Wood",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tyler Wood Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><p class="masthead__menu-item masthead__menu-item--lgl">TYLER</p>WOOD</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="http://localhost:4000/assets/images/bio-photo.jpg" class="author__avatar" alt="Tyler Wood" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <!--<h3 class="author__name" itemprop="name">Tyler Wood</h3>-->
+    
+      <p class="author__bio" itemprop="description">
+        A game programmer soon to be graduating from Champlain College.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Burlington VT</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:me@tyskwo.com">
+            <meta itemprop="email" content="me@tyskwo.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="A Quick Foray into Unity Editor Extensions">
+    <meta itemprop="description" content="Unity’s entire user interface is created using classes Unity has made available to end users, which is pretty cool. Putting two and two together, this lets developers create tools for designers that have the native look and feel of Unity, and can be run inside the Unity ecosystem without having to open up another program. In Unity, there are two kinds of editor extensions: custom property drawers, and custom editor windows. Property drawers live inside a component, and in general affect the object they’re attached to. Editor windows, on the other hand, aren’t attached to a specific object, and can perform logic and operations to the entire project. For Office Mayhem, I created a suite of tools to let my designers dictate how items and tasks relate to one another using editor windows. In this blog post, I’ll give a short run down on how they work.">
+    <meta itemprop="datePublished" content="October 02, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">A Quick Foray into Unity Editor Extensions
+</h1>
+          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2016.10.02</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Unity’s entire user interface is created using classes Unity has made available to end users, which is pretty cool. Putting two and two together, this lets developers create tools for designers that have the native look and feel of Unity, and can be run inside the Unity ecosystem without having to open up another program. In Unity, there are two kinds of editor extensions: custom property drawers, and custom editor windows. Property drawers live inside a component, and in general affect the object they’re attached to. Editor windows, on the other hand, aren’t attached to a specific object, and can perform logic and operations to the entire project. For <em>Office Mayhem</em>, <a href="http://tyskwo.com/2016/09/30/office-mayhem-a-b-c/">I created</a> a suite of tools to let my designers dictate how items and tasks relate to one another using editor windows. In this blog post, I’ll give a short run down on how they work.</p>
+
+<figure class="align-center" style="width: 640px">
+  <img src="http://localhost:4000/assets/images/blog/2016/09/relationship_creation_tool.gif" alt="" />
+  <figcaption>What we'll be creating.</figcaption>
+</figure>
+
+<p>To start, create a new script in Unity. I called mine <code class="highlighter-rouge">ItemCreation_Tool</code>. Inside this class, rather than extending <code class="highlighter-rouge">MonoBehavior</code>, extend <code class="highlighter-rouge">EditorWindow</code>. This will give us access to all of the tools and classes the Unity team has created for UI building. In the gif above, you can see that I set the relationships up in an ‘A + B = C’ format for the designers. Internally, I call this an <code class="highlighter-rouge">EditorEquation</code>, which consist of three <code class="highlighter-rouge">ItemTypes</code>, which is just an enum that holds the different types of items. Since we’re going to be defining many of these equations, our <code class="highlighter-rouge">ItemCreation_Tool</code> class will have a <code class="highlighter-rouge">List</code> of <code class="highlighter-rouge">EditorEquations</code>. (Note: to use <code class="highlighter-rouge">List</code>, you’ll have to import <code class="highlighter-rouge">System.Collections.Generic</code>).</p>
+
+<p>There are three inherited methods we are going to implement in our class: <code class="highlighter-rouge">ShowWindow</code>, <code class="highlighter-rouge">OnEnable</code>, and <code class="highlighter-rouge">OnGUI</code>. <code class="highlighter-rouge">ShowWindow</code> is called right when the user hits the button under Window in the menu bar with your tool’s name on it; think of it as an initializer. The code for this method is dead-simple:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp">    <span class="c1">// shortcut = shift, cmd R
+</span>    <span class="p">[</span><span class="nf">MenuItem</span><span class="p">(</span><span class="s">"Window/Item Creation Tool %#R"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">ShowWindow</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//show existing window instance. creates one if it doesn't exist
+</span>        <span class="n">EditorWindow</span><span class="p">.</span><span class="nf">GetWindow</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">ItemCreation_Tool</span><span class="p">));</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>I think the comments make it self-explanatory. What’s nifty, is that you can assign a keyboard shortcut to launching your tool, as seen in the first line. % is SHIFT, # is CMD/CTRL depending on your OS, and &amp; stands for OPT/ALT. It’s a small quality-of-life tidbit that is really easy to implement.</p>
+
+<p>Next up, we have <code class="highlighter-rouge">OnEnable</code>. This method is called right after <code class="highlighter-rouge">ShowWindow</code>. In this method, we will check to see if our Relationships asset is already created. If it is, we’ll load it into memory, if not, we’ll make it! We’re using an asset for two reason: 1) to keep the relationships consistent over multiple launches of Unity, and 2) the relationships will always be true for every level of the game.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp">    <span class="k">void</span> <span class="nf">OnEnable</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//load the relationships asset
+</span>        <span class="n">lists</span> <span class="p">=</span> <span class="n">AssetDatabase</span><span class="p">.</span><span class="n">LoadAssetAtPath</span><span class="p">&lt;</span><span class="n">RelationshipManager</span><span class="p">&gt;(</span><span class="s">"Assets/Prefabs/Resources/Relationships.asset"</span><span class="p">);</span>
+
+        <span class="c1">//if it doesn't exist, make it!
+</span>        <span class="k">if</span><span class="p">(!</span><span class="n">lists</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">lists</span> <span class="p">=</span> <span class="n">ScriptableObject</span><span class="p">.</span><span class="n">CreateInstance</span><span class="p">&lt;</span><span class="n">RelationshipManager</span><span class="p">&gt;();</span>
+            <span class="n">AssetDatabase</span><span class="p">.</span><span class="nf">CreateAsset</span><span class="p">(</span><span class="n">lists</span><span class="p">,</span> <span class="s">"Assets/Prefabs/Resources/Relationships.asset"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">RelationshipManager</code> is a class that extends <code class="highlighter-rouge">ScriptableObject</code>, which allows it to be saved as an asset file. The class only holds two lists: one of relationships that create items, and one of relationships that destroys items, in the format of usedItemType, heldItemType, and createdItemType, using the same <code class="highlighter-rouge">ItemType</code> enum from before.</p>
+
+<p>Lastly, there’s <code class="highlighter-rouge">OnGUI</code>, which is the ‘meats and potatoes’ of the class. In it, this is where we layout the actual UI for the tool. I’ll post the code first, and then go through it block by block:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp">    <span class="k">void</span> <span class="nf">OnGUI</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//#1
+</span>        <span class="n">GUILayout</span><span class="p">.</span><span class="nf">Label</span> <span class="p">(</span><span class="s">"Relationships:"</span><span class="p">,</span> <span class="n">EditorStyles</span><span class="p">.</span><span class="n">boldLabel</span><span class="p">);</span>
+
+        <span class="c1">//#2
+</span>        <span class="c1">//label to show what order the items are in
+</span>        <span class="n">GUILayout</span><span class="p">.</span><span class="nf">BeginHorizontal</span><span class="p">();</span>
+        <span class="n">GUILayout</span><span class="p">.</span><span class="nf">Label</span> <span class="p">(</span><span class="s">"Used Item  "</span><span class="p">);</span>
+        <span class="n">GUILayout</span><span class="p">.</span><span class="nf">Label</span> <span class="p">(</span><span class="s">"Held Item  "</span><span class="p">);</span>
+        <span class="n">GUILayout</span><span class="p">.</span><span class="nf">Label</span> <span class="p">(</span><span class="s">"Created Item"</span><span class="p">);</span>
+        <span class="n">GUILayout</span><span class="p">.</span><span class="nf">EndHorizontal</span><span class="p">();</span>
+
+
+
+        <span class="c1">//#3    
+</span>        <span class="c1">//for each equation, layout format
+</span>        <span class="k">foreach</span><span class="p">(</span><span class="n">EditorEquation</span> <span class="n">e</span> <span class="k">in</span> <span class="n">equations</span><span class="p">.</span><span class="nf">ToArray</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">GUILayout</span><span class="p">.</span><span class="nf">BeginHorizontal</span><span class="p">();</span>
+
+            <span class="c1">//#4
+</span>            <span class="n">e</span><span class="p">.</span><span class="n">item1</span>    <span class="p">=</span> <span class="p">(</span><span class="n">ItemType</span><span class="p">)</span> <span class="n">EditorGUILayout</span><span class="p">.</span><span class="nf">EnumPopup</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">item1</span><span class="p">,</span> <span class="n">GUILayout</span><span class="p">.</span><span class="nf">ExpandWidth</span><span class="p">(</span><span class="k">false</span><span class="p">));</span>
+
+            <span class="n">GUILayout</span><span class="p">.</span><span class="nf">Label</span> <span class="p">(</span><span class="s">"+"</span><span class="p">,</span> <span class="n">EditorStyles</span><span class="p">.</span><span class="n">miniLabel</span><span class="p">);</span>
+            <span class="n">e</span><span class="p">.</span><span class="n">item2</span>    <span class="p">=</span> <span class="p">(</span><span class="n">ItemType</span><span class="p">)</span> <span class="n">EditorGUILayout</span><span class="p">.</span><span class="nf">EnumPopup</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">item2</span><span class="p">,</span> <span class="n">GUILayout</span><span class="p">.</span><span class="nf">ExpandWidth</span><span class="p">(</span><span class="k">false</span><span class="p">));</span>
+            <span class="n">GUILayout</span><span class="p">.</span><span class="nf">Label</span> <span class="p">(</span><span class="s">"="</span><span class="p">,</span> <span class="n">EditorStyles</span><span class="p">.</span><span class="n">miniLabel</span><span class="p">);</span>
+            <span class="n">e</span><span class="p">.</span><span class="n">creation</span> <span class="p">=</span> <span class="p">(</span><span class="n">ItemType</span><span class="p">)</span> <span class="n">EditorGUILayout</span><span class="p">.</span><span class="nf">EnumPopup</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">creation</span><span class="p">,</span> <span class="n">GUILayout</span><span class="p">.</span><span class="nf">ExpandWidth</span><span class="p">(</span><span class="k">false</span><span class="p">));</span>
+
+            <span class="c1">//#5
+</span>            <span class="k">if</span><span class="p">(</span><span class="n">GUILayout</span><span class="p">.</span><span class="nf">Button</span><span class="p">(</span><span class="s">"X"</span><span class="p">,</span> <span class="n">EditorStyles</span><span class="p">.</span><span class="n">miniButton</span><span class="p">))</span> <span class="nf">RemoveEquation</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+
+            <span class="n">GUILayout</span><span class="p">.</span><span class="nf">EndHorizontal</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">//#6
+</span>        <span class="c1">//some breathing room :)
+</span>        <span class="n">EditorGUILayout</span><span class="p">.</span><span class="nf">Space</span><span class="p">();</span>
+        <span class="n">EditorGUILayout</span><span class="p">.</span><span class="nf">Space</span><span class="p">();</span>
+
+        <span class="c1">//#7
+</span>        <span class="c1">//add the buttons
+</span>        <span class="k">if</span><span class="p">(</span><span class="n">GUILayout</span><span class="p">.</span><span class="nf">Button</span><span class="p">(</span><span class="s">"Add Relationship"</span><span class="p">))</span> <span class="n">equations</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">EditorEquation</span><span class="p">());</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">GUILayout</span><span class="p">.</span><span class="nf">Button</span><span class="p">(</span><span class="s">"Add To Game"</span><span class="p">))</span>      <span class="nf">CreateAndSendRelationships</span><span class="p">();</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">GUILayout</span><span class="p">.</span><span class="nf">Button</span><span class="p">(</span><span class="s">"Refresh"</span><span class="p">))</span>          <span class="nf">PullEquationsFromGame</span><span class="p">();</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>At #1, we create a label at the top of our tool, simply saying “Relationships:”, bolded. There are a plethora of styling options with almost every component. #2 is where we create the header above the first equation to show what order the items should be in. <code class="highlighter-rouge">BeginHorizontal()</code> tells Unity that everything between this and <code class="highlighter-rouge">EndHorizontal()</code> should be on the same line. #3 is where we layout each equation in the list. Since each equation is its own line, we’ll use <code class="highlighter-rouge">BeginHorizontal()</code> again. #4 creates an <code class="highlighter-rouge">EnumPopup</code>, which is a dropdown pre-populated with all of the types of that enum. We set expand width to false so that it isn’t super wide. In the rest of this block, we create a little + label, another enum popup, a = label, and a third popup to complete our equation. In #5, we create a button – a little ‘x’ – which calls a function: <code class="highlighter-rouge">RemoveEquation()</code>. Can you guess what this does? #6 adds a slight buffer between the equations and the bottom buttons, solely for aesthetic purposes. At #7, we create some more buttons for creating new relationships, adding them to the game, and refreshing the list.</p>
+
+<p>In terms of the actual Editor GUI, that is all of it; it really is not a lot! There is one last piece of information though, which relates to saving the asset file. When we click the ‘Add To Game’ button, we call <code class="highlighter-rouge">CreateAndSendRelationships()</code>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp">    <span class="c1">//called when 'Add to Game' button is pressed
+</span>    <span class="k">void</span> <span class="nf">CreateAndSendRelationships</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">//get a game-format list
+</span>        <span class="n">List</span><span class="p">&lt;</span><span class="n">Equation</span><span class="p">&gt;</span> <span class="n">toGame</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Equation</span><span class="p">&gt;();</span>
+
+        <span class="c1">//add all the equations to the list
+</span>        <span class="k">foreach</span><span class="p">(</span><span class="n">EditorEquation</span> <span class="n">e</span> <span class="k">in</span> <span class="n">equations</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">toGame</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">Equation</span><span class="p">(</span><span class="k">new</span> <span class="nf">Relationship</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">item1</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">item2</span><span class="p">),</span> <span class="n">e</span><span class="p">.</span><span class="n">creation</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="c1">//send the list to the game
+</span>        <span class="c1">//lists is a RelationshipManager
+</span>        <span class="n">lists</span><span class="p">.</span><span class="n">createOnUse</span> <span class="p">=</span> <span class="n">toGame</span><span class="p">;</span>
+
+        <span class="c1">//and update and save the asset
+</span>        <span class="n">AssetDatabase</span><span class="p">.</span><span class="nf">SaveAssets</span><span class="p">();</span>
+        <span class="n">EditorUtility</span><span class="p">.</span><span class="nf">SetDirty</span><span class="p">(</span><span class="n">lists</span><span class="p">);</span>
+        <span class="n">AssetDatabase</span><span class="p">.</span><span class="nf">Refresh</span><span class="p">();</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>There is one thing to keep in mind here: <code class="highlighter-rouge">lists</code> is the <code class="highlighter-rouge">RelationshipManager</code> (singleton), which is the asset that we’re saving. In order to actually save it, we have to call those last three lines, in that order. This saves the asset, sets it as ‘dirty’ in the eyes of the editor and compiler, and then refreshes the asset database so that the changes are reflected in the editor and in the game.</p>
+
+<p>To get the class in its entirety, <a href="https://github.com/tyskwo/OfficeMayhem/blob/master/Assets/Scripts/EditorExtensions/RelationshipCreations.cs">click here,</a> which is a link to the project on GitHub. I’ll be sure to have some more behind-the-scenes tutorials soon. For now, the task at hand is getting <a href="http://willconcannonart.com">Will’s art</a> into the build, and fleshing out the task system. ‘Till next time!</p>
+
+        
+      </section>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=A Quick Foray into Unity Editor Extensions http://localhost:4000/2016/quick-foray-into-unity-editor-extensions/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2016/quick-foray-into-unity-editor-extensions/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2016/quick-foray-into-unity-editor-extensions/&title=A Quick Foray into Unity Editor Extensions" class="btn btn--reddit" title="Share on Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2016/quick-foray-into-unity-editor-extensions/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      <footer class="page__meta">
+        
+        
+
+
+      </footer>
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2016/office-mayhem-abc/" class="pagination--pager" title="Office Mayhem: A + B = C
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2016/gin-rummy-right-before-the-finish-line/" class="pagination--pager" title="Gin Rummy: Right Before the Finish Line
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/tyskwo"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/tyskwo"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Tyler Wood.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

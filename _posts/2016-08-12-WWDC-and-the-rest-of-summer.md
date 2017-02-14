@@ -1,0 +1,10 @@
+---
+title: "WWDC16, and the rest of summer."
+description: "This summer was a whirlwind. Travelled west, travelled north, I've been everywhere."
+---
+
+Woo! So I know this post is now an entire month after its end, but I attended WWDC16 out in San Francisco. It was amazing. Barring delayed flights, the trip was a breeze. San Francisco as a city is gorgeous, and Moscone and Bill Graham were absolutely beautiful venues. Apple supplied lunches, snacks, and breakfast that, contrary to what most say, I thought were pretty good. The sessions and labs were full of knowledge, and the connections I made will hopefully help me propel my career in the coming years: special thanks to the folks from Blizzard for going over my resume and portfolio. All in all, if I have the chance to go again, I definitely will.
+
+In other news, I am currently back up at school helping with the Game Academy: a summer camp to teach high school students game development, modeled in a team-based setting. Being an RA and TA, the days are long and it is a lot of work, but I'm having a blast, plus I'm brushing up my Unity skills which is never a bad thing. The first session just ended, and the kids produced some surprisingly polished and complete games for only having 20 hours of time to work on them. The second session comes in Monday, and I'm excited to see what they produce. Outside of the learning aspect, we've taken trips to Mt. Philo and Sand Bar state park, both of which were fantastic breaks, and I can't wait to go back to them for this session.
+
+On a personal note, I've decided to revisit DASHockey and completely rewrite it from the ground up. With Apple announcing Multipeer Connectivity for the AppleTV, I hope to be able to introduce couch-based multiplayer with iOS devices. I was originally going to use Apple's new tv remote app, but the pairing process seems to be a little unintuitive for quick games like this. For now, I'm getting the game back on its feet with a better code base for better extensibility, but we'll see. I still think DASHockey is best played with friends; I just have to iron out the details.

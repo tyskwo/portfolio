@@ -1,10 +1,10 @@
 ---
 title: "DASHockey at GMGF!"
-comments: false
 description: "Over Halloween I exhibited DASHockey at the Green Mountain Games Festival, and it was an absolute blast."
 ---
 
-![image-right]({{ site.url }}{{ site.baseurl }}/assets/images/blog/2015/11/GMGFpass.jpg){: .align-right}
+
+![image-right]({{ site.url }}{{ site.baseurl }}/assets/images/blog/2015/11/GMGFpass.jpg){: style="width: 250px" .align-right}
 
 The Green Mountain Games Festival was this past Saturday, and I exhibited DASHockey at it. For some background, GMGF is a student-run, school-hosted event at Champlain College to help foster a developer community in Vermont. This year, there were 25 developers, four guest speakers, and almost 250 people across the floor. This being its second year, I would consider that quite the success.
 

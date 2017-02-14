@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Introducing TinEngine. - Tyler Wood</title>
+
+
+
+
+<meta name="description" content="Over my (short) Swift and SpriteKit excursion, I’ve compiled a list of extensions and functions that have made my life a little easier.">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Tyler Wood">
+<meta property="og:title" content="Introducing TinEngine.">
+
+
+  <link rel="canonical" href="http://localhost:4000/2016/introducing-tinengine/">
+  <meta property="og:url" content="http://localhost:4000/2016/introducing-tinengine/">
+
+
+
+  <meta property="og:description" content="Over my (short) Swift and SpriteKit excursion, I’ve compiled a list of extensions and functions that have made my life a little easier.">
+
+
+
+  <meta name="twitter:site" content="@tyskwo">
+  <meta name="twitter:title" content="Introducing TinEngine.">
+  <meta name="twitter:description" content="Over my (short) Swift and SpriteKit excursion, I’ve compiled a list of extensions and functions that have made my life a little easier.">
+  <meta name="twitter:url" content="http://localhost:4000/2016/introducing-tinengine/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-03-30T00:00:00-04:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Tyler Wood",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tyler Wood Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><p class="masthead__menu-item masthead__menu-item--lgl">TYLER</p>WOOD</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="http://localhost:4000/assets/images/bio-photo.jpg" class="author__avatar" alt="Tyler Wood" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <!--<h3 class="author__name" itemprop="name">Tyler Wood</h3>-->
+    
+      <p class="author__bio" itemprop="description">
+        A game programmer soon to be graduating from Champlain College.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Burlington VT</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:me@tyskwo.com">
+            <meta itemprop="email" content="me@tyskwo.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Introducing TinEngine.">
+    <meta itemprop="description" content="I’ve been working in SpriteKit a lot lately, and one of the many beauties of Swift is the capability of extensions. As I’ve been working on these prototypes of mine, there have been reoccurring patterns of how I’ve done certain tasks, and I’ve conglomerated all of these into what I call TinEngine. Now yes, the name is misleading, because SpriteKit itself isn’t even an engine – it is a framework, and TinEngine is simply an extension of this framework, so something like TinExtensions is much more accurate, but regardless, TinEngine, as of now, fills three major caveats that I think are present in SpriteKit.">
+    <meta itemprop="datePublished" content="March 30, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Introducing TinEngine.
+</h1>
+          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2016.03.30</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>I’ve been working in SpriteKit a lot lately, and one of the many beauties of Swift is the capability of extensions. As I’ve been working on these prototypes of mine, there have been reoccurring patterns of how I’ve done certain tasks, and I’ve conglomerated all of these into what I call TinEngine. Now yes, the name is misleading, because SpriteKit itself isn’t even an engine – it is a framework, and TinEngine is simply an extension of this framework, so something like TinExtensions is much more accurate, but regardless, TinEngine, as of now, fills three major caveats that I think are present in SpriteKit.</p>
+
+<p>The naming of it comes down to the idea of tin being a lightweight and malleable metal, and that’s how I want these extensions to be used – as easier ways to perform already-implemented functions (for the most part). These extensions are also independent of each other, and individually are pretty small.</p>
+
+<p>The first of these extensions is a re-working of the SKScene and putting it more in-line with FlashPunk and similar stage-centric engines. The transitions between SKScenes are lacking, and aren’t very customizable outside of the default options, with some people resorting to writing custom shaders imported into CAImageFilters to transition between scenes, but these are an all-or-nothing solution and make it hard to transition elements in and out individually. Tin takes the first SKScene and creates a ‘stage’ reference to it. There are then TinScenes, which have transitionIn() and transitionOut() functions, allowing for more control when moving to and from different sections of the game: like from the main menu to the gameplay for instance.</p>
+
+<p>The slightly larger extensions of SpriteKit is its motion system, which builds on top of SKActions, incorporating all the tweening functions you’ve come to know and love, and also the ability to group and sequence these tweens in fewer lines of code than it would take using straight SKActions. Right now, fade, rotate, scale, and move are supported, but I hope to add more as time goes on.</p>
+
+<p>Lastly, and possibly least importantly, I’ve collected all the extensions I’ve used with basic data types and put them in one place – things like CGPoint to vector conversions, clamping, randomization (which is slightly out of date since the introduction of GameplayKit), and rounding.</p>
+
+<p>That’s it for now for TinEngine, but I hope to add more as I stumble across more problems in my SpriteKit journey.</p>
+
+<p>The <a href="https://bitbucket.org/tyskwo/tinengine/overview&quot;">repo is available here</a>, feel free to download, use, or redistribute. The license for it is <a href="https://creativecommons.org/licenses/by/3.0/us/legalcode&quot;">CC-BY 3.0.</a></p>
+
+        
+      </section>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=Introducing TinEngine. http://localhost:4000/2016/introducing-tinengine/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2016/introducing-tinengine/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2016/introducing-tinengine/&title=Introducing TinEngine." class="btn btn--reddit" title="Share on Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2016/introducing-tinengine/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      <footer class="page__meta">
+        
+        
+
+
+      </footer>
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2016/better-initialization-in-spritekit/" class="pagination--pager" title="Better object initialization and setup in SpriteKit.
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2016/spritekit-playgrounds/" class="pagination--pager" title="SpriteKit + Playgrounds
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/tyskwo"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/tyskwo"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Tyler Wood.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

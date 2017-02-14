@@ -1,0 +1,10 @@
+---
+title: "Never run with scissors."
+description: "One of the cooler AI algorithms I have stumbled across lately. And really versatile."
+---
+
+So my team got cut in Production. The class goes from six teams down to three, and I am yet to be reabsorbed. Although we got cut, I learned a lot – both about Unreal, and scrum iterations. Unreal's blueprint system is pretty robust, and their macros, functions, and properties in C++ aren't too hard to work with once acquainted. I also learned just how important team dynamics are in determining the success of a project.
+
+Dispersion is a first person puzzle-platformer where the player has a single projectile weapon that can fire many different types of ammo. Blue ammo that turns off gravity, or yellow ammo that scales objects, or green ammo that slows things down. The player can hold two of these ammos at once, one as their primary, and one as their secondary. Combined, the player traverses a 1950s laboratory that is for whatever reason deserted. As the player solves puzzles and progresses through the game, the reasons why are slowly revealed. These ammos only affect objects of the same color though, so for instance a blue barrel could float to the ceiling, but not scaled up for instance. Although not implemented by the cut, we also had planned to have these ammos affect both the player as well as enemies, allowing the player to perform super jumps in low gravity, or shrinking down to the size of a mouse to get through small corridors, or blowing up enemies or slowing them down.
+
+Out of the six teams, we were fourth in the popular vote, so we were close, but not close enough. For now, this game is on the back burner, being that I'm joining a new team with their own game, but I might come back to this idea. The mechanics were well on their way to implemented, and I think the puzzles were fun and thought-provoking. I'll update this post with the demo level we had, with hopefully a Windows and Mac build. I'll tweet when that happens, so [follow me on Twitter if you'd like.](http://www.twitter.com/tyskwo)

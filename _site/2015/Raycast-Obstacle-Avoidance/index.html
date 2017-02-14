@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Raycast Obstacle Avoidance - Tyler Wood</title>
+
+
+
+
+<meta name="description" content="One of the cooler AI algorithms I have stumbled across lately. And really versatile.">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Tyler Wood">
+<meta property="og:title" content="Raycast Obstacle Avoidance">
+
+
+  <link rel="canonical" href="http://localhost:4000/2015/Raycast-Obstacle-Avoidance/">
+  <meta property="og:url" content="http://localhost:4000/2015/Raycast-Obstacle-Avoidance/">
+
+
+
+  <meta property="og:description" content="One of the cooler AI algorithms I have stumbled across lately. And really versatile.">
+
+
+
+  <meta name="twitter:site" content="@tyskwo">
+  <meta name="twitter:title" content="Raycast Obstacle Avoidance">
+  <meta name="twitter:description" content="One of the cooler AI algorithms I have stumbled across lately. And really versatile.">
+  <meta name="twitter:url" content="http://localhost:4000/2015/Raycast-Obstacle-Avoidance/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2015-12-07T00:00:00-05:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Tyler Wood",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tyler Wood Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><p class="masthead__menu-item masthead__menu-item--lgl">TYLER</p>WOOD</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="http://localhost:4000/assets/images/bio-photo.jpg" class="author__avatar" alt="Tyler Wood" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <!--<h3 class="author__name" itemprop="name">Tyler Wood</h3>-->
+    
+      <p class="author__bio" itemprop="description">
+        A game programmer soon to be graduating from Champlain College.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Burlington VT</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:me@tyskwo.com">
+            <meta itemprop="email" content="me@tyskwo.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Raycast Obstacle Avoidance">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="December 07, 2015">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Raycast Obstacle Avoidance
+</h1>
+          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2015.12.07</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p><img src="http://localhost:4000/assets/images/blog/2015/12/raycastExample.gif" alt="Example AI" style="width: 350px" class="align-left" /></p>
+
+<p>A couple of months back, I stumbled upon this gif while surfing Dribble. It was mesmerizing, seeing these little dudes weave in and out of these squares and leaving smoke trails behind them – as if they were skiing down a mountain between the pine trees. After some sleuthing, I found the source – <a href="http://thewaterbear.com/obstacle-avoidance-a-i/">this article</a>. Lo and behold, it was actual AI for a game, and not just some animation created in Flash. Around this time, I had a project coming up for AI: to research a topic that wasn’t presented in class, and to create a tech demo to display my understanding. Down the rabbit hole I went, ray cast obstacle avoidance was my choice.</p>
+
+<p>Before I get to showing my implementation and the inner workings of the algorithm, I want to first show just how important this is to the world of games. Ray casting has had a part in games for a while – lots of 2D lighting algorithms use ray casting to determine shadows, especially top down. Even 3D games and engines use a form of ray casting to determine what’s lit up by a torch and what lurks in the darkness. In more recent times, ray cast obstacle avoidance has been used for AI companions. Over a long trek, most games use one of the many forms of pathfinding to get from point A to point B, but when there’s an orc blocking the path, or an NPC crosses their path, rather than bump repeatedly into the object, they avoid the object, using a form of ray casting. Racing games use obstacle avoidance too – Mario Kart to get around items on the higher difficulty levels, and AI bots in AirBrawl use it to fly well enough not to crash into buildings. Overall, it is pretty useful when looking forward in the short-term. What’s great about it, too, is that it can be as computationally expensive or inexpensive as needed, which means it could run on virtually any platform in some capacity.</p>
+
+<figure class="align-left" style="width: 300px">
+  <img src="http://localhost:4000/assets/images/blog/2015/12/gpsExample.png" alt="" />
+  <figcaption>Rays are computationally inexpensive: this is a marine gps application finding the nearest shoreline.</figcaption>
+</figure>
+
+<p>The idea at its core is pretty simple – points rays of some length in some direction, and react accordingly based on collisions with other objects. For instance, the above gif has five rays placed in front of it, the ones in the middle being longer. These then collide with the impeding blocks and moves the circle in the according direction. For this tech demo, I decided to try SpriteKit out on OS X, and I wanted to experiment and try to create new ways of using this method.</p>
+
+<p>My implementation has three modes: a ‘plain jane’ of sorts, a follow/avoid behavior, and a shrinking behavior. Right now, the impulse that is applied is done so only once, when contact first begins between the ray and the object, but there are plenty of possible avenues of exploration. Things like letting the boid know the distance between it and the object, or its relative speed, or angle – things a human would be able to quickly recognize if something was flying at them. My tech demo allows for tweaking of the ray length, the angle of them, the force that is applied on the boid on contact, and the number of rocks flying at the boids.</p>
+
+<figure class="half">
+    <img src="/assets/images/blog/2015/12/raycastIntro.gif" />
+    <img src="/assets/images/blog/2015/12/raycastDebug.gif" />
+    <figcaption>Here are two gifs of the AI in action – one with the debug display on to show what exactly is going on.</figcaption>
+</figure>
+
+<p>More gifs, code snippets, and a link to a build will be made available <a href="http://tyskwo.com/work/">over on my projects page.</a> I’ll probably add it over winter break – finals crawl amongst the students.</p>
+
+<hr />
+
+<p>Sources for research, gifs, and what not:</p>
+
+<p><a href="http://thewaterbear.com/obstacle-avoidance-a-i/">The post that started it all.</a></p>
+
+<p><a href="http://blog.in8b.it/2013/12/12/artificial-intelligence-ai-for-super-truckin/">Next stop on the ray cast train.</a></p>
+
+<p><a href="http://forum.roblox.com/Forum/ShowPost.aspx?PostID=58789886">Some interesting discussion for different AI algorithms in racing games.</a></p>
+
+<p><a href="https://www.reddit.com/r/Unity3D/comments/2jff5z/idea_for_airbrawl_collision_avoidance">AirBrawl’s implementation of obstacle avoidance.</a></p>
+
+<p><a href="http://cadair.aber.ac.uk/dspace/bitstream/handle/2160/4680/irsc2010.pdf?sequence=1&amp;isAllowed=y">Scholarly article about ray casting - really good read.</a></p>
+
+<p><a href="http://www.thedeependgames.com">And an upcoming game that extensively uses it.</a></p>
+
+        
+      </section>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=Raycast Obstacle Avoidance http://localhost:4000/2015/Raycast-Obstacle-Avoidance/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2015/Raycast-Obstacle-Avoidance/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2015/Raycast-Obstacle-Avoidance/&title=Raycast Obstacle Avoidance" class="btn btn--reddit" title="Share on Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2015/Raycast-Obstacle-Avoidance/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      <footer class="page__meta">
+        
+        
+
+
+      </footer>
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2015/DASHockey-At-GMGF/" class="pagination--pager" title="DASHockey at GMGF!
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2015/Another-Winter-Break/" class="pagination--pager" title="Another winter break, another reflection.
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/tyskwo"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/tyskwo"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Tyler Wood.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

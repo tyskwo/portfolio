@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>SpriteKit + Playgrounds - Tyler Wood</title>
+
+
+
+
+<meta name="description" content="Playgrounds are a great way to experiment with small prototypes and mechanics. Best part? SpriteKit can be accessed within them.">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Tyler Wood">
+<meta property="og:title" content="SpriteKit + Playgrounds">
+
+
+  <link rel="canonical" href="http://localhost:4000/2016/spritekit-playgrounds/">
+  <meta property="og:url" content="http://localhost:4000/2016/spritekit-playgrounds/">
+
+
+
+  <meta property="og:description" content="Playgrounds are a great way to experiment with small prototypes and mechanics. Best part? SpriteKit can be accessed within them.">
+
+
+
+  <meta name="twitter:site" content="@tyskwo">
+  <meta name="twitter:title" content="SpriteKit + Playgrounds">
+  <meta name="twitter:description" content="Playgrounds are a great way to experiment with small prototypes and mechanics. Best part? SpriteKit can be accessed within them.">
+  <meta name="twitter:url" content="http://localhost:4000/2016/spritekit-playgrounds/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-04-07T00:00:00-04:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Tyler Wood",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tyler Wood Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><p class="masthead__menu-item masthead__menu-item--lgl">TYLER</p>WOOD</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="http://localhost:4000/assets/images/bio-photo.jpg" class="author__avatar" alt="Tyler Wood" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <!--<h3 class="author__name" itemprop="name">Tyler Wood</h3>-->
+    
+      <p class="author__bio" itemprop="description">
+        A game programmer soon to be graduating from Champlain College.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Burlington VT</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:me@tyskwo.com">
+            <meta itemprop="email" content="me@tyskwo.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="SpriteKit + Playgrounds">
+    <meta itemprop="description" content="With Swift, Apple introduced the wonderful concept of Playgrounds: little sandboxes of code that can be run independently from a project. They’re lightweight, small, and are able to show the results of your code live, line-by-line. This is great for simple experiments like learning about closures, tuples, or functions as variable types, but can be somewhat lacking when it comes to more media-rich forms of programming – like SpriteKit. Thankfully, Apple, too, has thought of this: enter XCPlayground.">
+    <meta itemprop="datePublished" content="April 07, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">SpriteKit + Playgrounds
+</h1>
+          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2016.04.07</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>With Swift, Apple introduced the wonderful concept of Playgrounds: little sandboxes of code that can be run independently from a project. They’re lightweight, small, and are able to show the results of your code live, line-by-line. This is great for simple experiments like learning about closures, tuples, or functions as variable types, but can be somewhat lacking when it comes to more media-rich forms of programming – like SpriteKit. Thankfully, Apple, too, has thought of this: enter <code class="highlighter-rouge">XCPlayground</code>.</p>
+
+<p>To set up a simple Playground with SpriteKit, copy and paste this code into a fresh Playground:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">//obviously SpriteKit is necessary,</span>
+<span class="c1">//but XCPlayground is a module that allows</span>
+<span class="c1">//SpriteKit to be viewed in the Assistant Editor</span>
+<span class="kd">import</span> <span class="kt">SpriteKit</span>
+<span class="kd">import</span> <span class="kt">XCPlayground</span>
+
+<span class="c1">//Create dimensions (and find the center point)</span>
+<span class="k">let</span> <span class="nv">frame</span>       <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="mi">480</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">320</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">centerPoint</span> <span class="o">=</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">frame</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
+                          <span class="nv">y</span><span class="p">:</span> <span class="n">frame</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+
+<span class="c1">//Create a scene</span>
+<span class="k">var</span> <span class="nv">scene</span> <span class="o">=</span> <span class="kt">SKScene</span><span class="p">(</span><span class="nv">size</span><span class="p">:</span> <span class="n">frame</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+<span class="c1">//Create a simple sprite to add to our scene</span>
+<span class="k">let</span> <span class="nv">simpleSprite</span>          <span class="o">=</span> <span class="kt">SKSpriteNode</span><span class="p">(</span><span class="nv">imageNamed</span><span class="p">:</span> <span class="s">"circle"</span><span class="p">)</span>
+    <span class="n">simpleSprite</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">centerPoint</span>
+
+<span class="n">scene</span><span class="o">.</span><span class="nf">addChild</span><span class="p">(</span><span class="n">simpleSprite</span><span class="p">)</span>
+
+<span class="c1">//Set up the view and show the scene</span>
+<span class="k">let</span> <span class="nv">view</span> <span class="o">=</span> <span class="kt">SKView</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="n">frame</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="nf">presentScene</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>
+
+<span class="c1">//this line is where the magic happens</span>
+<span class="kt">XCPlaygroundPage</span><span class="o">.</span><span class="n">currentPage</span><span class="o">.</span><span class="n">liveView</span> <span class="o">=</span> <span class="n">view</span></code></pre></figure>
+
+<p>For this to work, it is necessary to have the Assistant Editor open (Cmd+Option+Enter, or the little double-circle icon in the toolbar). What’s really cool is that you can apply shaders, perform physics, run actions – anything you can do in a normal SpriteKit project. The only unknown for me is if it can detect touches through the mouse – that’s next on my to-do list – but I’m assuming not. If my hunch is right, there are still some things that are better left to a full project, but Playgrounds are now a much more powerful resource for trying out (simple) new things with SpriteKit – such as experimenting with <code class="highlighter-rouge">SKConstraints</code>.</p>
+
+        
+      </section>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=SpriteKit + Playgrounds http://localhost:4000/2016/spritekit-playgrounds/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2016/spritekit-playgrounds/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2016/spritekit-playgrounds/&title=SpriteKit + Playgrounds" class="btn btn--reddit" title="Share on Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2016/spritekit-playgrounds/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      <footer class="page__meta">
+        
+        
+
+
+      </footer>
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2016/introducing-tinengine/" class="pagination--pager" title="Introducing TinEngine.
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2016/many-uses-of-skconstraints/" class="pagination--pager" title="The Many Uses of SKConstraints
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/tyskwo"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/tyskwo"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Tyler Wood.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

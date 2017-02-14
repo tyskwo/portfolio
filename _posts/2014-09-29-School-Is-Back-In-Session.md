@@ -1,10 +1,10 @@
 ---
 title: "School is Back in Session"
-comments: false
 description: "The first (of probably many) life check-ins."
 ---
 
-Aw man, where did the summer go? It is almost October at this point, and I am back on the banks of Lake Champlain. I realize my last post was way back in February, so I think a little recap is necessary. After finishing [*Orbit*]({{ site.url }}2014/introducing-Orbit!/), I went on to finish my Game Technology class with similar projects. My final project was a puzzle game, which I brought to iOS as part of the project, and I spent the summer progressing along with it. I am almost at the point of releasing it, and hope to do so before the end of the year. It's called Flip, and has some elements of Tetris and Threes, but it is its complete own idea. I've been getting good feedback about its mechanics, so I'm really excited for it.
+
+Aw man, where did the summer go? It is almost October at this point, and I am back on the banks of Lake Champlain. I realize my last post was way back in February, so I think a little recap is necessary. After finishing [*Orbit*]({{ site.url }}/2014/introducing-Orbit!/), I went on to finish my Game Technology class with similar projects. My final project was a puzzle game, which I brought to iOS as part of the project, and I spent the summer progressing along with it. I am almost at the point of releasing it, and hope to do so before the end of the year. It's called Flip, and has some elements of Tetris and Threes, but it is its complete own idea. I've been getting good feedback about its mechanics, so I'm really excited for it.
 
 
 Come late August, I made the ugly, then traffic-filled, then beautiful drive from New Jersey to Vermont and settled into my Sophomore year at Champlain. Or so I thought. The Monday after I arrived, I came down with a high fever and the chills, among other things. After a week of trying to fight through it, I realized I was not getting any better. After visiting a couple of doctors, I was diagnosed with viral meningitis. Cue five weeks of back, neck, and joint pain. To put it in perspective of how crippling this disease is, today is the first day I am able to jump without my neck feeling like it will fall off - five weeks since I first caught it. I am still not 100% yet, but I'm getting better everyday.

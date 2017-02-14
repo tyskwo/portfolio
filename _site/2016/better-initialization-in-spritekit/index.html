@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Better object initialization and setup in SpriteKit. - Tyler Wood</title>
+
+
+
+
+<meta name="description" content="Closures can be used to reduce class’ init() function calls by moving variable initialization just a bit further up.">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Tyler Wood">
+<meta property="og:title" content="Better object initialization and setup in SpriteKit.">
+
+
+  <link rel="canonical" href="http://localhost:4000/2016/better-initialization-in-spritekit/">
+  <meta property="og:url" content="http://localhost:4000/2016/better-initialization-in-spritekit/">
+
+
+
+  <meta property="og:description" content="Closures can be used to reduce class’ init() function calls by moving variable initialization just a bit further up.">
+
+
+
+  <meta name="twitter:site" content="@tyskwo">
+  <meta name="twitter:title" content="Better object initialization and setup in SpriteKit.">
+  <meta name="twitter:description" content="Closures can be used to reduce class’ init() function calls by moving variable initialization just a bit further up.">
+  <meta name="twitter:url" content="http://localhost:4000/2016/better-initialization-in-spritekit/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-03-05T00:00:00-05:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Tyler Wood",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tyler Wood Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><p class="masthead__menu-item masthead__menu-item--lgl">TYLER</p>WOOD</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="http://localhost:4000/assets/images/bio-photo.jpg" class="author__avatar" alt="Tyler Wood" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <!--<h3 class="author__name" itemprop="name">Tyler Wood</h3>-->
+    
+      <p class="author__bio" itemprop="description">
+        A game programmer soon to be graduating from Champlain College.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Burlington VT</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:me@tyskwo.com">
+            <meta itemprop="email" content="me@tyskwo.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Better object initialization and setup in SpriteKit.">
+    <meta itemprop="description" content="Here’s a neat little tidbit that I found in the Swift programming handbook.">
+    <meta itemprop="datePublished" content="March 05, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Better object initialization and setup in SpriteKit.
+</h1>
+          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2016.03.05</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Here’s a neat little tidbit that I found in the <a href="https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID232">Swift programming handbook.</a></p>
+
+<p>Let’s say you have a Menu object:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">MainMenu</span> <span class="p">:</span> <span class="kt">Menu</span>
+<span class="p">{</span>
+    <span class="k">override</span> <span class="nf">init</span><span class="p">()</span>
+    <span class="p">{</span>   
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="c1">//the rest of the class . . .</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now, lets say this menu has a text label and a button to start the game.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">MainMenu</span> <span class="p">:</span> <span class="kt">Menu</span>
+<span class="p">{</span>
+    <span class="k">let</span> <span class="nv">title</span><span class="p">:</span><span class="kt">Text</span><span class="o">!</span><span class="p">,</span> <span class="nv">button</span><span class="p">:</span><span class="kt">Button</span><span class="o">!</span>
+
+    <span class="k">override</span> <span class="nf">init</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="c1">//the rest of the class . . .</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>To initialize these values, you would have to do it before the super.init() call since they aren’t optionals (think, the button is always going to be there). Usually, something similar to this:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">MainMenu</span> <span class="p">:</span> <span class="kt">Menu</span>
+<span class="p">{</span>
+    <span class="k">let</span> <span class="nv">title</span><span class="p">:</span><span class="kt">Text</span><span class="o">!</span><span class="p">,</span> <span class="nv">button</span><span class="p">:</span><span class="kt">Button</span><span class="o">!</span>
+
+    <span class="k">override</span> <span class="nf">init</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="kt">Text</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="s">"This is a text node."</span><span class="p">,</span>
+                     <span class="nv">position</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+                                       <span class="nv">y</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageHeight</span><span class="p">),</span>
+                     <span class="nv">fontSize</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">large</span><span class="p">,</span>
+                     <span class="nv">fontColor</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                     <span class="nv">fontName</span><span class="p">:</span> <span class="s">"Nexa Light"</span><span class="p">)</span>
+        <span class="n">title</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"titleText"</span>
+
+        <span class="n">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="s">"Play"</span><span class="p">,</span>
+                        <span class="nv">position</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageWidth</span>  <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+                                          <span class="nv">y</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageHeight</span> <span class="o">/</span> <span class="mi">4</span><span class="p">),</span>
+                        <span class="nv">fontSize</span><span class="p">:</span>  <span class="kt">Constants</span><span class="o">.</span><span class="n">small</span><span class="p">,</span>
+                        <span class="nv">fontColor</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                        <span class="nv">fontName</span><span class="p">:</span> <span class="s">"Nexa Light"</span><span class="p">,</span>
+                        <span class="nv">imageName</span><span class="p">:</span> <span class="s">"button"</span> <span class="o">+</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">assetSize</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"button"</span>
+
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+
+        <span class="n">scene</span><span class="o">.</span><span class="nf">addChild</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="n">scene</span><span class="o">.</span><span class="nf">addChild</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">//the rest of the class . . .</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This isn’t too cumbersome, but what if we set up these values for animating in when the scene loads?</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">MainMenu</span> <span class="p">:</span> <span class="kt">Menu</span>
+<span class="p">{</span>
+    <span class="k">let</span> <span class="nv">title</span><span class="p">:</span><span class="kt">Text</span><span class="o">!</span><span class="p">,</span> <span class="nv">button</span><span class="p">:</span><span class="kt">Button</span><span class="o">!</span>
+
+    <span class="k">override</span> <span class="nf">init</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="kt">Text</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="s">"This is a text node."</span><span class="p">,</span>
+                     <span class="nv">position</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+                                       <span class="nv">y</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageHeight</span><span class="p">),</span>
+                     <span class="nv">fontSize</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">large</span><span class="p">,</span>
+                     <span class="nv">fontColor</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                     <span class="nv">fontName</span><span class="p">:</span> <span class="s">"Nexa Light"</span><span class="p">)</span>
+        <span class="n">title</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"titleText"</span>
+        <span class="n">title</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">title</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">title</span><span class="o">.</span><span class="nf">getHeight</span><span class="p">()</span>
+
+
+        <span class="n">button</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="s">"Play"</span><span class="p">,</span>
+                        <span class="nv">position</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageWidth</span>  <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+                                          <span class="nv">y</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageHeight</span> <span class="o">/</span> <span class="mi">4</span><span class="p">),</span>
+                        <span class="nv">fontSize</span><span class="p">:</span>  <span class="kt">Constants</span><span class="o">.</span><span class="n">small</span><span class="p">,</span>
+                        <span class="nv">fontColor</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                        <span class="nv">fontName</span><span class="p">:</span> <span class="s">"Nexa Light"</span><span class="p">,</span>
+                        <span class="nv">imageName</span><span class="p">:</span> <span class="s">"button"</span> <span class="o">+</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">assetSize</span><span class="p">)</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"button"</span>
+        <span class="n">button</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="kt">CGPointMake</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+
+        <span class="n">scene</span><span class="o">.</span><span class="nf">addChild</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="n">scene</span><span class="o">.</span><span class="nf">addChild</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">//the rest of the class . . .</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This, too, still isn’t too bad, but most screen spaces have more than just a button and a text node, so this quickly gets out of hand, with init calls being these humongous methods that can’t be broken down into smaller methods. But they can be shrunk down. We can move most of the configuration into the same space that we use for property initialization using closures:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">MainMenu</span> <span class="p">:</span> <span class="kt">Menu</span>
+<span class="p">{</span>
+    <span class="k">let</span> <span class="nv">title</span><span class="p">:</span><span class="kt">Text</span><span class="o">!</span> <span class="o">=</span>
+    <span class="p">{</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="kt">Text</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="s">"This is a text node."</span><span class="p">,</span>
+                    <span class="nv">position</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+                                      <span class="nv">y</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageHeight</span><span class="p">),</span>
+                    <span class="nv">fontSize</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">large</span><span class="p">,</span>
+                    <span class="nv">fontColor</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                    <span class="nv">fontName</span><span class="p">:</span> <span class="s">"Nexa Light"</span><span class="p">)</span>
+        <span class="n">text</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"titleText"</span>
+        <span class="n">text</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">text</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">text</span><span class="o">.</span><span class="nf">getHeight</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">text</span>
+    <span class="p">}()</span>
+
+    <span class="k">let</span> <span class="nv">button</span><span class="p">:</span><span class="kt">Button</span><span class="o">!</span>
+    <span class="p">{</span>
+        <span class="n">tempButton</span> <span class="o">=</span> <span class="kt">Button</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="s">"Play"</span><span class="p">,</span>
+                            <span class="nv">position</span><span class="p">:</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageWidth</span>  <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+                                              <span class="nv">y</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">stageHeight</span> <span class="o">/</span> <span class="mi">4</span><span class="p">),</span>
+                            <span class="nv">fontSize</span><span class="p">:</span>  <span class="kt">Constants</span><span class="o">.</span><span class="n">small</span><span class="p">,</span>
+                            <span class="nv">fontColor</span><span class="p">:</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                            <span class="nv">fontName</span><span class="p">:</span> <span class="s">"Nexa Light"</span><span class="p">,</span>
+                            <span class="nv">imageName</span><span class="p">:</span> <span class="s">"button"</span> <span class="o">+</span> <span class="kt">Constants</span><span class="o">.</span><span class="n">assetSize</span><span class="p">)</span>
+        <span class="n">tempButton</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"button"</span>
+        <span class="n">tempButton</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="kt">CGPointMake</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">tempButton</span>
+    <span class="p">}()</span>
+
+    <span class="k">override</span> <span class="nf">init</span><span class="p">()</span>
+    <span class="p">{</span>        
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+
+        <span class="n">scene</span><span class="o">.</span><span class="nf">addChild</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="n">scene</span><span class="o">.</span><span class="nf">addChild</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">//the rest of the class . . .</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Two things to remember, though, that the Swift documentation tells us:</p>
+
+<blockquote>
+  <p>Note that the closure’s end curly brace is followed by an empty pair of parentheses. This tells Swift to execute the closure immediately. If you omit these parentheses, you are trying to assign the closure itself to the property, and not the return value of the closure.</p>
+</blockquote>
+
+<blockquote>
+  <p>If you use a closure to initialize a property, remember that the rest of the instance has not yet been initialized at the point that the closure is executed. This means that you cannot access any other property values from within your closure, even if those properties have default values. You also cannot use the implicit self property, or call any of the instance’s methods.</p>
+</blockquote>
+
+<p>So that means we can’t call any methods to the object being created as it technically isn’t created yet, but we can call methods on the temporary object we are returning, which is good enough in most instances.</p>
+
+<p>What’s nice about this is that it makes our init functions much smaller and the code inside of it is simply initializing the class now, rather than all of the members in the class which may or may not be completely in-line with the goal of the class. This, <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Properties.html">combined with lazy declaration</a>, are two tools that can make inits more manageable and readable and not half the size of the entire class.</p>
+
+        
+      </section>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=Better object initialization and setup in SpriteKit. http://localhost:4000/2016/better-initialization-in-spritekit/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2016/better-initialization-in-spritekit/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2016/better-initialization-in-spritekit/&title=Better object initialization and setup in SpriteKit." class="btn btn--reddit" title="Share on Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2016/better-initialization-in-spritekit/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      <footer class="page__meta">
+        
+        
+
+
+      </footer>
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2016/never-run-with-scissors/" class="pagination--pager" title="Never run with scissors.
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2016/introducing-tinengine/" class="pagination--pager" title="Introducing TinEngine.
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/tyskwo"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/tyskwo"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Tyler Wood.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

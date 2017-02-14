@@ -1,0 +1,10 @@
+---
+title: "Dive! Dive! Dive!"
+description: "Spoiler: _Office Mayhem_ is moving onto phase 2! Three more to go!"
+---
+
+We challenged the _Initial Concepts_ phase this past Thursday. We were the first to do so in our class, so we went in blind: we weren't sure what to expect. As such, our presentation wasn't the strongest, but we were given a lot of good feedback by our professor, and lots of feedback on our concepts from our classmates. Coming out of class, we were unsure whether or not we were successful in challenging, but when we met with our professor the next day, he was extremely satisfied with the work we achieved in the previous weeks. He overlooked our fumbles in our presentation and looked at the work we have done behind the scenes. With that, he allowed us to push forward, and we are now officially in the _Deep Dive_ phase, with *Office Mayhem* as our game.
+
+Week 5 starts tomorrow: that leaves eight weeks until final presentations. We're the first in our class to move forward, but there are 20 other teams that we are competing against. We are planning on spending two weeks in this phase, with a possible third week as a buffer if necessary. Our main goal for this phase is to explore the game loop – specifically the act of sabotaging others and how to make it a more integral part of the gameplay rather than an act of convenience. On the art spectrum, I really want [Will](http://www.willconcannonart.com) to create a word mark/logo of sorts to give a consistent face to our game, as well as clean up the models he produced so we can get them in-game. This week will also focus on color palettes and mood.
+
+For me specifically, this week entail working on the systems to ensure that they are as modular as they can be, allowing for emergent gameplay and different play styles. Since we are still experimenting with what the gameplay contains, we are still using [Jeremy's](https://jeremyroot.squarespace.com) prototype for now until we gain a clearer understanding of what's fun. I'll check-in later this week with what I've been working on: gifs, code snippets, the fun stuff. For now, I'm just super excited and giddy to push forward. 
