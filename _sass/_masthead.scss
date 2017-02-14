@@ -49,13 +49,19 @@
 
   &--lgl {
     display: inline;
-    font-size: $type-size-5;
     font-weight: 300;
+    @include breakpoint($small) {
+      font-size: $type-size-5;
+    }
+    font-size: $type-size-5;
   }
 
   &--lg {
     padding-right: 2em;
-    font-size: $type-size-1;
     font-weight: 700;
+    @include breakpoint($small) {
+      font-size: $type-size-1;
+    }
+    font-size: $type-size-3;
   }
 }

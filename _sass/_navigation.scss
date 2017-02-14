@@ -322,7 +322,7 @@
     display: none;
   }
 
-  @include breakpoint(max-width (0px)) {
+  @include breakpoint(max-width ($medium - 1px)) {
 
     label {
       position: relative;
