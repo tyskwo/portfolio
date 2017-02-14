@@ -58,7 +58,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-02-14T11:12:26-05:00">
+  <meta property="article:published_time" content="2017-02-14T16:41:27-05:00">
 
 
 
@@ -105,6 +105,7 @@
 <!-- insert favicons. use http://realfavicongenerator.net/ -->
 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400i" rel="stylesheet">
 
 <!-- end custom head snippets -->
 
@@ -166,19 +167,23 @@
   
     
       
-        <img src=
-        
-          "http://placehold.it/350x250"
-        
-        alt="logo">
-      
-      <h3>Role</h3>
-      <p>Programmer</p>
+      <h3>Description</h3>
+      <p>A modern OpenGL-rendered Earth scene.</p>
 
     
       
-      <h3>Responsibilities</h3>
-      <p>Graphics.</p>
+      <h3>Category</h3>
+      <p>Graphics</p>
+
+    
+      
+      <h3>Length</h3>
+      <p>4 weeks</p>
+
+    
+      
+      <h3>Downloads</h3>
+      <p><a href="https://github.com/tyskwo/OpenGL_Earth">Repository</a> <a href="https://www.dropbox.com/s/hmibt5j0t8pevpj/OpenGL_Earth.zip?dl=0">Standalones</a></p>
 
     
     
@@ -187,51 +192,79 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Earth-scape">
-    <meta itemprop="description" content="A modern OpenGL-rendered Earth scene.">
-    <meta itemprop="datePublished" content="February 14, 2017">
-    
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 class="page__title" itemprop="headline">Earth-scape
 </h1>
-          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.02.14</p>
+          <p class="page__meta">2016, C++</p>
           
         </header>
       
 
       <section class="page__content" itemprop="text">
-        <p>Pictures of Goats section West Seattle Blog dingbat newspaper rubber cement Google+ newsroom cafe news.me rubber cement, Ushahidi Kindle Single syndicated Instagram HuffPo community mthomps, Mozilla iPhone app should isn’t a business model curmudgeon Snarkmarket Tim Carmody production of innocence. Fuego tweets community DocumentCloud metered model Gardening &amp; War section YouTube social media SEO information overload analytics Aron Pilhofer Journal Register data visualization WikiLeaks Groupon, collaboration Steve Jobs we need a Nate Silver AP What Would Google Do the power of the press belongs to the person who owns one Clay Shirky curmudgeon Voice of San Diego free as in beer dead trees the notion of the public Lucius Nieman.</p>
+        <p>This project was the culmination of Graphics II, which used core-profile OpenGL to create a simulation of the Earth, moon, and sun. The demo features bloom, ‘godrays’, shadow-casting, and a system for altering the related parameters to achieve the desired effect.</p>
 
-<figure class="third ">
-  
-    
-      <a href="http://localhost:4000/assets/images/unsplash-gallery-image-1.jpg">
-        <img src="http://localhost:4000/assets/images/unsplash-gallery-image-1-th.jpg" alt="placeholder image 1" />
-      </a>
-    
-  
-    
-      <a href="http://localhost:4000/assets/images/unsplash-gallery-image-2.jpg">
-        <img src="http://localhost:4000/assets/images/unsplash-gallery-image-2-th.jpg" alt="placeholder image 2" />
-      </a>
-    
-  
-    
-      <a href="http://localhost:4000/assets/images/unsplash-gallery-image-3.jpg">
-        <img src="http://localhost:4000/assets/images/unsplash-gallery-image-3-th.jpg" alt="placeholder image 3" />
-      </a>
-    
-  
-  
-    <figcaption>This is a sample gallery to go along with this case study.
-</figcaption>
-  
+<p><img src="http://localhost:4000/assets/images/portfolio/2016/earth-scape/intro.gif" alt="earth-intro" class="align-center" /></p>
+
+<h5 id="architecture">Architecture</h5>
+
+<p>The demo uses the TLoC engine which contains an entity-component system for handling game objects. I abstracted this system to better handle 3D objects, using a struct composed of its mesh, materials, and transform. This allowed for easier composition of game objects and a more readable implementation of rendering them. The moon and Earth are obviously 3d objects with textures. The sun is a billboard with a light attached to it.</p>
+
+<h5 id="shaders">Shaders</h5>
+
+<p>The Earth and the moon each contain a shader to render its textures, as well as shaders for bloom, HDR, shadow mapping, and godrays. To achieve this effect, I render to multiple textures and then combine them after all of the passes. I then apply gamma correction and render back into LDR.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="cp">#version 330 core
+</span>
+<span class="n">in</span>  <span class="n">vec2</span> <span class="n">v_texCoord</span><span class="p">;</span>          <span class="c1">//texture coordinate
+</span><span class="n">out</span> <span class="n">vec4</span> <span class="n">o_color</span><span class="p">;</span>             <span class="c1">//output color
+</span>
+<span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">s_texture</span><span class="p">;</span>  <span class="c1">//normal texture before post-processing
+</span><span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">s_bright</span><span class="p">;</span>   <span class="c1">//the blooms and blur pass
+</span><span class="n">uniform</span> <span class="n">sampler2D</span> <span class="n">s_godray</span><span class="p">;</span>   <span class="c1">//the godray pass
+</span><span class="n">uniform</span> <span class="kt">float</span>     <span class="n">u_exposure</span><span class="p">;</span> <span class="c1">//constant for exposure
+</span>
+<span class="n">uniform</span> <span class="kt">int</span>       <span class="n">u_flag</span><span class="p">;</span>     <span class="c1">//flag for rendering only bloom or godrays
+</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//get the texture coordinate to sample from each texture
+</span>  <span class="n">vec2</span> <span class="n">tex_offset</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">textureSize</span><span class="p">(</span><span class="n">s_bright</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="kt">float</span> <span class="n">texCoordX</span> <span class="o">=</span> <span class="n">tex_offset</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="kt">float</span> <span class="n">texCoordY</span> <span class="o">=</span> <span class="n">tex_offset</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+
+  <span class="c1">//get color from each texture, ignoring alpha
+</span>  <span class="n">vec3</span> <span class="n">hdr</span>    <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">s_texture</span><span class="p">,</span> <span class="n">vec2</span><span class="p">(</span><span class="n">v_texCoord</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v_texCoord</span><span class="p">[</span><span class="mi">1</span><span class="p">])).</span><span class="n">rgb</span><span class="p">;</span>
+  <span class="n">vec3</span> <span class="n">bright</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">s_bright</span><span class="p">,</span>  <span class="n">vec2</span><span class="p">(</span><span class="n">v_texCoord</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v_texCoord</span><span class="p">[</span><span class="mi">1</span><span class="p">])).</span><span class="n">rgb</span><span class="p">;</span>
+  <span class="n">vec3</span> <span class="n">godray</span> <span class="o">=</span> <span class="n">texture2D</span><span class="p">(</span><span class="n">s_godray</span><span class="p">,</span>  <span class="n">vec2</span><span class="p">(</span><span class="n">v_texCoord</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v_texCoord</span><span class="p">[</span><span class="mi">1</span><span class="p">])).</span><span class="n">rgb</span><span class="p">;</span>
+
+  <span class="c1">//gamma correct with additive blending &amp; tone mapping
+</span>  <span class="k">const</span> <span class="kt">float</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+  <span class="n">hdr</span> <span class="o">+=</span> <span class="n">bright</span><span class="p">;</span>
+  <span class="n">hdr</span> <span class="o">+=</span> <span class="n">godray</span><span class="p">;</span>
+
+  <span class="n">vec3</span> <span class="n">result</span> <span class="o">=</span> <span class="n">vec3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">hdr</span> <span class="o">*</span> <span class="n">u_exposure</span><span class="p">);</span>
+
+  <span class="n">result</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">vec3</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">gamma</span><span class="p">));</span>
+  <span class="n">o_color</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
+
+
+  <span class="k">if</span><span class="p">(</span><span class="n">u_flag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> <span class="n">o_color</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">bright</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span> <span class="p">}</span> <span class="c1">//check for bloom render flag
+</span>  <span class="k">if</span><span class="p">(</span><span class="n">u_flag</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span> <span class="n">o_color</span> <span class="o">=</span> <span class="n">vec4</span><span class="p">(</span><span class="n">godray</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span> <span class="p">}</span> <span class="c1">//check for godray render flag
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="half">
+    <img src="/assets/images/portfolio/2016/earth-scape/bloom.gif" />
+    <img src="/assets/images/portfolio/2016/earth-scape/depth.gif" />
+    <figcaption>The bloom and godray parameters can be altered during runtime to achieve the desired effect, and the stencils can be rendered on their own.</figcaption>
 </figure>
 
-<p>lorem ipsum</p>
+<h3 id="retrospection-and-postmortem">Retrospection and Postmortem</h3>
+
+<p>This project allowed me to gain a better understanding of the ins-and-outs of low-level graphics programming. I know more of OpenGL, and I have a much fonder respect for graphics programmers in the industry. The shader pipeline doesn’t seem as scary anymore, and post-processing effects don’t seem like voodoo. Shader logic, though, is still magic: I still have lots to learn there. This was also a good exercise in learning an already-existing framework, and creating an architecture around it.</p>
 
         
       </section>
