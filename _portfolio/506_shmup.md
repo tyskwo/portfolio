@@ -3,8 +3,8 @@ title: "SHMUP"
 excerpt: "Architecture at its finest."
 
 header:
-  image: /assets/images/portfolio/2015/shmup/feature.png
-  teaser: /assets/images/portfolio/2015/shmup/feature.png
+  image: /assets/images/portfolio/2015/architecture/feature.png
+  teaser: /assets/images/portfolio/2015/architecture/feature.png
 
 language: "C++"
 year: "2015"
