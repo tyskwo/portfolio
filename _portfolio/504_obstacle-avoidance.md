@@ -12,11 +12,15 @@ year: "2015"
 sidebar:
   - text: "## 2015, Swift ##
 
+
 ### Description ###
+
 
 A tech demo where 'boids' avoid obstacles by using a set of 'feelers' to see their immediate surroundings.
 
+
 ### Outcomes ###
+
 
 Swift: optionals, guards, etc.
 
@@ -29,8 +33,9 @@ Object pooling.
 
 ### Links ###
 
+
 [Source](mailto:me@tyskwo.com){: .btn}
-[Executable]({{ site.url }}{{ site.baseurl }}/assets/downloads/portfolio/2015/obstacle-avoidance/Obstacle Avoidance.app){: .btn}
+[Executable](http://tyskwo.github.io/assets/downloads/portfolio/2015/obstacle-avoidance/Obstacle Avoidance.app){: .btn}
 "
 ---
 

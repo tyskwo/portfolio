@@ -12,11 +12,15 @@ year: "2016"
 sidebar:
   - text: "## 2016, C++ ##
 
+
 ### Description ###
+
 
 A modern OpenGL-rendered Earth scene. Includes texture blending, bloom, godrays, and shadows.
 
+
 ### Outcomes ###
+
 
 CMake.
 
@@ -31,6 +35,7 @@ Third-party frameworks.
 
 
 ### Links ###
+
 
 [Repository](https://github.com/tyskwo/OpenGL_Earth){: .btn}
 [Executable](https://www.dropbox.com/s/hmibt5j0t8pevpj/OpenGL_Earth.zip?dl=0){: .btn}
