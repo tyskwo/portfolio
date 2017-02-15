@@ -58,7 +58,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-02-14T16:41:27-05:00">
+  <meta property="article:published_time" content="2017-02-15T10:17:56-05:00">
 
 
 
@@ -167,23 +167,21 @@
   
     
       
-      <h3>Description</h3>
-      <p>A modern OpenGL-rendered Earth scene.</p>
-
-    
       
-      <h3>Category</h3>
-      <p>Graphics</p>
+      <h2 id="2016-c">2016, C++</h2>
+<h3 id="description">Description</h3>
+<p>A modern OpenGL-rendered Earth scene. Includes texture blending, bloom, godrays, and shadows.</p>
+<h3 id="outcomes">Outcomes</h3>
+<p>CMake.</p>
 
-    
-      
-      <h3>Length</h3>
-      <p>4 weeks</p>
+<p>Modern OpenGL.</p>
 
-    
-      
-      <h3>Downloads</h3>
-      <p><a href="https://github.com/tyskwo/OpenGL_Earth">Repository</a> <a href="https://www.dropbox.com/s/hmibt5j0t8pevpj/OpenGL_Earth.zip?dl=0">Standalones</a></p>
+<p>Post-processing pipeline.</p>
+
+<p>Third-party frameworks.</p>
+
+<h3 id="links">Links</h3>
+<p><a href="https://github.com/tyskwo/OpenGL_Earth" class="btn">Repository</a> <a href="https://www.dropbox.com/s/hmibt5j0t8pevpj/OpenGL_Earth.zip?dl=0" class="btn">Executable</a></p>
 
     
     
@@ -198,8 +196,8 @@
         <header>
           <h1 class="page__title" itemprop="headline">Earth-scape
 </h1>
-          <p class="page__meta">2016, C++</p>
-          
+          <!--<p class="page__meta">2016, C++</p>
+          -->
         </header>
       
 
@@ -208,11 +206,13 @@
 
 <p><img src="http://localhost:4000/assets/images/portfolio/2016/earth-scape/intro.gif" alt="earth-intro" class="align-center" /></p>
 
-<h5 id="architecture">Architecture</h5>
+<h3 id="architecture">Architecture</h3>
 
-<p>The demo uses the TLoC engine which contains an entity-component system for handling game objects. I abstracted this system to better handle 3D objects, using a struct composed of its mesh, materials, and transform. This allowed for easier composition of game objects and a more readable implementation of rendering them. The moon and Earth are obviously 3d objects with textures. The sun is a billboard with a light attached to it.</p>
+<p>The demo uses the TLoC engine which contains an entity-component system for handling game objects. I abstracted this system to better handle 3D objects, using a struct composed of its mesh, materials, and transform. This allowed for easier composition of game objects and a more readable implementation of rendering them. The moon and Earth are obviously spheres with textures. The sun is a billboard with a light attached to it.</p>
 
-<h5 id="shaders">Shaders</h5>
+<p>This project was the first where I used CMake. The engine itself wasn’t multi-platform, but I gained experience in using CMake, makefiles, and setting up a project architecture that is platform agnostic.</p>
+
+<h3 id="shaders">Shaders</h3>
 
 <p>The Earth and the moon each contain a shader to render its textures, as well as shaders for bloom, HDR, shadow mapping, and godrays. To achieve this effect, I render to multiple textures and then combine them after all of the passes. I then apply gamma correction and render back into LDR.</p>
 

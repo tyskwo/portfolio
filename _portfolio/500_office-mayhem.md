@@ -1,6 +1,6 @@
 ---
 title: "Office Mayhem"
-excerpt: "A couch party game where you fight your friends to be 'Employee of the Day'."
+excerpt: "A party game where you step on your coworkers in any way imaginable to climb the corporate ladder."
 
 header:
   image: /assets/images/portfolio/2017/office-mayhem/feature.png
@@ -10,27 +10,83 @@ language: "C#"
 year: "2017"
 
 sidebar:
-  - title: "Role"
-    image: http://placehold.it/350x250
-    image_alt: "logo"
-    text: "Lead Programmer, Producer"
-  - title: "Responsibilities"
-    text: "Lead a team of three programmers."
+  - text: "## 2017, C# ##
 
-gallery:
-  - url: /assets/images/unsplash-gallery-image-1.jpg
-    image_path: assets/images/unsplash-gallery-image-1-th.jpg
-    alt: "placeholder image 1"
-  - url: /assets/images/unsplash-gallery-image-2.jpg
-    image_path: assets/images/unsplash-gallery-image-2-th.jpg
-    alt: "placeholder image 2"
-  - url: /assets/images/unsplash-gallery-image-3.jpg
-    image_path: assets/images/unsplash-gallery-image-3-th.jpg
-    alt: "placeholder image 3"
+### Description ###
+
+A party game where you step on your coworkers in any way imaginable to climb the corporate ladder.
+
+
+### Team ###
+
+[Andrew Millsap](https://andrewmillsap.weebly.com)
+
+
+[Will Concannon](https://willconcannonart.com)
+
+
+[Andrew Messier](http://andrewmessier.blogspot.com)
+
+
+[Jeremy Root](https://jeremynroot.com)
+
+
+[Ben Lander](https://benjaminlander.wordpress.com)
+
+
+[Richard King](http://richardkingcapstone.blogspot.com)
+
+
+[Norman Paquette](https://npaquettewordpress.wordpress.com)
+
+
+[Tim Healey](http://www.tim-healey.com)
+
+
+[Tony Libardi](https://tonyl.info)
+
+
+### Outcomes ###
+
+Unity.
+
+
+Large project architecture.
+
+
+Management skills.
+
+
+Architecturally-minded programming.
+
+
+Github.
+
+
+### Links ###
+
+[Repository](https://github.com/tyskwo/OpenGL_Earth){: .btn}
+[Executable](https://www.dropbox.com/s/hmibt5j0t8pevpj/OpenGL_Earth.zip?dl=0){: .btn}
+"
 ---
 
-Pictures of Goats section West Seattle Blog dingbat newspaper rubber cement Google+ newsroom cafe news.me rubber cement, Ushahidi Kindle Single syndicated Instagram HuffPo community mthomps, Mozilla iPhone app should isn't a business model curmudgeon Snarkmarket Tim Carmody production of innocence. Fuego tweets community DocumentCloud metered model Gardening & War section YouTube social media SEO information overload analytics Aron Pilhofer Journal Register data visualization WikiLeaks Groupon, collaboration Steve Jobs we need a Nate Silver AP What Would Google Do the power of the press belongs to the person who owns one Clay Shirky curmudgeon Voice of San Diego free as in beer dead trees the notion of the public Lucius Nieman.
 
-{% include gallery caption="This is a sample gallery to go along with this case study." %}
+![OM-intro]({{ site.url }}{{ site.baseurl }}/assets/images/portfolio/2017/office-mayhem/intro.gif){: .align-center}
 
-lorem ipsum
+
+### Architecture
+
+Lorem ipsum.
+
+### Team
+
+Dolor.
+
+{% highlight csharp %}
+// sure, some sample code.
+{% endhighlight %}
+
+
+### Retrospection and Postmortem
+
+The project is still in progress!

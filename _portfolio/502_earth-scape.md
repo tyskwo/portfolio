@@ -10,16 +10,31 @@ language: "C++"
 year: "2016"
 
 sidebar:
-  - title: "Description"
-    text: "A modern OpenGL-rendered Earth scene."
-  - title: "Category"
-    text: "Graphics"
-  - title: "Length"
-    text: "4 weeks"
-  - title: "Downloads"
-    text: "[Repository](https://github.com/tyskwo/OpenGL_Earth)
-    [Standalones](https://www.dropbox.com/s/hmibt5j0t8pevpj/OpenGL_Earth.zip?dl=0)"
-    nav: portfolio/earth-scape
+  - text: "## 2016, C++ ##
+
+### Description ###
+
+A modern OpenGL-rendered Earth scene. Includes texture blending, bloom, godrays, and shadows.
+
+### Outcomes ###
+
+CMake.
+
+
+Modern OpenGL.
+
+
+Post-processing pipeline.
+
+
+Third-party frameworks.
+
+
+### Links ###
+
+[Repository](https://github.com/tyskwo/OpenGL_Earth){: .btn}
+[Executable](https://www.dropbox.com/s/hmibt5j0t8pevpj/OpenGL_Earth.zip?dl=0){: .btn}
+"
 ---
 
 This project was the culmination of Graphics II, which used core-profile OpenGL to create a simulation of the Earth, moon, and sun. The demo features bloom, 'godrays', shadow-casting, and a system for altering the related parameters to achieve the desired effect.
@@ -27,11 +42,13 @@ This project was the culmination of Graphics II, which used core-profile OpenGL 
 ![earth-intro]({{ site.url }}{{ site.baseurl }}/assets/images/portfolio/2016/earth-scape/intro.gif){: .align-center}
 
 
-##### Architecture
+### Architecture
 
-The demo uses the TLoC engine which contains an entity-component system for handling game objects. I abstracted this system to better handle 3D objects, using a struct composed of its mesh, materials, and transform. This allowed for easier composition of game objects and a more readable implementation of rendering them. The moon and Earth are obviously 3d objects with textures. The sun is a billboard with a light attached to it.
+The demo uses the TLoC engine which contains an entity-component system for handling game objects. I abstracted this system to better handle 3D objects, using a struct composed of its mesh, materials, and transform. This allowed for easier composition of game objects and a more readable implementation of rendering them. The moon and Earth are obviously spheres with textures. The sun is a billboard with a light attached to it.
 
-##### Shaders
+This project was the first where I used CMake. The engine itself wasn't multi-platform, but I gained experience in using CMake, makefiles, and setting up a project architecture that is platform agnostic.
+
+### Shaders
 
 The Earth and the moon each contain a shader to render its textures, as well as shaders for bloom, HDR, shadow mapping, and godrays. To achieve this effect, I render to multiple textures and then combine them after all of the passes. I then apply gamma correction and render back into LDR.
 
