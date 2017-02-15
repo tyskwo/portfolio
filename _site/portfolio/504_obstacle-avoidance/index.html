@@ -58,7 +58,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-02-15T10:28:53-05:00">
+  <meta property="article:published_time" content="2017-02-15T11:39:01-05:00">
 
 
 
@@ -129,6 +129,9 @@
           
             
             <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/work">All Work</a></li>
           
         </ul>
         <ul class="hidden-links hidden"></ul>
@@ -220,8 +223,8 @@
 
     <span class="c1">//add the rays</span>
     <span class="n">rays</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">Feeler</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">AngleDependent</span><span class="p">))</span>
-    <span class="n">rays</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">Feeler</span><span class="p">(</span><span class="nv">collideImpulse</span><span class="p">:</span> <span class="kt">Shape2</span><span class="o">.</span><span class="kt">Impulse</span><span class="o">.</span><span class="kt">Down</span><span class="p">))</span>
-    <span class="n">rays</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">Feeler</span><span class="p">(</span><span class="nv">collideImpulse</span><span class="p">:</span> <span class="kt">Shape2</span><span class="o">.</span><span class="kt">Impulse</span><span class="o">.</span><span class="kt">Up</span><span class="p">))</span>
+    <span class="n">rays</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">Feeler</span><span class="p">(</span><span class="nv">collideImpulse</span><span class="p">:</span> <span class="kt">Shape</span><span class="o">.</span><span class="kt">Impulse</span><span class="o">.</span><span class="kt">Down</span><span class="p">))</span>
+    <span class="n">rays</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="kt">Feeler</span><span class="p">(</span><span class="nv">collideImpulse</span><span class="p">:</span> <span class="kt">Shape</span><span class="o">.</span><span class="kt">Impulse</span><span class="o">.</span><span class="kt">Up</span><span class="p">))</span>
 
     <span class="c1">//set the rotation</span>
     <span class="n">rays</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">zRotation</span> <span class="o">=</span>  <span class="kt">Logic</span><span class="o">.</span><span class="kt">Boid</span><span class="o">.</span><span class="n">angle</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">*</span> <span class="mf">3.14</span>

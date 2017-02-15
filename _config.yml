@@ -200,8 +200,20 @@ defaults:
       author_profile: false
       share: false
 
+# _work
+  - scope:
+      path: ""
+      type: work
+    values:
+      layout: single
+      author_profile: false
+      share: false
+
 
 collections:
   portfolio:
+    output: true
+    permalink: /:collection/:path/
+  work:
     output: true
     permalink: /:collection/:path/

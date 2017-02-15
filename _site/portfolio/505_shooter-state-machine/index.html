@@ -58,7 +58,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-02-15T10:28:53-05:00">
+  <meta property="article:published_time" content="2017-02-15T11:39:01-05:00">
 
 
 
@@ -130,6 +130,9 @@
             
             <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
           
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/work">All Work</a></li>
+          
         </ul>
         <ul class="hidden-links hidden"></ul>
       </nav>
@@ -167,19 +170,22 @@
   
     
       
-        <img src=
-        
-          "http://placehold.it/350x250"
-        
-        alt="logo">
       
-      <h3>Role</h3>
-      <p>Programmer</p>
+      <h2 id="2015-as3">2015, AS3</h2>
 
-    
-      
-      <h3>Responsibilities</h3>
-      <p>AI.</p>
+<h3 id="description">Description</h3>
+
+<p>An exercise in creating state machines: one for the player to survive as long as possible, and one for the enemies to hunt the player down.</p>
+
+<h3 id="outcomes">Outcomes</h3>
+
+<p>Flashpunk.</p>
+
+<p>State machine AI pattern.</p>
+
+<h3 id="links">Links</h3>
+
+<p><a href="https://www.dropbox.com/sh/538nutrazt9r2r0/AAC1dydZ_3Z90GRrEuzJr681a?dl=0" class="btn">Executable</a></p>
 
     
     
@@ -200,35 +206,47 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>Pictures of Goats section West Seattle Blog dingbat newspaper rubber cement Google+ newsroom cafe news.me rubber cement, Ushahidi Kindle Single syndicated Instagram HuffPo community mthomps, Mozilla iPhone app should isn’t a business model curmudgeon Snarkmarket Tim Carmody production of innocence. Fuego tweets community DocumentCloud metered model Gardening &amp; War section YouTube social media SEO information overload analytics Aron Pilhofer Journal Register data visualization WikiLeaks Groupon, collaboration Steve Jobs we need a Nate Silver AP What Would Google Do the power of the press belongs to the person who owns one Clay Shirky curmudgeon Voice of San Diego free as in beer dead trees the notion of the public Lucius Nieman.</p>
+        <p>This project’s goal was to create an AI that could take over for a real human player using a structured state machine. This was a partner project with Drew Matthews, and we created a simple twin-stick shooter to show-off our AI. We used <em>Flashpunk</em> for the underlying engine, which allows us for easy collision detection. Along with the player AI, we also have an enemy state machine, and easy switching between AI and human controls.</p>
 
-<figure class="third ">
-  
-    
-      <a href="http://localhost:4000/assets/images/unsplash-gallery-image-1.jpg">
-        <img src="http://localhost:4000/assets/images/unsplash-gallery-image-1-th.jpg" alt="placeholder image 1" />
-      </a>
-    
-  
-    
-      <a href="http://localhost:4000/assets/images/unsplash-gallery-image-2.jpg">
-        <img src="http://localhost:4000/assets/images/unsplash-gallery-image-2-th.jpg" alt="placeholder image 2" />
-      </a>
-    
-  
-    
-      <a href="http://localhost:4000/assets/images/unsplash-gallery-image-3.jpg">
-        <img src="http://localhost:4000/assets/images/unsplash-gallery-image-3-th.jpg" alt="placeholder image 3" />
-      </a>
-    
-  
-  
-    <figcaption>This is a sample gallery to go along with this case study.
-</figcaption>
-  
-</figure>
+<p><img src="http://localhost:4000/assets/images/portfolio/2015/shooter-state-machine/nogui.gif" alt="ai-intro" class="align-center" /></p>
 
-<p>lorem ipsum</p>
+<h3 id="the-state-machines">The State Machines</h3>
+
+<p>Both player-types share the same state machine architecture:</p>
+
+<figure class="highlight"><pre><code class="language-as3" data-lang="as3"><span class="kr">public</span> <span class="kr">class</span> <span class="nx">State</span>
+<span class="p">{</span>
+	<span class="kr">protected</span> <span class="kd">var</span> <span class="nx">mEntity</span><span class="o">:</span><span class="nx">Entity</span><span class="o">;</span>
+	<span class="kr">protected</span> <span class="kd">var</span> <span class="nx">mStateType</span><span class="o">:</span><span class="nx">int</span><span class="o">;</span>
+
+	<span class="kr">public</span> <span class="kd">function</span> <span class="nx">State</span><span class="p">(</span><span class="nx">ent</span><span class="o">:</span><span class="nx">Entity</span><span class="p">)</span>
+	<span class="p">{</span> <span class="nx">mEntity</span> <span class="o">=</span> <span class="nx">ent</span><span class="o">;</span> <span class="p">}</span>
+
+	<span class="kr">public</span> <span class="kd">function</span> <span class="nx">update</span><span class="p">()</span><span class="o">:</span><span class="nb">void</span> <span class="p">{}</span>
+
+	<span class="c1">//Used for setting data when entering state</span>
+	<span class="kr">public</span> <span class="kd">function</span> <span class="nx">onLoadState</span><span class="p">(</span><span class="nx">prevState</span><span class="o">:</span><span class="nx">State</span><span class="p">)</span><span class="o">:</span><span class="nb">void</span> <span class="p">{}</span>
+
+	<span class="c1">//Used for data when leaving state</span>
+	<span class="kr">public</span> <span class="kd">function</span> <span class="nx">offLoadState</span><span class="p">(</span><span class="nx">nextState</span><span class="o">:</span><span class="nx">State</span><span class="p">)</span><span class="o">:</span><span class="nb">void</span> <span class="p">{}</span>
+
+	<span class="c1">//Returns a state when a condition is met</span>
+            <span class="c1">//subclasses implement this</span>
+	<span class="kr">public</span> <span class="kd">function</span> <span class="nx">callback</span><span class="p">()</span><span class="o">:</span><span class="nx">State</span>
+	<span class="p">{</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span> <span class="p">}</span>
+
+	<span class="c1">//Returns the int state type</span>
+	<span class="kr">public</span> <span class="kd">function</span> <span class="nx">getStateType</span><span class="p">()</span><span class="o">:</span><span class="nx">int</span>
+	<span class="p">{</span> <span class="k">return</span> <span class="nx">mStateType</span><span class="o">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Each player-type then has different states such as patrol, shoot, seek health, investigate, etc. We then form a state web, making segues between the different states, and what the conditions of the segue are (such as low health, enemy close by, etc.) Each state can offload data to the next state, thus its possible to alter behavior in multiple states and stay consistent (if power-ups were involved, for instance).</p>
+
+<p><img src="http://localhost:4000/assets/images/portfolio/2015/shooter-state-machine/example.gif" alt="ai-intro" class="align-center" /></p>
+
+<h3 id="retrospection-and-postmortem">Retrospection and Postmortem</h3>
+
+<p>This project showed me the possible advantages of using finite state machines over decision or behavior trees. Here, each state, or behavior, is encapsulated and within its own class, allowing it to be independent of any other states and the ability to be hot-plugged based on other factors in the game (or for fast prototyping). On the other hand, behavior/decision trees tend to have their logic and behavior separated, which leads to the system reaching further in the codebase. This could be remedied slightly by having grouping behaviors into categories, but this still isn’t ideal: it doesn’t allow for individual behaviors to be independent of the system without a good bit of over-engineering. Still, there are advantages of behavior trees too, but that’s for another post. Overall, this project went well; I am proud of the result, and I feel it demonstrates a good understanding of how state machines work, and the code itself is clean and concise too.</p>
 
         
       </section>
@@ -247,7 +265,7 @@
 ">Previous</a>
     
     
-      <a href="http://localhost:4000/portfolio/506_shmup/" class="pagination--pager" title="SHMUP
+      <a href="http://localhost:4000/portfolio/507_flow-field-pathfinding/" class="pagination--pager" title="Flow Field Pathfinding
 ">Next</a>
     
   </nav>
