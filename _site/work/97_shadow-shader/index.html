@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Shadow Shader - Tyler Wood</title>
+
+
+
+
+<meta name="description" content="My first foray into graphics programming.">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Tyler Wood">
+<meta property="og:title" content="Shadow Shader">
+
+
+  <link rel="canonical" href="http://localhost:4000/work/97_shadow-shader/">
+  <meta property="og:url" content="http://localhost:4000/work/97_shadow-shader/">
+
+
+
+  <meta property="og:description" content="My first foray into graphics programming.">
+
+
+
+  <meta name="twitter:site" content="@tyskwo">
+  <meta name="twitter:title" content="Shadow Shader">
+  <meta name="twitter:description" content="My first foray into graphics programming.">
+  <meta name="twitter:url" content="http://localhost:4000/work/97_shadow-shader/">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="http://localhost:4000/assets/images/portfolio/2014/shadow-shader/feature.png">
+  
+
+  
+
+
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/portfolio/2014/shadow-shader/feature.png">
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-02-15T17:04:37-05:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Tyler Wood",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tyler Wood Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400i" rel="stylesheet">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><p class="masthead__menu-item masthead__menu-item--lgl">TYLER</p>WOOD</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/work">All Work</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+  
+
+
+
+
+
+
+
+<div class="page__hero"
+  style=" "
+>
+  
+    <img src="http://localhost:4000/assets/images/portfolio/2014/shadow-shader/feature.png" alt="Shadow Shader" class="page__hero-image">
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      <h2 id="2014-c">2014, C#</h2>
+
+<h3 id="description">Description</h3>
+
+<p>A 2D planet scene with an HLSL shader to render the shadows.</p>
+
+<h3 id="outcomes">Outcomes</h3>
+
+<p>XNA.</p>
+
+<p>HLSL and the shader pipeline.</p>
+
+    
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Shadow Shader
+</h1>
+          <!--<p class="page__meta">2014, C#</p>
+          -->
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p><img src="http://localhost:4000/assets/images/portfolio/2014/shadow-shader/example.gif" alt="shader-intro" class="align-center" /></p>
+
+<p>This shader was my first. Like a first-time dad holding his newborn, I cherish this little guy. The project itself was to create a unique shader, which is why there’s no game or anything attached to the project. I took the name a little too seriously (shadow shader – shade, haha get it?), but I feel it was good application and got my feet wet in HLSL and pixel shaders. Shadow simply simulates the sun’s rays being cast on planets, which then produce shadows behind them as they orbit the sun. This gives rise to ‘eclipse’ like situations and shadows that double-up.</p>
+
+<p>Along with the shader, this project also includes a robust particle system that takes care of the planet trails and the sun’s bursting. Plus, there’s some pretty relaxing space-y background music, making this truly fit for a screensaver.</p>
+
+<h3 id="the-shader">The Shader</h3>
+
+<p>The shader is its own file, and is included into the file like an object. The shader is a scene shader – meaning that the shader goes through all of the pixels on the screen, rather than it being attached to a sprite and it only going through the sprites visible pixels. Here’s the code that incorporates the shader into the project:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">//shader and its parameters
+</span><span class="n">Effect</span> <span class="n">shadowEffect</span><span class="p">;</span>
+<span class="n">EffectParameter</span> <span class="n">lightCenter</span><span class="p">,</span> <span class="n">screenSize</span><span class="p">,</span>		<span class="c1">//center of sun and size of screen
+</span>                <span class="n">planet1Atop</span><span class="p">,</span> <span class="n">planet1Abottom</span><span class="p">,</span> 	
+                <span class="n">planet2Atop</span><span class="p">,</span> <span class="n">planet2Abottom</span><span class="p">,</span> 	<span class="c1">//left and right edge of planet
+</span>                <span class="n">planet3Atop</span><span class="p">,</span> <span class="n">planet3Abottom</span><span class="p">,</span>	<span class="c1">//tangent to the sun
+</span>                <span class="n">planet4Atop</span><span class="p">,</span> <span class="n">planet4Abottom</span><span class="p">;</span>
+
+
+<span class="c1">//load shader and matchup parameters
+</span><span class="n">shadowEffect</span> <span class="p">=</span> <span class="n">Content</span><span class="p">.</span><span class="n">Load</span><span class="p">&lt;</span><span class="n">Effect</span><span class="p">&gt;(</span><span class="s">"shadow"</span><span class="p">);</span>
+<span class="n">lightCenter</span> <span class="p">=</span> <span class="n">shadowEffect</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">"center"</span><span class="p">];</span>
+<span class="n">screenSize</span> <span class="p">=</span> <span class="n">shadowEffect</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">"size"</span><span class="p">];</span>
+<span class="n">planet1Atop</span> <span class="p">=</span> <span class="n">shadowEffect</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">"planet1AngleTop"</span><span class="p">];</span>
+<span class="n">planet2Atop</span> <span class="p">=</span> <span class="n">shadowEffect</span><span class="p">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s">"planet2AngleTop"</span><span class="p">];</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.</span> <span class="n">etc</span><span class="p">.</span>
+
+
+<span class="c1">//set center of sun and screen size
+</span><span class="n">lightCenter</span><span class="p">.</span><span class="nf">SetValue</span><span class="p">(</span><span class="n">sun</span><span class="p">.</span><span class="n">position</span><span class="p">);</span>
+<span class="n">screenSize</span><span class="p">.</span><span class="nf">SetValue</span><span class="p">(</span><span class="k">new</span> <span class="nf">Vector2</span><span class="p">(</span><span class="n">graphics</span><span class="p">.</span><span class="n">PreferredBackBufferWidth</span><span class="p">,</span>
+                                <span class="n">graphics</span><span class="p">.</span><span class="n">PreferredBackBufferHeight</span><span class="p">));</span>
+
+
+<span class="c1">//for each of the planets, calculate its angle, and set the two sides
+//of the planet with hard-coded values
+</span><span class="kt">float</span> <span class="n">angle</span> <span class="p">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">Math</span><span class="p">.</span><span class="nf">Atan2</span><span class="p">(</span><span class="n">planet1</span><span class="p">.</span><span class="n">location</span><span class="p">.</span><span class="n">Y</span> <span class="p">-</span> <span class="m">825.0f</span><span class="p">,</span>
+                                <span class="n">planet1</span><span class="p">.</span><span class="n">location</span><span class="p">.</span><span class="n">X</span> <span class="p">-</span> <span class="m">400.0f</span><span class="p">);</span>
+
+<span class="n">planet1Abottom</span><span class="p">.</span><span class="nf">SetValue</span><span class="p">(</span><span class="n">angle</span> <span class="p">-</span> <span class="m">0.097f</span><span class="p">);</span>
+<span class="n">planet1Atop</span><span class="p">.</span><span class="nf">SetValue</span><span class="p">(</span><span class="n">angle</span> <span class="p">+</span> <span class="m">0.097f</span><span class="p">);</span>
+<span class="p">.</span> <span class="p">.</span> <span class="p">.</span> <span class="n">etc</span><span class="p">.</span></code></pre></figure>
+
+<h3 id="the-shadows">The Shadows</h3>
+
+<p>The shadows, obviously are the the meat of the shader. To keep the actual shader as lightweight as possible, I pass in the edge points of the planets each frame. These could very easily be calculated in the shader. Given these points, here is how the shader calculates the shadows:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">uniform</span> <span class="k">extern</span> <span class="n">texture</span> <span class="n">ScreenTexture</span><span class="p">;</span>
+
+<span class="n">sampler</span> <span class="n">ScreenS</span> <span class="p">=</span> <span class="n">sampler_state</span>
+<span class="p">{</span>
+	<span class="n">Texture</span> <span class="p">=</span> <span class="p">&lt;</span><span class="n">ScreenTexture</span><span class="p">&gt;;</span>
+<span class="p">};</span>
+
+
+<span class="cm">/*
+    center: position of sun
+    size:   size of screen
+    top:    left side of the edge of the planet
+    bottom: right side of the edge of the planet
+*/</span>
+
+<span class="n">float2</span> <span class="n">center</span><span class="p">;</span>
+<span class="n">float2</span> <span class="n">size</span><span class="p">;</span>
+<span class="kt">float</span>  <span class="n">planet1AngleTop</span><span class="p">,</span> <span class="n">planet1AngleBottom</span><span class="p">;</span>
+<span class="kt">float</span>  <span class="n">planet2AngleTop</span><span class="p">,</span> <span class="n">planet2AngleBottom</span><span class="p">;</span>
+<span class="kt">float</span>  <span class="n">planet3AngleTop</span><span class="p">,</span> <span class="n">planet3AngleBottom</span><span class="p">;</span>
+<span class="kt">float</span>  <span class="n">planet4AngleTop</span><span class="p">,</span> <span class="n">planet4AngleBottom</span><span class="p">;</span>
+
+
+<span class="n">float4</span> <span class="nf">PixelShaderFunction</span><span class="p">(</span><span class="n">float2</span> <span class="n">currentCoord</span><span class="p">:</span> <span class="n">TEXCOORD0</span><span class="p">)</span> <span class="p">:</span> <span class="n">COLOR</span>
+<span class="p">{</span>
+	<span class="c1">//get the pixel, its color, and its distance from the sun
+</span>	<span class="n">float2</span> <span class="n">pixelCoord</span> <span class="p">=</span> <span class="n">currentCoord</span> <span class="p">*</span> <span class="n">size</span><span class="p">;</span>
+	<span class="n">float4</span> <span class="n">color</span>      <span class="p">=</span> <span class="nf">tex2D</span><span class="p">(</span><span class="n">ScreenS</span><span class="p">,</span> <span class="n">currentCoord</span><span class="p">);</span>
+	<span class="kt">float</span>  <span class="n">deltaX</span>     <span class="p">=</span> <span class="n">pixelCoord</span><span class="p">.</span><span class="n">x</span> <span class="p">-</span> <span class="n">center</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+	<span class="kt">float</span>  <span class="n">deltaY</span>     <span class="p">=</span> <span class="n">pixelCoord</span><span class="p">.</span><span class="n">y</span> <span class="p">-</span> <span class="n">center</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+
+	<span class="c1">//calculate the angle and distance
+</span>	<span class="kt">float</span> <span class="n">angle</span>    <span class="p">=</span> <span class="nf">atan2</span><span class="p">((</span><span class="n">deltaY</span><span class="p">)</span> <span class="p">,</span> <span class="p">(</span><span class="n">deltaX</span><span class="p">));</span>
+	<span class="kt">float</span> <span class="n">distance</span> <span class="p">=</span> <span class="nf">sqrt</span><span class="p">((</span><span class="n">deltaY</span><span class="p">)</span> <span class="p">*</span> <span class="p">(</span><span class="n">deltaY</span><span class="p">)</span> <span class="p">+</span> <span class="p">(</span><span class="n">deltaX</span><span class="p">)</span> <span class="p">*</span> <span class="p">(</span><span class="n">deltaX</span><span class="p">));</span>
+
+
+	<span class="c1">//if the calculated angle falls between the planet’s edges and is beyond
+</span>	<span class="c1">//the planets orbit, darken it
+</span>	<span class="c1">//
+</span>	<span class="c1">//ifs (rather than else ifs) allow the pixel to be darkened multiple times,
+</span>	<span class="c1">//allowing for the ellipse effect
+</span>
+	<span class="k">if</span> <span class="p">((</span><span class="n">angle</span> <span class="p">&lt;</span> <span class="n">planet1AngleTop</span> <span class="p">&amp;&amp;</span> <span class="n">angle</span> <span class="p">&gt;</span> <span class="n">planet1AngleBottom</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="n">distance</span> <span class="p">&gt;</span> <span class="m">250</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">color</span><span class="p">.</span><span class="n">xyz</span> <span class="p">=</span> <span class="m">0.65f</span> <span class="p">*</span> <span class="n">color</span><span class="p">.</span><span class="n">xyz</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">((</span><span class="n">angle</span> <span class="p">&lt;</span> <span class="n">planet2AngleTop</span> <span class="p">&amp;&amp;</span> <span class="n">angle</span> <span class="p">&gt;</span> <span class="n">planet2AngleBottom</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="n">distance</span> <span class="p">&gt;</span> <span class="m">400</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">color</span><span class="p">.</span><span class="n">xyz</span> <span class="p">=</span> <span class="m">0.65f</span> <span class="p">*</span> <span class="n">color</span><span class="p">.</span><span class="n">xyz</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">((</span><span class="n">angle</span> <span class="p">&lt;</span> <span class="n">planet3AngleTop</span> <span class="p">&amp;&amp;</span> <span class="n">angle</span> <span class="p">&gt;</span> <span class="n">planet3AngleBottom</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="n">distance</span> <span class="p">&gt;</span> <span class="m">500</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">color</span><span class="p">.</span><span class="n">xyz</span> <span class="p">=</span> <span class="m">0.65f</span> <span class="p">*</span> <span class="n">color</span><span class="p">.</span><span class="n">xyz</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">((</span><span class="n">angle</span> <span class="p">&lt;</span> <span class="n">planet4AngleTop</span> <span class="p">&amp;&amp;</span> <span class="n">angle</span> <span class="p">&gt;</span> <span class="n">planet4AngleBottom</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="n">distance</span> <span class="p">&gt;</span> <span class="m">725</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">color</span><span class="p">.</span><span class="n">xyz</span> <span class="p">=</span> <span class="m">0.65f</span> <span class="p">*</span> <span class="n">color</span><span class="p">.</span><span class="n">xyz</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">color</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="n">technique</span>
+<span class="p">{</span>
+	<span class="n">pass</span> <span class="n">P0</span>
+	<span class="p">{</span>
+		<span class="n">PixelShader</span> <span class="p">=</span> <span class="n">compile</span> <span class="n">ps_2_0</span> <span class="nf">PixelShaderFunction</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="retrospection-and-postmortem">Retrospection and Postmortem</h3>
+
+<p>I’m proud of what I was able to accomplish with this assignment, but looking back there is much that can be streamlined to make the code not only nicer-looking, but more modular as well, especially with the increase in GPU power over the past couple of years. For one, I would pass in the radius and center of each planet. While still passing in two values per planet, this would allow the shader to be more independent of the project and be able to calculate the edge points on its own. Secondly, I would get rid of the hard-coded values to determine the edge points, and calculate these based on the given values. This refactoring would allow the shader to loop through the planets, be more removed from the project, and just be neater overall.</p>
+
+<p><img src="http://localhost:4000/assets/images/portfolio/2014/shadow-shader/overlap.gif" alt="shader-intro" class="align-center" /></p>
+
+<p>But that’s not all, because there is one glaring, but hidden bug. The sun is at the center of the universe, but why is it at the bottom of the screen? When the angle is within the planet’s radius’ max angle (~2 degrees or so) from plus/minus 0 (so right around zero on the unit circle), the shader freaks out because the angle of the pixel isn’t between the edge points based on the angle. The easiest way to fix this would be to introduce an edge-case and check for this for each pixel, but a better way would be to use quaternions. I looked into it for this project, and the math was way above my head, and even now too. Maybe a summer project is on the horizon.</p>
+
+        
+      </section>
+
+      
+      <footer class="page__meta">
+        
+        
+
+
+      </footer>
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/work/96_flip/" class="pagination--pager" title="Flip
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/work/98_flash-experiments/" class="pagination--pager" title="Flash Experiments
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/tyskwo"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/tyskwo"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Tyler Wood.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

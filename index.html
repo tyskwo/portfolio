@@ -4,7 +4,9 @@ author_profile: true
 ---
 
 <div class="grid__wrapper">
-  {% for post in site.portfolio %}
-    {% include archive-single.html type="grid" %}
+  {% for post in site.work %}
+    {% if post.portfolio == "true" %}
+      {% include archive-single.html type="grid" %}
+    {% endif %}
   {% endfor %}
 </div>
