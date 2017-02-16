@@ -2,6 +2,7 @@
 title: null
 layout: single
 permalink: /resume/
+author_profile: true
 ---
 
 

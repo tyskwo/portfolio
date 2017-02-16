@@ -67,7 +67,7 @@ sidebar:
   - title: "Links"
 
   - button: Repository
-    link: https://github.com/tyskwo/Office_Mayhem
+    link: https://github.com/tyskwo/OfficeMayhem
     icon: github
 ---
 
