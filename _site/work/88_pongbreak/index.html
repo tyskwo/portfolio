@@ -58,7 +58,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-02-16T11:42:21-05:00">
+  <meta property="article:published_time" content="2017-02-16T16:40:00-05:00">
 
 
 
@@ -240,7 +240,118 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>Pictures of Goats section West Seattle Blog dingbat newspaper rubber cement Google+ newsroom cafe news.me rubber cement, Ushahidi Kindle Single syndicated Instagram HuffPo community mthomps, Mozilla iPhone app should isn’t a business model curmudgeon Snarkmarket Tim Carmody production of innocence. Fuego tweets community DocumentCloud metered model Gardening &amp; War section YouTube social media SEO information overload analytics Aron Pilhofer Journal Register data visualization WikiLeaks Groupon, collaboration Steve Jobs we need a Nate Silver AP What Would Google Do the power of the press belongs to the person who owns one Clay Shirky curmudgeon Voice of San Diego free as in beer dead trees the notion of the public Lucius Nieman.</p>
+        <p>This project was the culmination of Graphics II, which used core-profile OpenGL to create a simulation of the Earth, moon, and sun. The demo features bloom, ‘godrays’, shadow-casting, and a system for altering the related parameters to achieve the desired effect.</p>
+
+<h3 id="architecture">Architecture</h3>
+
+<p><em>PongBreak</em> uses an authoritative server which simulates the game and sends the states to its clients to display to the players. This rids the need of temporal delay. However, there is interpolation to account for the time difference between the clients and the server.</p>
+
+<p><img src="http://localhost:4000/assets/images/portfolio/2015/pongbreak/intro.gif" alt="pongbreak-intro" class="align-center" /></p>
+
+<h5 id="server">Server</h5>
+
+<p>The server contains a 2D array of client pairs, giving it the capability of running multiple games at the same time. It has an update loop, where it updates each game individually, and sends the new game state (a struct called <code class="highlighter-rouge">GameInfo</code>) to each client. Upon initialization, it creates all of the <code class="highlighter-rouge">Game</code> objects, as well as opens up connection ports to listen on. Upon a game ending, it waits for confirmation from a client to restart, or closes the connections and frees up the client slots if the clients disconnect.</p>
+
+<p>The clients and server send packets back and forth 30 times each second. Here’s the method that reads the packets’ information:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="n">Server</span><span class="o">::</span><span class="n">getPackets</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="k">for</span> <span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="n">mpServer</span><span class="o">-&gt;</span><span class="n">Receive</span><span class="p">();</span> <span class="n">p</span><span class="p">;</span> <span class="n">mpServer</span><span class="o">-&gt;</span><span class="n">DeallocatePacket</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">p</span> <span class="o">=</span> <span class="n">mpServer</span><span class="o">-&gt;</span><span class="n">Receive</span><span class="p">())</span>
+	<span class="p">{</span>
+		<span class="n">packetIdentifier</span> <span class="o">=</span> <span class="n">GetPacketIdentifier</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+
+        <span class="c1">//obviously all of these cases are filled out with the correct logic
+</span>		<span class="k">switch</span> <span class="p">(</span><span class="n">packetIdentifier</span><span class="p">)</span>
+		<span class="p">{</span>
+		<span class="k">case</span> <span class="n">ID_DISCONNECTION_NOTIFICATION</span>
+
+		<span class="k">case</span> <span class="n">ID_INCOMPATIBLE_PROTOCOL_VERSION</span>
+
+		<span class="k">case</span> <span class="n">ID_CONNECTED_PING</span>
+		<span class="k">case</span> <span class="n">ID_UNCONNECTED_PING</span>
+
+		<span class="k">case</span> <span class="n">ID_CONNECTION_LOST</span>
+
+		<span class="k">case</span> <span class="n">ID_NEW_INCOMING_CONNECTION</span>
+
+		<span class="k">case</span> <span class="n">ID_SEND_PADDLE_DATA</span>
+
+		<span class="k">case</span> <span class="n">ID_START_GAME</span>
+
+		<span class="nl">default:</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">)</span><span class="err">;</span>
+			<span class="k">break</span><span class="err">;</span>
+		<span class="err">}</span>
+	<span class="err">}</span>
+<span class="err">}</span></code></pre></figure>
+
+<p>The magic lies in <code class="highlighter-rouge">GetPacketIdentifier</code>, which gets the header of the packet. This allows us to understand what type of packet it is (and what we should do with its contents). For us, the packet identifiers are a simple enum.</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">Server</span><span class="o">::</span><span class="n">GetPacketIdentifier</span><span class="p">(</span><span class="n">RakNet</span><span class="o">::</span><span class="n">Packet</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="k">return</span> <span class="mi">255</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">ID_TIMESTAMP</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">RakAssert</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">length</span> <span class="o">&gt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">RakNet</span><span class="o">::</span><span class="n">MessageID</span><span class="p">)</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">RakNet</span><span class="o">::</span><span class="n">Time</span><span class="p">));</span>
+		<span class="k">return</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="n">RakNet</span><span class="o">::</span><span class="n">MessageID</span><span class="p">)</span> <span class="o">+</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">RakNet</span><span class="o">::</span><span class="n">Time</span><span class="p">)];</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+		<span class="k">return</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="p">)</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>After <code class="highlighter-rouge">update()</code> is finished, it sends the game info to all of the clients, simply sending a packet to each client:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="n">Server</span><span class="o">::</span><span class="n">broadcastGameInfo</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">mClientPairs</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">GameInfo</span> <span class="n">info</span> <span class="o">=</span> <span class="n">mGameInfos</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+		<span class="n">info</span><span class="p">.</span><span class="n">mID</span> <span class="o">=</span> <span class="n">ID_RECIEVE_GAME_INFO</span><span class="p">;</span>
+
+		<span class="n">mpServer</span><span class="o">-&gt;</span><span class="n">Send</span><span class="p">((</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">info</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">info</span><span class="p">),</span> <span class="n">HIGH_PRIORITY</span><span class="p">,</span> <span class="n">RELIABLE_ORDERED</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mGuidPairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="nb">false</span><span class="p">);</span>
+		<span class="n">mpServer</span><span class="o">-&gt;</span><span class="n">Send</span><span class="p">((</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">info</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">info</span><span class="p">),</span> <span class="n">HIGH_PRIORITY</span><span class="p">,</span> <span class="n">RELIABLE_ORDERED</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mGuidPairs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="nb">false</span><span class="p">);</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="n">j</span><span class="o">++</span><span class="p">;</span> <span class="c1">//we send the same GameInfo to each set of clients
+</span>	<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h5 id="client">Client</h5>
+
+<p>The client simply responds to user input, and draws the updated <code class="highlighter-rouge">GameInfo</code> sent from the server. Upon receiving input from the player, it converts that to data based on the most recent info. For instance, here’s how a client would send updated paddle info:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">if</span> <span class="p">(</span><span class="n">sf</span><span class="o">::</span><span class="n">Keyboard</span><span class="o">::</span><span class="n">isKeyPressed</span><span class="p">(</span><span class="n">sf</span><span class="o">::</span><span class="n">Keyboard</span><span class="o">::</span><span class="n">Up</span><span class="p">))</span>
+<span class="p">{</span>
+	<span class="n">mpClient</span><span class="o">-&gt;</span><span class="n">setPaddlePosition</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="n">f</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">.....</span>
+
+
+<span class="k">if</span> <span class="p">(</span><span class="n">mpTimer</span><span class="o">-&gt;</span><span class="n">shouldUpdate</span><span class="p">())</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">isFirstConnected</span><span class="p">())</span>
+        <span class="n">sendPaddleData</span><span class="p">(</span><span class="n">mGameInfo</span><span class="p">.</span><span class="n">lPlayer</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">mGameInfo</span><span class="p">.</span><span class="n">lPlayer</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+	<span class="k">else</span>
+		<span class="n">sendPaddleData</span><span class="p">(</span><span class="n">mGameInfo</span><span class="p">.</span><span class="n">rPlayer</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">mGameInfo</span><span class="p">.</span><span class="n">rPlayer</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">.....</span>
+
+<span class="kt">void</span> <span class="n">Client</span><span class="o">::</span><span class="n">sendPaddleData</span><span class="p">(</span><span class="kt">float</span> <span class="n">x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">Position</span> <span class="n">pos</span><span class="p">;</span>
+	<span class="n">pos</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+	<span class="n">pos</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+	<span class="n">pos</span><span class="p">.</span><span class="n">mID</span> <span class="o">=</span> <span class="n">ID_SEND_PADDLE_DATA</span><span class="p">;</span>
+	<span class="n">mpClient</span><span class="o">-&gt;</span><span class="n">Send</span><span class="p">((</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">pos</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span> <span class="n">HIGH_PRIORITY</span><span class="p">,</span> <span class="n">RELIABLE_ORDERED</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">RakNet</span><span class="o">::</span><span class="n">UNASSIGNED_SYSTEM_ADDRESS</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="retrospection-and-postmortem">Retrospection and Postmortem</h3>
+
+<p>This was my first experience in networking, and I am thankful that it was using an industry standard like <em>RakNet</em>. It gave me experience in separating server logic from game logic, as well as introduce me to topics like interpolation, replication, and ways to handle network lag like temporal delay. The game itself is simple, but it does a good job in creating an environment where a good amount of data is needed to be sent back and forth.</p>
 
         
       </section>

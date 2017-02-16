@@ -72,20 +72,10 @@ sidebar:
 ---
 
 
-![OM-intro]({{ site.url }}{{ site.baseurl }}/assets/images/portfolio/2017/office-mayhem/intro.gif){: .align-center}
+_Office Mayhem_ is still in progress. It is my year-long capstone project at Champlain College. I've written extensively on it, [have]({{ site.url }}{{ site.baseurl }}/2016/the-beginning-of-the-end/) a [read]({{ site.url }}{{ site.baseurl }}/2016/dive-dive-dive/) of [those]({{ site.url }}{{ site.baseurl }}/2016/office-mayhem-abc/) until [I get]({{ site.url }}{{ site.baseurl }}/2016/office-mayhem-the-midpoint-check-in/) this [page]({{ site.url }}{{ site.baseurl }}/2017/sometimes-the-best-tutorial-is-no-tutorial/) set up. :)
 
 
-### Architecture
-
-Lorem ipsum.
-
-### Team
-
-Dolor.
-
-{% highlight csharp %}
-// sure, some sample code.
-{% endhighlight %}
+![OM-intro]({{ site.url }}{{ site.baseurl }}/assets/images/portfolio/2017/office-mayhem/stolen.gif){: .align-center}
 
 
 ### Retrospection and Postmortem
