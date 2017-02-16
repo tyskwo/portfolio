@@ -10,24 +10,20 @@ language: "C++"
 year: "2015"
 
 sidebar:
-  - text: "## 2015, C++ ##
+  - text: "## 2015, C++ ##"
 
 
-### Description ###
+  - title: "Description"
+
+    text: "A tech demo where 'boids' get their movement direction based on the tile they currently are over."
 
 
-A tech demo where 'boids' get their movement direction based on the tile they currently are over.
+  - title: "Outcomes"
+
+    text: "Flow field.
 
 
-### Outcomes ###
-
-
-Flow field.
-
-
-`std::map`
-
-"
+    `std::map`"
 ---
 
 Flow fields are a form of pathfinding and are useful when handling many objects at once – like crowds, or hordes of enemies – because the paths are calculated all at once. In fact, all possible paths are calculated at once, using the terrain to calculate cost of movement. This project uses a tile-based approach to flow fields, and includes multiple types of terrain as well as an editor to test the functionality.

@@ -10,28 +10,32 @@ language: "C++"
 year: "2015"
 
 sidebar:
-  - text: "## 2015, C++ ##
+  - text: "## 2015, C++ ##"
 
 
-### Description ###
+  - title: "Description"
+
+    text: "Sheep in a field, fish in the ocean. People in a crowd? The classic AI steering algorithm."
 
 
-Sheep in a field, fish in the ocean. People in a crowd? The classic AI steering algorithm.
+  - title: "Outcomes"
+
+    text: "Flocking.
 
 
-### Outcomes ###
+    Allegro5.
 
 
-Flocking.
+    Using a third-party framework."
 
 
-Allegro5.
+  - title: "Links"
 
-
-Using a third-party framework.
-
-"
+  - button: Executable
+    link: /assets/downloads/portfolio/2015/flocking/flocking.zip
+    icon: download
 ---
+
 
 This is my implementation of Craig Reynold's famous [flocking algorithm.](https://en.wikipedia.org/wiki/Flocking_(behavior))
 

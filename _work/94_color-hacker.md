@@ -10,32 +10,30 @@ language: "AS3"
 year: "2015"
 
 sidebar:
-  - text: "## 2015, AS3 ##
+  - text: "## 2015, AS3 ##"
 
 
-### Description ###
+  - title: "Description"
+
+    text: "A tile-based strategy game with a focus on easing."
 
 
-A tile-based strategy game with a focus on easing.
+  - title: "Outcomes"
+
+    text: "Learned Starling.
 
 
-### Outcomes ###
+    Tweening and easetypes.
 
 
-Learned Starling.
+    Function callbacks."
 
 
-Tweening and easetypes.
+  - title: "Links"
 
-
-Function callbacks.
-
-
-### Links ###
-
-
-[Executable](https://www.dropbox.com/s/60zjp6qn62b57ct/Color%20Hacker.zip?dl=0){: .btn}
-"
+  - button: Executable
+    link: /assets/downloads/portfolio/2015/color-hacker/ColorHacker.zip
+    icon: download
 ---
 
 ![color-hacker-intro]({{ site.url }}{{ site.baseurl }}/assets/images/portfolio/2015/color-hacker/intro.gif){: .align-center}

@@ -9,26 +9,24 @@ language: "Java"
 year: "2013"
 
 sidebar:
-  - text: "## 2013, Java ##
+  - text: "## 2013, Java ##"
 
 
-### Description ###
+  - title: "Description"
+
+    text: "My first game; Pong with a twist. Built over 48 hours for a game jam."
 
 
-My first game; Pong with a twist. Built over 48 hours for a game jam.
+  - title: "Outcomes"
+
+    text: "Finishing a game."
 
 
-### Outcomes ###
+  - title: "Links"
 
-
-Finishing a game.
-
-
-### Links ###
-
-
-[Executable](https://www.dropbox.com/s/4eu57vyv40e0xuu/Boost.jar?dl=0){: .btn}
-"
+  - button: Executable
+    link: /assets/downloads/2013/boost/Boost.jar
+    icon: download
 ---
 
 Boost was my first completed game, finished back in November of 2013, with no engines used – it's built completely from scratch. It was for a 48 hour game jam in my college hall, with the theme of ‘pong, but better.’ Not only my first completed game, Boost was also my first time participating in a game jam. Boost features pixel perfect collision detection, basic enemy AI, and a simple wave system for enemy generation. Technically it is a two player game, but can be played by one player too.
@@ -92,7 +90,3 @@ Boost is definitely rough around the edges, but it is complete. The boost syste
 ### Retrospection and Postmortem
 
 Looking back two years postmortem, I am proud of what I was able to accomplish with Boost. Most of my prototypes before this were tile-based games, with no enemy structure, and very little in terms of complexity. Between the structure of the enemies, their AI, the collision detection, and the wave system, I would consider this the peak of my knowledge at the time. Although the source code is lost, I do remember being proud of how I structured the game's systems – it wasn't a big pile of spaghetti when it was all said and done. One of Boost's dark spots is that the collision detection sometimes goes haywire and random enemies disappear. Oh well.
-
-<h3>Downloads</h3>
-<a href="https://www.dropbox.com/s/4eu57vyv40e0xuu/Boost.jar?dl=0" target="_blank">Here is a link to the .jar file for Boost.</a>
-Word of caution though, the instructions lie – it is O and K for player two's controls, not J.

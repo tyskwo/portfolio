@@ -10,30 +10,23 @@ language: "AS3"
 year: "2015"
 portfolio: "true"
 
+
 sidebar:
-  - text: "## 2015, AS3 ##
+  - text: "## 2015, AS3 ##"
 
 
-### Description ###
+  - title: "Description"
 
-
-An exercise in creating state machines: one for the player to survive as long as possible, and one for the enemies to hunt the player down.
-
-
-### Outcomes ###
-
-
-Flashpunk.
-
-
-State machine AI pattern.
-
-
-### Links ###
-
-
-[Executable](https://www.dropbox.com/sh/538nutrazt9r2r0/AAC1dydZ_3Z90GRrEuzJr681a?dl=0){: .btn}
+    text: "An exercise in creating state machines: one for the player to survive as long as possible, and one for the enemies to hunt the player down.
 "
+
+
+  - title: "Outcomes"
+
+    text: "Flashpunk.
+
+
+    State machine AI pattern."
 ---
 
 

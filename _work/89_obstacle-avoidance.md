@@ -11,33 +11,33 @@ year: "2015"
 portfolio: "true"
 
 sidebar:
-  - text: "## 2015, Swift ##
+  - text: "## 2016, Swift ##"
 
 
-### Description ###
+  - title: "Description"
+
+    text: "A tech demo where 'boids' avoid obstacles by using a set of 'feelers' to see their immediate surroundings."
 
 
-A tech demo where 'boids' avoid obstacles by using a set of 'feelers' to see their immediate surroundings.
+  - title: "Outcomes"
+
+    text: "Swift: optionals, guards, etc.
 
 
-### Outcomes ###
+    SpriteKit.
 
 
-Swift: optionals, guards, etc.
+    Object pooling.
 
 
-SpriteKit.
+    Protocol-oriented programming."
 
 
-Object pooling.
+  - title: "Links"
 
-
-### Links ###
-
-
-[Source](mailto:me@tyskwo.com){: .btn}
-[Executable](http://tyskwo.github.io/assets/downloads/portfolio/2015/obstacle-avoidance/ObstacleAvoidance.app){: .btn}
-"
+  - button: Executable
+    link: /assets/downloads/2015/obstacle-avoidance/ObstacleAvoidance.app
+    icon: download
 ---
 
 ![raycast-intro]({{ site.url }}{{ site.baseurl }}/assets/images/portfolio/2015/obstacle-avoidance/intro.gif){: .align-center}

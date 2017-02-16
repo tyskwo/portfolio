@@ -11,27 +11,28 @@ year: "2016"
 portfolio: "true"
 
 sidebar:
-  - text: "## 2016, Unreal ##
+  - text: "## 2016, Unreal ##"
 
 
-### Description ###
+  - title: "Description"
 
-
-An online, asymmetrical game where you plank, or nab the plankers!
-
-
-### Outcomes ###
-
-
-Unreal.
-
-
-Networking in Unreal.
-
-
-Project refactoring.
-
+    text: "An online, asymmetrical game where you plank, or nab the plankers!
 "
+
+
+  - title: "Outcomes"
+
+    text: "Unreal.
+
+
+    Networking in Unreal.
+
+
+    Project refactoring.
+
+
+    Designer-oriented tools."
+
 ---
 
 _Planker Pro_ is the final project from my Production II class. In a world where planking is illegal, defy the cops chasing you and plank as much as you can! Plank on top of dumpsters and park lights, traffic cones and hot dog carts. As a part of a team of seven, I was brought on the team to supply the networked back-end as well as create designer-oriented systems to aid in lowering level creation times and increase the rate of prototyping new mechanics. This project was produced in a scrum environment.

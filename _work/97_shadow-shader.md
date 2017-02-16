@@ -10,24 +10,21 @@ language: "C#"
 year: "2014"
 
 sidebar:
-  - text: "## 2014, C# ##
+  - text: "## 2014, C# ##"
 
 
-### Description ###
+  - title: "Description"
+
+    text: "A 2D planet scene with an HLSL shader to render the shadows."
 
 
-A 2D planet scene with an HLSL shader to render the shadows.
+  - title: "Outcomes"
+
+    text: "XNA.
 
 
-### Outcomes ###
+    HLSL and the shader pipeline."
 
-
-XNA.
-
-
-HLSL and the shader pipeline.
-
-"
 ---
 
 ![shader-intro]({{ site.url }}{{ site.baseurl }}/assets/images/portfolio/2014/shadow-shader/example.gif){: .align-center}

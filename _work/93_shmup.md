@@ -10,38 +10,36 @@ language: "C++"
 year: "2015"
 
 sidebar:
-  - text: "## 2015, C++ ##
+  - text: "## 2015, C++ ##"
 
 
-### Description ###
+  - title: "Description"
+
+    text: "A simple vertical shooter with a heavy emphasis on strong architecture."
 
 
-A simple vertical shooter with a heavy emphasis on strong architecture.
+  - title: "Outcomes"
+
+    text: "Design patterns.
 
 
-### Outcomes ###
+    Flyweights.
 
 
-Design patterns.
+    Object pooling.
 
 
-Flyweights.
+    File input/output.
 
 
-Object pooling.
+    SFML."
 
 
-File input/output.
+  - title: "Links"
 
-
-SFML.
-
-
-### Links ###
-
-
-[Source (ZIP)](https://www.dropbox.com/s/cwjtf17n3xyy6fh/SHMUP.zip?dl=0){: .btn}
-"
+  - button: Executable
+    link: /assets/downloads/portfolio/2015/shmup/SHMUP.zip
+    icon: download
 ---
 
 SHMUP is a vertical shooter, featuring multiple difficulties, enemy AI, loading from text files, and a complete, structured, underlying architecture based on an event system. The game is wrapped around SFML function calls, which allows the underlying engine to be swapped out very easily, with Allegro5, SDL, and even DirectX possible with a little more effort. This project features many [programming patterns,](http://gameprogrammingpatterns.com/contents.htm) including flyweights, managers, an event system, menu states, a variable time step game loop, object pools, and double buffering.

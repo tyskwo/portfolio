@@ -11,36 +11,37 @@ year: "2016"
 portfolio: "true"
 
 sidebar:
-  - text: "## 2016, C++ ##
+  - text: "## 2016, C++ ##"
 
 
-### Description ###
+  - title: "Description"
+
+    text: "A modern OpenGL-rendered Earth scene. Includes texture blending, bloom, godrays, and shadows."
 
 
-A modern OpenGL-rendered Earth scene. Includes texture blending, bloom, godrays, and shadows.
+  - title: "Outcomes"
+
+    text: "CMake.
 
 
-### Outcomes ###
+    Modern OpenGL.
 
 
-CMake.
+    Post-processing pipeline.
 
 
-Modern OpenGL.
+    Third-party frameworks."
 
 
-Post-processing pipeline.
+  - title: "Links"
 
+  - button: Repository
+    link: https://github.com/tyskwo/OpenGL_Earth
+    icon: github
 
-Third-party frameworks.
-
-
-### Links ###
-
-
-[Repository](https://github.com/tyskwo/OpenGL_Earth){: .btn}
-[Executable](https://www.dropbox.com/s/hmibt5j0t8pevpj/OpenGL_Earth.zip?dl=0){: .btn}
-"
+  - button: Executable
+    link: /assets/downloads/2016/earthscape/OpenGL_Earth.zip
+    icon: download
 ---
 
 This project was the culmination of Graphics II, which used core-profile OpenGL to create a simulation of the Earth, moon, and sun. The demo features bloom, 'godrays', shadow-casting, and a system for altering the related parameters to achieve the desired effect.

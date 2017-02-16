@@ -10,28 +10,32 @@ language: "C#"
 year: "2014"
 
 sidebar:
-  - text: "## 2014, C# ##
+  - text: "## 2014, C# ##"
 
 
-### Description ###
+  - title: "Description"
+
+    text: "A pretty shooty 2D game with a focus on graphics: shaders, particle effects, animations."
 
 
-A pretty shooty 2D game with a focus on graphics: shaders, particle effects, animations.
+  - title: "Outcomes"
+
+    text: "Learned XNA and C#.
 
 
-### Outcomes ###
+    Introduced to HLSL and fragment shaders.
 
 
-Learned XNA and C#.
+    Introduction to particle system architecture."
 
 
-Introduced to HLSL and fragment shaders.
+  - title: "Links"
 
-
-Introduction to particle system architecture.
-
-"
+  - button: Executable
+    link: /assets/downloads/portfolio/2014/self-destruct/SelfDestruct.zip
+    icon: download
 ---
+
 
 Self Destruct was the final project of my Graphics 1 class. Using XNA, Self Destruct features scrolling text, parallax backgrounds, a robust particle manager, controller input, and a really cool shader if I do say so myself. The game also features loading from text files and localization between English and Spanish (I knew high school Spanish would one day pay off). My goal was for the game to be as aesthetically coherent as I could make it, lending itself to the 45 degree characteristics from the background to the ships to the particles and the UI.
 

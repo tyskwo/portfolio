@@ -11,69 +11,64 @@ year: "2017"
 portfolio: "true"
 
 sidebar:
-  - text: "## 2017, C# ##
+  - text: "## 2017, C# ##"
 
 
-### Description ###
+  - title: "Description"
+
+    text: "A party game where you step on your coworkers in any way imaginable to climb the corporate ladder."
 
 
-A party game where you step on your coworkers in any way imaginable to climb the corporate ladder.
+  - title: "Team"
+
+    text: "[Andrew Millsap](https://andrewmillsap.weebly.com)
 
 
-### Team ###
+    [Will Concannon](https://willconcannonart.com)
 
 
-[Andrew Millsap](https://andrewmillsap.weebly.com)
+    [Andrew Messier](http://andrewmessier.blogspot.com)
 
 
-[Will Concannon](https://willconcannonart.com)
+    [Jeremy Root](https://jeremynroot.com)
 
 
-[Andrew Messier](http://andrewmessier.blogspot.com)
+    [Ben Lander](https://benjaminlander.wordpress.com)
 
 
-[Jeremy Root](https://jeremynroot.com)
+    [Richard King](http://richardkingcapstone.blogspot.com)
 
 
-[Ben Lander](https://benjaminlander.wordpress.com)
+    [Norman Paquette](https://npaquettewordpress.wordpress.com)
 
 
-[Richard King](http://richardkingcapstone.blogspot.com)
+    [Tim Healey](http://www.tim-healey.com)
 
 
-[Norman Paquette](https://npaquettewordpress.wordpress.com)
+    [Tony Libardi](https://tonyl.info)"
+
+  - title: "Outcomes"
+
+    text: "Unity.
 
 
-[Tim Healey](http://www.tim-healey.com)
+    Large project architecture.
 
 
-[Tony Libardi](https://tonyl.info)
+    Management skills.
 
 
-### Outcomes ###
+    Architecturally-minded programming.
 
 
-Unity.
+    Github."
 
 
-Large project architecture.
+  - title: "Links"
 
-
-Management skills.
-
-
-Architecturally-minded programming.
-
-
-Github.
-
-
-### Links ###
-
-
-[Repository](https://github.com/tyskwo/Office_Mayhem){: .btn}
-[Executable](https://tyskwo.github.io/404){: .btn}
-"
+  - button: Repository
+    link: https://github.com/tyskwo/Office_Mayhem
+    icon: github
 ---
 
 
