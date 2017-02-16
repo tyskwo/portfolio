@@ -33,7 +33,7 @@
     {% if include.type != "grid" and post.date %}
       <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i>{{ post.date | date: " %Y.%m.%d" }}</p>
     {% endif %}
-    {% if include.type == "grid" %}
+    {% if include.type == "grid" and post.year %}
       <p class="page__meta">{{ post.year }}, {{ post.language }}</p>
     {% endif %}
     {% if post.read_time %}
