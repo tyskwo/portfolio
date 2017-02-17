@@ -28,13 +28,16 @@ og_image                 : # Open Graph/Twitter default site image
 social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  links:
+    - "https://twitter.com/tyskwo"
+    - "https://github.com/tyskwo"
+    - "https://www.linkedin.com/in/tyskwo"
 
 # Analytics
 analytics:
   provider               : "google-universal"
   google:
-    tracking_id          : UA-92078969-1
+    tracking_id          : "UA-92078969-1"
 
 
 # Site Author
