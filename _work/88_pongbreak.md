@@ -44,7 +44,7 @@ sidebar:
     icon: download
 ---
 
-This project was the culmination of Graphics II, which used core-profile OpenGL to create a simulation of the Earth, moon, and sun. The demo features bloom, 'godrays', shadow-casting, and a system for altering the related parameters to achieve the desired effect.
+This project was an exercise in networking for games: using RakNet, there is a dedicated server that clients can connect to. Concepts like packet loss, differences between TCP/UDP, and different ways to handle network lag and syncing was covered over the course of the project.
 
 
 ### Architecture
