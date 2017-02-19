@@ -22,7 +22,9 @@ sidebar:
 
     text: "Better design skills.
 
+
     Quick iteration.
+
 
     Finishing a game loop."
 

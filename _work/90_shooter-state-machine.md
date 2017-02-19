@@ -8,7 +8,6 @@ header:
 
 language: "AS3"
 year: "2015"
-portfolio: "true"
 
 
 sidebar:

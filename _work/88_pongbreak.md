@@ -57,7 +57,7 @@ _PongBreak_ uses an authoritative server which simulates the game and sends the 
 
 The server contains a 2D array of client pairs, giving it the capability of running multiple games at the same time. It has an update loop, where it updates each game individually, and sends the new game state (a struct called `GameInfo`) to each client. Upon initialization, it creates all of the `Game` objects, as well as opens up connection ports to listen on. Upon a game ending, it waits for confirmation from a client to restart, or closes the connections and frees up the client slots if the clients disconnect.
 
-The clients and server send packets back and forth 30 times each second. Here's the method that reads the packets' information:
+The clients and server send packets back and forth a couple times each second. In order to reduce the amount of information flowing over the network, the info stored in each packet is as concise as possible, saving space. Here's the method that reads the packets' information:
 
 {% highlight cpp %}
 void Server::getPackets()
