@@ -5,7 +5,7 @@ description: "Super long (but descriptive) title, with way too many dashes and b
 
 I have decided to pick up _[DASHockey again.]({{ site.url}}{{ site.baseurl }}/2015/DASHockey-At-GMGF/)_ When I last touched it (almost two years ago), the codebase was complete garbage. I tackled the game as a foray into developing for the then-new AppleTV and to be able to present it at the _Green Mountains Game Festival_. As such, getting a complete game with AI out in a week was a pretty large task. Since I'm tackling it anew, I figured I should be a good programmer and rewrite the game from the ground up. I eventually want _DASHockey_ to have iPhone-connected remotes for true party game multiplayer, but for now let's focus on the base architecture.
 
-This post assumes the reader has a decent understanding of Swift. Thankfully, it's a very verbose language, so it shouldn't be too hard to get the high-level architecture from it. See [Apple's Swift handbook](https://swift.org/documentation/) for a great resource on Swift.{ .notice-info }
+This post assumes the reader has a decent understanding of Swift. Thankfully, it's a very verbose language, so it shouldn't be too hard to get the high-level architecture from it. See [Apple's Swift handbook](https://swift.org/documentation/) for a great resource on Swift.{: .notice--info}
 
 ### The Entity
 
