@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Designing a Protocol-Oriented, Event-Driven Entity-Component System* - Tyler Wood</title>
+
+
+
+
+<meta name="description" content="Super long (but descriptive) title, with way too many dashes and buzz words. *In Swift!">
+
+
+
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Tyler Wood">
+<meta property="og:title" content="Designing a Protocol-Oriented, Event-Driven Entity-Component System*">
+
+
+  <link rel="canonical" href="http://localhost:4000/2017/designing-a-protocol-oriented-event-driven-ecs/">
+  <meta property="og:url" content="http://localhost:4000/2017/designing-a-protocol-oriented-event-driven-ecs/">
+
+
+
+  <meta property="og:description" content="Super long (but descriptive) title, with way too many dashes and buzz words. *In Swift!">
+
+
+
+  <meta name="twitter:site" content="@tyskwo">
+  <meta name="twitter:title" content="Designing a Protocol-Oriented, Event-Driven Entity-Component System*">
+  <meta name="twitter:description" content="Super long (but descriptive) title, with way too many dashes and buzz words. *In Swift!">
+  <meta name="twitter:url" content="http://localhost:4000/2017/designing-a-protocol-oriented-event-driven-ecs/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-02-21T00:00:00-05:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Tyler Wood",
+      "url" : "http://localhost:4000",
+      "sameAs" : ["https://twitter.com/tyskwo","https://github.com/tyskwo","https://www.linkedin.com/in/tyskwo"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tyler Wood Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<link rel="apple-touch-icon" sizes="144x144" href="/assets/images/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/assets/images/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/assets/images/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/assets/images/favicons/manifest.json">
+<link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#707070">
+<link rel="shortcut icon" href="/assets/images/favicons/favicon.ico">
+<meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400i" rel="stylesheet">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/"><p class="masthead__menu-item masthead__menu-item--lgl">TYLER</p>WOOD</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume">Resume</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/work">All Work</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="http://localhost:4000/assets/images/bio-photo.jpg" class="author__avatar" alt="Tyler Wood" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <!--<h3 class="author__name" itemprop="name">Tyler Wood</h3>-->
+    
+      <p class="author__bio" itemprop="description">
+        A game programmer soon to be graduating from Champlain College.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Connect</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Burlington VT</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:me@tyskwo.com">
+            <meta itemprop="email" content="me@tyskwo.com" />
+            <i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="https://twitter.com/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/tyskwo" itemprop="sameAs">
+            <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Designing a Protocol-Oriented, Event-Driven Entity-Component System*
+</h1>
+          <!-- -->
+          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.02.21</p>
+          
+           <!---->
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>I have decided to pick up <em><a href="http://localhost:4000/2015/DASHockey-At-GMGF/">DASHockey again.</a></em> When I last touched it (almost two years ago), the codebase was complete garbage. I tackled the game as a foray into developing for the then-new AppleTV and to be able to present it at the <em>Green Mountains Game Festival</em>. As such, getting a complete game with AI out in a week was a pretty large task. Since I’m tackling it anew, I figured I should be a good programmer and rewrite the game from the ground up. I eventually want <em>DASHockey</em> to have iPhone-connected remotes for true party game multiplayer, but for now let’s focus on the base architecture.</p>
+
+<p class="notice--info">This post assumes the reader has a decent understanding of Swift. Thankfully, it’s a very verbose language, so it shouldn’t be too hard to get the high-level architecture from it. See <a href="https://swift.org/documentation/">Apple’s Swift handbook</a> for a great resource on Swift.</p>
+
+<h3 id="the-entity">The Entity</h3>
+
+<p>In this protocol-oriented, event-driven example, the base entity isn’t too different from the <a href="http://gameprogrammingpatterns.com/component.html">classic pattern.</a>:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">Entity</span>
+<span class="p">{</span>
+    <span class="k">var</span> <span class="nv">components</span><span class="p">:[</span><span class="kt">Component</span><span class="p">]</span>
+
+    <span class="c1">// name and tag attached to this entity</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">name</span><span class="p">:</span><span class="kt">String</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">tag</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
+
+
+
+    <span class="nf">init</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">components</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s">"NONE"</span>
+    <span class="p">}</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">components</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="p">}</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">tag</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">components</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">tag</span>  <span class="o">=</span> <span class="n">tag</span>
+    <span class="p">}</span>
+
+
+    <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">tag</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span>  <span class="p">{</span> <span class="k">self</span><span class="o">.</span><span class="n">tag</span>  <span class="o">=</span> <span class="n">tag</span>  <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="p">{</span> <span class="k">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="p">}</span>
+
+
+    <span class="kd">func</span> <span class="nf">getTag</span><span class="p">()</span>  <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">return</span> <span class="k">self</span><span class="o">.</span><span class="n">tag</span> <span class="p">??</span> <span class="s">"NONE"</span> <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">getName</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">return</span> <span class="k">self</span><span class="o">.</span><span class="n">name</span>          <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Here, we have a simple array of <code class="highlighter-rouge">Component</code> objects (which we’ll get to), a name and tag to reference this entity by, and methods for getting/setting these values. But what about finding components in our bucket?</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">Entity</span>
+<span class="p">{</span>
+    <span class="c1">// get first component of type T</span>
+    <span class="kd">func</span> <span class="n">find</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">component</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">?</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">components</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="n">item</span> <span class="k">is</span> <span class="kt">T</span>
+            <span class="p">{</span>
+                <span class="nf">return</span> <span class="p">(</span><span class="n">item</span> <span class="k">as!</span> <span class="kt">T</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+
+    <span class="c1">// get all components of type T</span>
+    <span class="kd">func</span> <span class="n">findAllOf</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">component</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">T</span><span class="p">]</span>
+    <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">returnArray</span><span class="p">:[</span><span class="kt">T</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">components</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="n">item</span> <span class="k">is</span> <span class="kt">T</span>
+            <span class="p">{</span>
+                <span class="n">returnArray</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">item</span> <span class="k">as!</span> <span class="kt">T</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">returnArray</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// sample use:</span>
+<span class="k">let</span> <span class="nv">rink</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="nf">find</span><span class="p">(</span><span class="nv">component</span><span class="p">:</span> <span class="kt">Rink</span><span class="o">.</span><span class="k">self</span><span class="p">)</span><span class="o">!</span></code></pre></figure>
+
+<p>Here, we use generics to be able to return any type of component (This is very similar to how Unity handles its ECS). In the singular search, we use the power of optionals to elegantly return nil if there’s no such component attached to this entity. For the multi-search, we return an empty array. In the sample use, notice that we use <code class="highlighter-rouge">ComponentType.self</code>. The <code class="highlighter-rouge">.self</code> is necessary to reference the class type, and not just the member type. It’s a small syntactical hiccup, but I think it is worth the power and flexibility it provides. If you’re savvy, you’ll notice this is in an <em>extension</em> of <code class="highlighter-rouge">Entity</code>. I did this simply for organization purposes: we don’t declare any new member variables, so we can place these function in an extension. I name my extensions in comments for easy finding; this one is the ‘search extension’.</p>
+
+<p>For adding and updating components, we use a similar extension:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">Entity</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">add</span><span class="p">(</span><span class="nv">component</span><span class="p">:</span><span class="kt">Component</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">components</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// update all components that conform to UpdateableComponent</span>
+    <span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="nv">dt</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">components</span> <span class="k">where</span> <span class="n">item</span> <span class="k">is</span> <span class="kt">Updateable</span>
+        <span class="p">{</span>
+            <span class="p">(</span><span class="n">item</span> <span class="k">as!</span> <span class="kt">Updateable</span><span class="p">)</span><span class="o">.</span><span class="nf">update</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Adding is simple enough, but what exactly is happening with <code class="highlighter-rouge">update</code>? Swift 2 added the <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/ControlFlow.html"><code class="highlighter-rouge">where</code> clause</a> – basically a filter on an array. Thus, in <code class="highlighter-rouge">update</code>, we are iterating over all of our components, and if the current one is an <code class="highlighter-rouge">Updateable</code> component, we call its <code class="highlighter-rouge">update</code> method. It’ll make more sense in a little bit.</p>
+
+<p>That, at its core, is the entity in this system. It’s not very complicated, but can be easily expanded, which is always a great goal to have.</p>
+
+<h3 id="the-component">The Component</h3>
+
+<p>At its root, the <code class="highlighter-rouge">Component</code> class has similar initializers, name and tag functions as the <code class="highlighter-rouge">Entity</code> class. The interesting functionality comes from the use of protocols:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// in Component.swift:</span>
+
+<span class="kd">protocol</span> <span class="kt">Updateable</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="n">_</span> <span class="nv">dt</span><span class="p">:</span> <span class="kt">Double</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">protocol</span> <span class="kt">Renderable</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">addToScene</span><span class="p">()</span>
+    <span class="kd">func</span> <span class="nf">get</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">SKNode</span>
+    <span class="kd">func</span> <span class="nf">destroy</span><span class="p">()</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This is designating that any component that conforms to the <code class="highlighter-rouge">Updateable</code> component will have to contain a definition for the function <code class="highlighter-rouge">update</code> that takes a double as a parameter (and similarly for the <code class="highlighter-rouge">Renderable</code> protocol). What this does, at least in my setup, is that it takes items like the players, puck, and nets, and turns them from entities that would have to be handled by the scene to components that are held by a single entity. Basically, it’ just a reduction of one more layer, and it can be argued that it’s just renaming the architecture, shifting it up a level, but more importantly, it allows the puck object to contain all of its own logic, broken up into extensions and protocol implementations. Yes, in games with hundreds of thousands of objects this would not be ideal, but in <em>DASHockey</em> where there are never more than ten objects in a scene, it works very well. For instance:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">extension</span> <span class="kt">Puck</span><span class="p">:</span> <span class="kt">Renderable</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">addToScene</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">scene</span><span class="o">.</span><span class="nf">addChild</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">get</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">SKNode</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">node</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">destroy</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">node</span><span class="o">.</span><span class="nf">removeFromParent</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Here’s the puck’s implementation of the <code class="highlighter-rouge">Renderable</code> protocol. Granted, it is extremely simple, but it allows for complete customization on a puck-level basis. In a sense, its similar to prefabs in Unity.</p>
+
+<p>Another high-level advantage of this system is that it allows for event-like components, like a <code class="highlighter-rouge">GoalScored</code> component:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">protocol</span> <span class="kt">GoalScoredComponent</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">goalScored</span><span class="p">(</span><span class="nv">team</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="o">.....</span>
+
+<span class="kd">extension</span> <span class="kt">Rink</span><span class="p">:</span> <span class="kt">GoalScoredComponent</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">goalScored</span><span class="p">(</span><span class="nv">team</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="n">team</span> <span class="o">==</span> <span class="s">"red"</span>
+        <span class="p">{</span>
+            <span class="n">scene</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">red</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="n">team</span> <span class="o">==</span> <span class="s">"blue"</span>
+        <span class="p">{</span>
+            <span class="n">scene</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">blue</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This, in turn, allows the code called for when a goal is scored be this:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">goalScored</span><span class="p">(</span><span class="nv">net</span><span class="p">:</span> <span class="kt">Net</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">goalScored</span> <span class="o">=</span> <span class="kc">true</span>
+
+    <span class="c1">// find all of the GoalScored components and let them do their thing</span>
+    <span class="k">let</span> <span class="nv">score</span> <span class="o">=</span> <span class="kt">SKAction</span><span class="o">.</span><span class="nf">run</span><span class="p">({</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="k">in</span> <span class="k">self</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="nf">findAllOf</span><span class="p">(</span><span class="nv">component</span><span class="p">:</span> <span class="kt">GoalScoredComponent</span><span class="o">.</span><span class="k">self</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">c</span><span class="o">.</span><span class="nf">goalScored</span><span class="p">(</span><span class="nv">team</span><span class="p">:</span> <span class="n">net</span><span class="o">.</span><span class="nf">getTag</span><span class="p">())</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+    <span class="c1">// find all of the GoalReset components and let them do their thing</span>
+    <span class="k">let</span> <span class="nv">reset</span> <span class="o">=</span> <span class="kt">SKAction</span><span class="o">.</span><span class="nf">run</span><span class="p">({</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="k">in</span> <span class="k">self</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="nf">findAllOf</span><span class="p">(</span><span class="nv">component</span><span class="p">:</span> <span class="kt">GoalResetComponent</span><span class="o">.</span><span class="k">self</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">c</span><span class="o">.</span><span class="nf">reset</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+    <span class="c1">// let there be a pause between for the celebration</span>
+    <span class="k">let</span> <span class="nv">wait</span> <span class="o">=</span> <span class="kt">SKAction</span><span class="o">.</span><span class="nf">wait</span><span class="p">(</span><span class="nv">forDuration</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">//global goal celebration length</span>
+
+    <span class="c1">// create a sequence from it</span>
+    <span class="k">let</span> <span class="nv">sequence</span> <span class="o">=</span> <span class="kt">SKAction</span><span class="o">.</span><span class="nf">sequence</span><span class="p">([</span><span class="n">score</span><span class="p">,</span> <span class="n">wait</span><span class="p">,</span> <span class="n">reset</span><span class="p">])</span>
+
+    <span class="c1">// and run it! upon completion, start a new faceoff</span>
+    <span class="n">scene</span><span class="o">.</span><span class="nf">run</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">goalScored</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="nv">component</span><span class="p">:</span> <span class="kt">Faceoff</span><span class="p">(</span><span class="nv">entity</span><span class="p">:</span> <span class="k">self</span><span class="o">.</span><span class="n">entity</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"faceoff"</span><span class="p">,</span> <span class="nv">tag</span><span class="p">:</span> <span class="s">"UI"</span><span class="p">))</span>
+    <span class="p">})</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This code is incredibly concise, verbose, and clean. It pushes all of the logic of the objects into the objects themselves. It’s not without its flaws: it won’t work well for larger systems, it is hard to customize objects on a per-instance basis, and objects are authoritative over their own implementation. For <em>DASHockey</em> though, this is a great system that allows the game to run in a concise matter.</p>
+
+        
+      </section>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">If you liked it, give it a share?</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=Designing a Protocol-Oriented, Event-Driven Entity-Component System* http://localhost:4000/2017/designing-a-protocol-oriented-event-driven-ecs/" class="btn btn--twitter" title="If you liked it, give it a share? Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2017/designing-a-protocol-oriented-event-driven-ecs/" class="btn btn--facebook" title="If you liked it, give it a share? Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2017/designing-a-protocol-oriented-event-driven-ecs/&title=Designing a Protocol-Oriented, Event-Driven Entity-Component System*" class="btn btn--reddit" title="If you liked it, give it a share? Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2017/designing-a-protocol-oriented-event-driven-ecs/" class="btn btn--linkedin" title="If you liked it, give it a share? LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      <footer class="page__meta">
+        
+        
+
+
+      </footer>
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/2017/hang-on-i-need-to-answer-the-phone/" class="pagination--pager" title="Hang on, I need to answer the phone.
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/2017/a-quiet-week-in-no-mans-land/" class="pagination--pager" title="A Quiet Week in No Man’s Land
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">Try these too:</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2017/a-quiet-week-in-no-mans-land/" rel="permalink">A Quiet Week in No Man’s Land
+</a>
+      
+    </h2>
+    
+    
+    
+    <p class="archive__item-excerpt" itemprop="description">Bug fixes galore, but it’s the calm before the storm.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2017/hang-on-i-need-to-answer-the-phone/" rel="permalink">Hang on, I need to answer the phone.
+</a>
+      
+    </h2>
+    
+    
+    
+    <p class="archive__item-excerpt" itemprop="description">I just hate when I’m interrupted.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2017/iteration/" rel="permalink">Iteration.
+</a>
+      
+    </h2>
+    
+    
+    
+    <p class="archive__item-excerpt" itemprop="description">Just need to keep trucking along.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2017/sometimes-the-best-tutorial-is-no-tutorial/" rel="permalink">Sometimes the best tutorial is no tutorial.
+</a>
+      
+    </h2>
+    
+    
+    
+    <p class="archive__item-excerpt" itemprop="description">Players just sometimes need to be given space to teach themselves.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Connect:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/tyskwo"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/tyskwo"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Tyler Wood.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-92078969-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>
