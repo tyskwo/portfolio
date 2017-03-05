@@ -101,6 +101,11 @@
     font-size: $type-size-6;
   }
 
+  .no_margin {
+      padding-bottom: 0em;
+      margin-bottom: 0em;
+  }
+
   /* blockquote citations */
   blockquote + .small {
     margin-top: -1.5em;

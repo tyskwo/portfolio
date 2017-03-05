@@ -1,0 +1,49 @@
+---
+---
+
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+
+    <style>
+      body {
+        background-color: #005879;
+      }
+    </style>
+  </head>
+
+  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+
+    {% include browser-upgrade.html %}
+
+    <img src="{{ site.url }}{{ site.baseurl }}/assets/images/temp/office-mayhem-logo.png">
+
+
+    <div id="main" role="main">
+      <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+
+        <div class="page__inner-wrap">
+
+          <section class="page__content" itemprop="text">
+              <a href="http://tyskwo.com" class="btn btn--light-outline btn--large">Ty Wood
+              <p class="no_margin">Lead Programmer</p></a>
+
+              <a href="http://jeremynroot.com" class="btn btn--light-outline btn--large">Jeremy Root
+              <p class="no_margin">Systems Designer</p></a>
+
+              <a href="http://tim-healey.com" class="btn btn--light-outline btn--large">Tim Healey
+              <p class="no_margin">Level Designer</p></a>
+
+              <a href="http://willconcannonart.com" class="btn btn--light-outline btn--large">Will Concannon
+              <p class="no_margin">Lead Artist</p></a>
+          </section>
+        </div>
+      </article>
+    </div>
+
+    {% include scripts.html %}
+
+  </body>
+</html>
