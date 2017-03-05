@@ -24,22 +24,65 @@
     <div id="main" role="main">
       <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
 
-        <div class="page__inner-wrap">
+        <div class="page__inner-wrap" style="text-align:center">
+
+            {% assign temp = '[<i class="fa fa-twitter"></i> @officemahyem](https://twitter.com/officemayhem){: .btn .btn--x-large .btn--twitter} [<i class="fa fa-envelope-o"></i> Email](mailto:officemayhemgame@gmail.com?Subject=Hello!){: .btn .btn--x-large}' %}
+
+
+          <div class="feature__wrapper">
+              <div class="feature__item--intro">
+                <div class="archive__item">
+                  <div class="archive__item-body">
+                      <div class="archive__item-excerpt">
+                        {{ temp | markdownify }}
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
 
           <section class="page__content" itemprop="text">
-              <a href="http://tyskwo.com" class="btn btn--light-outline btn--large">Ty Wood
-              <p class="no_margin">Lead Programmer</p></a>
+              <!--<div class="grid__wrapper">
+                  {% for post in page.buttons %}
+                      {% include archive-single.html type="grid" %}
+                  {% endfor %}
+              </div> -->
 
-              <a href="http://jeremynroot.com" class="btn btn--light-outline btn--large">Jeremy Root
-              <p class="no_margin">Systems Designer</p></a>
 
-              <a href="http://tim-healey.com" class="btn btn--light-outline btn--large">Tim Healey
+
+              <a href="http://willconcannonart.com" class="btn btn--light-outline btn--large btn--block">Will Concannon
+              <p class="no_margin">Lead Artist</p></a>
+
+              <a href="http://tim-healey.com" class="btn btn--light-outline btn--large btn--block">Tim Healey
               <p class="no_margin">Level Designer</p></a>
 
-              <a href="http://willconcannonart.com" class="btn btn--light-outline btn--large">Will Concannon
-              <p class="no_margin">Lead Artist</p></a>
+              <a href="http://tyskwo.com" class="btn btn--light-outline btn--large btn--block">Richard King
+              <p class="no_margin">Audio Designer</p></a>
+
+              <a href="https://www.linkedin.com/in/benjaminlander/" class="btn btn--light-outline btn--large btn--block">Ben Lander
+              <p class="no_margin">Producer</p></a>
+
+              <a href="http://tonyl.info" class="btn btn--light-outline btn--large btn--block">Tony Libardi
+              <p class="no_margin">Systems Programmer</p></a>
+
+              <a href="https://www.linkedin.com/in/andrew-messier-1656a6a6" class="btn btn--light-outline btn--large btn--block">Andrew Messier
+              <p class="no_margin">Animator</p></a>
+
+              <a href="http://andrewmillsap.weebly.com" class="btn btn--light-outline btn--large btn--block">Andrew Millsap
+              <p class="no_margin">Programmer</p></a>
+
+              <a href="https://npaquette.artstation.com/" class="btn btn--light-outline btn--large btn--block">Norman Paquette
+              <p class="no_margin">Character Artist</p></a>
+
+              <a href="http://jeremynroot.com" class="btn btn--light-outline btn--large btn--block">Jeremy Root
+              <p class="no_margin">Systems Designer</p></a>
+
+              <a href="http://tyskwo.com" class="btn btn--light-outline btn--large btn--block">Ty Wood
+              <p class="no_margin">Lead Programmer</p></a>
           </section>
+
         </div>
+
       </article>
     </div>
 
