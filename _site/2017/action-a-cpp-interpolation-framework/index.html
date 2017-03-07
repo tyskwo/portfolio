@@ -13,7 +13,7 @@
 
 
 
-<title>Action: A C++ interpolation framework - Tyler Wood</title>
+<title>Action: A C++11 interpolation framework - Tyler Wood</title>
 
 
 
@@ -25,7 +25,7 @@
 
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Tyler Wood">
-<meta property="og:title" content="Action: A C++ interpolation framework">
+<meta property="og:title" content="Action: A C++11 interpolation framework">
 
 
   <link rel="canonical" href="http://localhost:4000/2017/action-a-cpp-interpolation-framework/">
@@ -38,7 +38,7 @@
 
 
   <meta name="twitter:site" content="@tyskwo">
-  <meta name="twitter:title" content="Action: A C++ interpolation framework">
+  <meta name="twitter:title" content="Action: A C++11 interpolation framework">
   <meta name="twitter:description" content="Easing, tweening, interpolating. Whatever you know it as – it holds a special place in my heart.">
   <meta name="twitter:url" content="http://localhost:4000/2017/action-a-cpp-interpolation-framework/">
 
@@ -279,7 +279,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Action: A C++ interpolation framework
+          <h1 class="page__title" itemprop="headline">Action: A C++11 interpolation framework
 </h1>
           <!-- -->
           <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.03.05</p>
@@ -289,7 +289,186 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>Sometimes you finish a nifty little framework that you have no immediate use for. That’s ok, just write a blog post about it.</p>
+        <h5 class="notice--primary" id="before-i-begin-the-repo-for-action-can-be-found-here">Before I begin, the repo for Action can be found <a href="http://github.com/tyskwo/action">here.</a></h5>
+
+<p>Since <a href="http://localhost:4000/work/96_flip/">Flip</a>, almost three years ago now, I’ve used interpolation in every game that I’ve created – starting with <a href="http://gamua.com/starling/">Starling</a>, and then moving to <a href="http://www.pixelplacement.com/itween/index.php">iTween in Unity</a>, and <a href="https://developer.apple.com/reference/spritekit/skaction">SKActions in SpriteKit</a>. Interpolation is used everywhere in games, from UI animations, to AI actions, animations, and even world building. It truly could be looked at as a universal tool in a game developer’s toolbox.</p>
+
+<h2 id="what-is-interpolation">What is interpolation?</h2>
+
+<p>Interpolation is a method of constructing new data within the range of a discrete set of known data. Put simply, it’s the translating of one piece of data into another piece of data.</p>
+
+<p><a href="https://mollyrocket.com/casey/stream_0018.html">Casey Muratori</a>, who worked extensively on <em>The Witness</em>, has a great video on the basics of interpolation, which I highly, <em>highly</em> suggest watching. He explains bezier curves in 40 seconds better than other’s have done in half an hour.</p>
+
+<!-- Courtesy of embedresponsively.com //-->
+<div class="responsive-video-container">
+
+  <iframe src="https://www.youtube.com/embed/S2fz4BS2J3Y" frameborder="0" allowfullscreen=""></iframe>
+
+</div>
+
+<h2 id="introducing-action">Introducing Action.</h2>
+
+<p>I’ve been wanting to roll my own solution for a while now. Not necessarily because I think I can do it better, or include more features, but so I have it in my arsenal if I ever need it, and gain experience in creating the backend of such a system.</p>
+
+<p>Thus, Action was created.</p>
+
+<h5 id="what-it-is">What it is.</h5>
+
+<p>It is a time-based, self-contained interpolation framework. It contains the <a href="http://easings.net">common list of easing functions</a>, and the ideology of a <code class="highlighter-rouge">Single</code> action. <code class="highlighter-rouge">Single</code> contains a value to interpolate, start/end values of that interpolation, a duration of how long the interpolation will take, a start-delay, a loop type (currently <code class="highlighter-rouge">None, Normal, or Yoyo</code>), an easing type, and an optional callback to be called upon completion of the interpolation.</p>
+
+<p>There are also <code class="highlighter-rouge">Group</code> and <code class="highlighter-rouge">Sequence</code> actions: the former is a list of <code class="highlighter-rouge">Singles</code> that are run in concurrency, with an optional callback when the entire group is finished, and the latter is similar, except the <code class="highlighter-rouge">Singles</code> run sequentially.</p>
+
+<p>The value to be interpolated is a reference to memory, and thus can be applied to any data of any object: volume of a sound clip, scale of a transform, rotation of a quaternion, etc.</p>
+
+<h5 id="what-it-isnt">What it isn’t.</h5>
+
+<p>The easing functions (called <code class="highlighter-rouge">TimingFunctions</code> in the code base) are exposed, so more can be added, but currently there is no support for bezier/custom curves. Because they’re stored as function pointers, there’s no way to include more parameters in the call without casting another <code class="highlighter-rouge">typedef</code>. I’m experimenting to find the best way to implement this.</p>
+
+<p>There currently is also no option to pause actions, but that is due to the fact of me focusing on the interpolation framework more than the timer it runs on.</p>
+
+<h2 id="how-to-use-it">How to use it.</h2>
+
+<p>First, include <code class="highlighter-rouge">Action.h</code>.</p>
+
+<p>Let’s create a value:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="c1">// imagine t is some object,
+// with testInt being some int in that class.
+</span>
+<span class="c1">//                 variable to change, 'start' value, 'end' value
+</span><span class="n">Value</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">value</span> <span class="p">{</span> <span class="o">&amp;</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">testInt</span><span class="p">,</span>         <span class="mi">0</span><span class="p">,</span>             <span class="mi">100</span> <span class="p">};</span></code></pre></figure>
+
+<p>There are common interpolations generally referred to as <code class="highlighter-rouge">To</code>, <code class="highlighter-rouge">From</code>, and <code class="highlighter-rouge">FromTo</code>. The above is an example of <code class="highlighter-rouge">FromTo</code>. <code class="highlighter-rouge">To</code> and <code class="highlighter-rouge">From</code> could be modeled by doing:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="c1">// To:
+</span><span class="n">Value</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">value</span> <span class="p">{</span> <span class="o">&amp;</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">testInt</span><span class="p">,</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">testInt</span><span class="p">,</span> <span class="mi">100</span> <span class="p">};</span>
+
+<span class="c1">// From:
+</span><span class="n">Value</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">value</span> <span class="p">{</span> <span class="o">&amp;</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">testInt</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">testInt</span> <span class="p">};</span></code></pre></figure>
+
+<h3 id="singles">Singles</h3>
+
+<p>Now let’s take that value to interpolate, and create a <code class="highlighter-rouge">Single</code> from it:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">Action</span><span class="o">::</span><span class="n">addSingle</span><span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">,</span>
+                  <span class="mf">3.0</span><span class="n">f</span><span class="p">,</span>   <span class="c1">// duration  
+</span>                  <span class="mf">0.5</span><span class="n">f</span><span class="p">,</span>   <span class="c1">// delay
+</span>                  <span class="n">TimingFunctions</span><span class="o">::</span><span class="n">ExponentialEaseIn</span><span class="p">);</span></code></pre></figure>
+
+<p>There’s a lot of customization in <code class="highlighter-rouge">addSingle</code>:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="o">&gt;</span><span class="p">(</span><span class="n">Value</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">value</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="p">(</span><span class="n">Value</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">value</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duration</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="p">(</span><span class="n">Value</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">value</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duration</span><span class="p">,</span> <span class="n">Callback</span> <span class="n">cb</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="p">(</span><span class="n">Value</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">value</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duration</span><span class="p">,</span> <span class="n">TimingFunction</span> <span class="n">tf</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="p">(</span><span class="n">Value</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">value</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duration</span><span class="p">,</span> <span class="n">TimingFunction</span> <span class="n">tf</span><span class="p">,</span> <span class="n">Callback</span> <span class="n">cb</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="p">(</span><span class="n">Value</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">value</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duration</span><span class="p">,</span> <span class="n">TimingFunction</span> <span class="n">tf</span><span class="p">,</span> <span class="n">Callback</span> <span class="n">cb</span><span class="p">,</span> <span class="n">LoopTypes</span><span class="o">::</span><span class="n">Type</span> <span class="n">loop</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="p">(</span><span class="n">Value</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">value</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duration</span><span class="p">,</span> <span class="kt">float</span> <span class="n">delay</span><span class="p">,</span> <span class="n">TimingFunction</span> <span class="n">tf</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="p">(</span><span class="n">Value</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">value</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duration</span><span class="p">,</span> <span class="kt">float</span> <span class="n">delay</span><span class="p">,</span> <span class="n">TimingFunction</span> <span class="n">tf</span><span class="p">,</span> <span class="n">Callback</span> <span class="n">cb</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="p">(</span><span class="n">Value</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">value</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duration</span><span class="p">,</span> <span class="kt">float</span> <span class="n">delay</span><span class="p">,</span> <span class="n">TimingFunction</span> <span class="n">tf</span><span class="p">,</span> <span class="n">Callback</span> <span class="n">cb</span><span class="p">,</span> <span class="n">LoopTypes</span><span class="o">::</span><span class="n">Type</span> <span class="n">loop</span><span class="p">)</span></code></pre></figure>
+
+<p class="notice--info"><strong>Note:</strong> For any variable that is not set in the method call, the default is constructed: 0 seconds for delay, 1 second for duration, no looping, no callback, and <code class="highlighter-rouge">Linear</code> for the timing function.</p>
+
+<p>Rather than calling one of the predefined methods, you can create a <code class="highlighter-rouge">Single</code> on your own:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">Single</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Single</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">);</span>
+
+<span class="n">s</span><span class="o">-&gt;</span><span class="n">setDuration</span><span class="p">(</span><span class="mf">3.0</span><span class="n">f</span><span class="p">);</span>
+<span class="n">s</span><span class="o">-&gt;</span><span class="n">setTimingFunction</span><span class="p">(</span><span class="n">TimingFunctions</span><span class="o">::</span><span class="n">BounceEaseOut</span><span class="p">);</span>
+<span class="n">s</span><span class="o">-&gt;</span><span class="n">setDelay</span><span class="p">(</span><span class="mf">1.5</span><span class="n">f</span><span class="p">);</span>
+<span class="n">s</span><span class="o">-&gt;</span><span class="n">setLooptype</span><span class="p">(</span><span class="n">LoopTypes</span><span class="o">::</span><span class="n">Yoyo</span><span class="p">);</span>
+<span class="n">s</span><span class="o">-&gt;</span><span class="n">setCallback</span><span class="p">(</span><span class="n">cb</span><span class="p">);</span> <span class="c1">// more on callbacks at the end of this post
+</span>
+<span class="n">Action</span><span class="o">::</span><span class="n">addSingle</span><span class="p">(</span><span class="n">s</span><span class="p">);</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">Action::addSingle</code> automatically starts the interpolation (including its delay).</p>
+
+<h3 id="groups-and-sequences">Groups and Sequences</h3>
+
+<p>Now what about groups and sequences?</p>
+
+<p>Let’s first create a list of <code class="highlighter-rouge">Singles</code>:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SingleBase</span><span class="o">*&gt;</span> <span class="n">singleList</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">SingleBase</span><span class="o">*&gt;</span>
+<span class="p">{</span>
+    <span class="n">Action</span><span class="o">::</span><span class="n">createSingle</span><span class="p">(</span><span class="o">&amp;</span><span class="n">value1</span><span class="p">,</span>
+                         <span class="mf">3.0</span><span class="n">f</span><span class="p">,</span>
+                         <span class="mf">2.5</span><span class="n">f</span><span class="p">,</span>
+                         <span class="n">TimingFunctions</span><span class="o">::</span><span class="n">ExponentialEaseIn</span><span class="p">),</span>
+
+    <span class="n">Action</span><span class="o">::</span><span class="n">createSingle</span><span class="p">(</span><span class="o">&amp;</span><span class="n">value2</span><span class="p">,</span>
+                         <span class="mf">3.0</span><span class="n">f</span><span class="p">,</span>        <span class="c1">// no delay on this one.
+</span>                         <span class="n">TimingFunctions</span><span class="o">::</span><span class="n">ExponentialEaseOut</span><span class="p">)</span>
+<span class="p">};</span></code></pre></figure>
+
+<p class="notice--warning">You’ll notice here that we call <code class="highlighter-rouge">Action::createSingle</code> as opposed to <code class="highlighter-rouge">Action::addSingle</code>. The former simply returns a <code class="highlighter-rouge">Single</code> object without adding it to the pool of actions, whereas the latter creates the <code class="highlighter-rouge">Single</code>, adds it to the pool, but doesn’t return anything.</p>
+
+<p class="notice">You can also create <code class="highlighter-rouge">Singles</code> like above on your own and create a list of them that way.</p>
+
+<p>After the list of singles is constructed, creating a <code class="highlighter-rouge">Group</code> or <code class="highlighter-rouge">Sequence</code> is very straightforward:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">Callback</span> <span class="n">groupCB</span>    <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">"GROUP COMPLETE</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>    <span class="p">}),</span>
+         <span class="n">sequenceCB</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">"SEQUENCE COMPLETE</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span> <span class="p">}),</span>
+
+<span class="n">Action</span><span class="o">::</span><span class="n">addGroupFrom</span>   <span class="p">(</span><span class="n">singleList</span><span class="p">,</span> <span class="c1">// list of singles     
+</span>                        <span class="mf">1.0</span><span class="n">f</span><span class="p">,</span>       <span class="c1">// additional delay on top of singles' delays     
+</span>                        <span class="n">groupCB</span><span class="p">);</span>   <span class="c1">// callback for when the entire group is done
+</span>
+<span class="n">Action</span><span class="o">::</span><span class="n">addSequenceFrom</span><span class="p">(</span><span class="n">singleList</span><span class="p">,</span>      
+                        <span class="mf">1.0</span><span class="n">f</span><span class="p">,</span>             
+                        <span class="n">sequenceCB</span><span class="p">);</span></code></pre></figure>
+
+<p>Like <code class="highlighter-rouge">Singles</code>, <code class="highlighter-rouge">Action::addGroupFrom</code> and <code class="highlighter-rouge">addSequenceFrom</code> automatically starts the interpolations.</p>
+
+<p>  All that’s left is to call <code class="highlighter-rouge">Action::update();</code> in your main game loop (otherwise none of the actions will run).</p>
+
+<h3 id="a-word-on-callbacks">A word on callbacks.</h3>
+
+<p>Callbacks are typedefs of <code class="highlighter-rouge">std::function&lt;void()&gt;</code>. Thus, we can use <code class="highlighter-rouge">std::bind</code> and lambda function notation to create callbacks:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">Callback</span> <span class="n">exampleCB</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">"SINGLE COMPLETE</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span> <span class="p">});</span></code></pre></figure>
+
+<p>The beauty of them being lambdas means any code can be executed as a callback. Going back to our example <code class="highlighter-rouge">t</code> class from the start of this post:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">Callback</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">temp</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">t</span><span class="o">-&gt;</span><span class="n">someRandomFunction</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+        <span class="n">example</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Creating a <code class="highlighter-rouge">Single</code> with a callback is as simple as:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">Action</span><span class="o">::</span><span class="n">addSingle</span><span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">,</span>
+                  <span class="mf">3.0</span><span class="n">f</span><span class="p">,</span>   <span class="c1">// duration  
+</span>                  <span class="mf">0.5</span><span class="n">f</span><span class="p">,</span>   <span class="c1">// delay
+</span>                  <span class="n">TimingFunctions</span><span class="o">::</span><span class="n">ExponentialEaseIn</span><span class="p">,</span>
+                  <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"SINGLE COMPLETE"</span><span class="p">;</span> <span class="p">}));</span></code></pre></figure>
+
+<p>Or, using the above callback:</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">Callback</span> <span class="n">cb</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">temp</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">t</span><span class="o">-&gt;</span><span class="n">someRandomFunction</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+        <span class="n">example</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+
+<span class="n">Action</span><span class="o">::</span><span class="n">addSingle</span><span class="p">(</span><span class="o">&amp;</span><span class="n">value</span><span class="p">,</span>
+                  <span class="mf">3.0</span><span class="n">f</span><span class="p">,</span>   <span class="c1">// duration  
+</span>                  <span class="mf">0.5</span><span class="n">f</span><span class="p">,</span>   <span class="c1">// delay
+</span>                  <span class="n">TimingFunctions</span><span class="o">::</span><span class="n">ExponentialEaseIn</span><span class="p">,</span>
+                  <span class="n">cb</span><span class="p">);</span></code></pre></figure>
+
 
         
       </section>
@@ -299,11 +478,11 @@
     <h4 class="page__share-title">If you liked it, give it a share?</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=Action: A C++ interpolation framework http://localhost:4000/2017/action-a-cpp-interpolation-framework/" class="btn btn--twitter" title="If you liked it, give it a share? Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=Action: A C++11 interpolation framework http://localhost:4000/2017/action-a-cpp-interpolation-framework/" class="btn btn--twitter" title="If you liked it, give it a share? Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2017/action-a-cpp-interpolation-framework/" class="btn btn--facebook" title="If you liked it, give it a share? Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2017/action-a-cpp-interpolation-framework/&title=Action: A C++ interpolation framework" class="btn btn--reddit" title="If you liked it, give it a share? Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2017/action-a-cpp-interpolation-framework/&title=Action: A C++11 interpolation framework" class="btn btn--reddit" title="If you liked it, give it a share? Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
 
   <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2017/action-a-cpp-interpolation-framework/" class="btn btn--linkedin" title="If you liked it, give it a share? LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
@@ -345,17 +524,20 @@
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="http://localhost:4000/2017/office-mayhem-is-going-to-pax/" rel="permalink">Office Mayhem is going to PAX!
+    
+      <h2 class="archive__item-title" itemprop="headline">
+        
+          <a href="http://localhost:4000/2017/office-mayhem-is-going-to-pax/" rel="permalink">Office Mayhem is going to PAX!
 </a>
-      
-    </h2>
+        
+      </h2>
+    
     
     
     
     <p class="archive__item-excerpt" itemprop="description">Stay calm. On a different note, so much has been added this past week.
 </p>
+    
   </article>
 </div>
 
@@ -367,17 +549,20 @@
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="http://localhost:4000/2017/a-quiet-week-in-no-mans-land/" rel="permalink">A Quiet Week in No Man’s Land
+    
+      <h2 class="archive__item-title" itemprop="headline">
+        
+          <a href="http://localhost:4000/2017/a-quiet-week-in-no-mans-land/" rel="permalink">A Quiet Week in No Man’s Land
 </a>
-      
-    </h2>
+        
+      </h2>
+    
     
     
     
     <p class="archive__item-excerpt" itemprop="description">Bug fixes galore, but it’s the calm before the storm.
 </p>
+    
   </article>
 </div>
 
@@ -389,17 +574,20 @@
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="http://localhost:4000/2017/designing-a-protocol-oriented-event-driven-ecs/" rel="permalink">Designing a Protocol-Oriented, Event-Driven Entity-Component System*
+    
+      <h2 class="archive__item-title" itemprop="headline">
+        
+          <a href="http://localhost:4000/2017/designing-a-protocol-oriented-event-driven-ecs/" rel="permalink">Designing a Protocol-Oriented, Event-Driven Entity-Component System*
 </a>
-      
-    </h2>
+        
+      </h2>
+    
     
     
     
     <p class="archive__item-excerpt" itemprop="description">Super long (but descriptive) title, with way too many dashes and buzz words. *In Swift!
 </p>
+    
   </article>
 </div>
 
