@@ -23,15 +23,13 @@
           alt=""></a>
       </div>
     {% endif %}
-    {% if post.title %}
-      <h2 class="archive__item-title" itemprop="headline">
-        {% if post.link %}
-          <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | absolute_url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-        {% else %}
-          <a href="{{ post.url | absolute_url }}" rel="permalink">{{ title }}</a>
-        {% endif %}
-      </h2>
-    {% endif %}
+    <h2 class="archive__item-title" itemprop="headline">
+      {% if post.link %}
+        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | absolute_url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
+      {% else %}
+        <a href="{{ post.url | absolute_url }}" rel="permalink">{{ title }}</a>
+      {% endif %}
+    </h2>
     {% if include.type != "grid" and post.date %}
       <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i>{{ post.date | date: " %Y.%m.%d" }}</p>
     {% endif %}
@@ -42,6 +40,5 @@
       <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
     {% if post.description %}<p class="archive__item-excerpt" itemprop="description">{{ post.description | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
-    {% if post.button %} {{ post.button | markdownify }} {% endif %}
   </article>
 </div>
