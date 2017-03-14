@@ -13,14 +13,14 @@ Since [Flip]({{ site.url }}{{ site.baseurl }}/work/96_flip/), almost three years
 
 Interpolation is a method of constructing new data within the range of a discrete set of known data. Put simply, it's the translating of one piece of data into another piece of data.
 
-[Casey Muratori](https://mollyrocket.com/casey/stream_0018.html), who worked extensively on _The Witness_, has a great video on the basics of interpolation, which I highly, _highly_ suggest watching. He explains bezier curves in 40 seconds better than other's have done in half an hour.
+[Casey Muratori](https://mollyrocket.com/casey/stream_0018.html), who worked on _The Witness_, has a great video on the basics of interpolation, which I highly, _highly_ suggest watching. He explains bezier curves in 40 seconds better than other's have done in half an hour.
 
 {% include video id="S2fz4BS2J3Y" provider="youtube" %}
 
 
 ## Introducing Action.
 
-I've been wanting to roll my own solution for a while now. Not necessarily because I think I can do it better, or include more features, but so I have it in my arsenal if I ever need it, and gain experience in creating the backend of such a system.
+I've been wanting to roll my own solution for a while now. Not necessarily because I think I can do it better, or include more features, but so I can say I've created my own, gain experience in creating the backend of such a system, and have another tool at my disposal.
 
 Thus, Action was created.
 
