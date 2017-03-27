@@ -13,34 +13,34 @@
 
 
 
-<title>How to solve Minesweeper. (Hint: you can’t). - Tyler Wood</title>
+<title>Back in the swing of things. - Tyler Wood</title>
 
 
 
 
-<meta name="description" content="It’s time to create a Minesweeper agent. Apparently, Minesweeper is at the cutting edge of mathematics.">
+<meta name="description" content="Six more weeks of mayhem. I wouldn’t want anything else.">
 
 
 
 
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Tyler Wood">
-<meta property="og:title" content="How to solve Minesweeper. (Hint: you can’t).">
+<meta property="og:title" content="Back in the swing of things.">
 
 
-  <link rel="canonical" href="http://localhost:4000/2016/how-to-solve-minesweeper/">
-  <meta property="og:url" content="http://localhost:4000/2016/how-to-solve-minesweeper/">
+  <link rel="canonical" href="http://localhost:4000/2017/back-in-the-swing/">
+  <meta property="og:url" content="http://localhost:4000/2017/back-in-the-swing/">
 
 
 
-  <meta property="og:description" content="It’s time to create a Minesweeper agent. Apparently, Minesweeper is at the cutting edge of mathematics.">
+  <meta property="og:description" content="Six more weeks of mayhem. I wouldn’t want anything else.">
 
 
 
   <meta name="twitter:site" content="@tyskwo">
-  <meta name="twitter:title" content="How to solve Minesweeper. (Hint: you can’t).">
-  <meta name="twitter:description" content="It’s time to create a Minesweeper agent. Apparently, Minesweeper is at the cutting edge of mathematics.">
-  <meta name="twitter:url" content="http://localhost:4000/2016/how-to-solve-minesweeper/">
+  <meta name="twitter:title" content="Back in the swing of things.">
+  <meta name="twitter:description" content="Six more weeks of mayhem. I wouldn’t want anything else.">
+  <meta name="twitter:url" content="http://localhost:4000/2017/back-in-the-swing/">
 
   
     <meta name="twitter:card" content="summary">
@@ -56,7 +56,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2016-09-06T00:00:00-04:00">
+  <meta property="article:published_time" content="2017-03-27T00:00:00-04:00">
 
 
 
@@ -279,29 +279,43 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">How to solve Minesweeper. (Hint: you can’t).
+          <h1 class="page__title" itemprop="headline">Back in the swing of things.
 </h1>
           <!-- -->
-          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2016.09.06</p>
+          <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.03.27</p>
           
            <!---->
         </header>
       
 
       <section class="page__content" itemprop="text">
-        <p><a href="http://www.minesweeper.info/archive/MinesweeperStrategy/mine_guess.html">Yes, there are cases in Minesweeper where you have to guess.</a> With that, it is impossible to be able to solve Minesweeper 100% of the time using algorithms alone, especially at higher difficulties. Even though we can’t win every game on logic alone, that doesn’t mean an AI agent can take the smartest moves possible to mitigate these situations.</p>
+        <p>There’s something about the haphazardness of small island urban planning that is oddly refreshing to me. Maybe it’s the narrow streets, buildings right up against the side of the road, or the simpler, less rigidness of it all. Regardless, spring break has ended and it’s back to the office. We have made quite a bit of progress since coming back to cold, wet Burlington.</p>
 
-<p>Based on preliminary research, there are two basic fields of Minesweeper AI: linear algebra and pattern matching:</p>
+<p>While <a href="http://richardkingcapstone.blogspot.com">Richard</a> and <a href="http://www.willconcannonart.com">Will</a> were at PAX, <a href="https://tonyl.info">Tony</a> was hard at work optimizing <em>Office Mayhem</em>. He managed to double our frame rate, and almost triple it on low-end Macs like mine. On higher end machines it isn’t too noticeable, but it is great to be able to lower our low-end target even more, especially if we decide to release. I took spring break as just that, a break, but towards the end I spent time on a lot of the smaller polish-level items we have been meaning to get done: getting random markers from the copier, level randomization, a better item spawning system in the tutorial, etc.</p>
 
-<p>Linear algebra methods include reading in the entire playing field at once, setting up a matrix of the board, with the end column being the number of apparent mines in the row, and then performing a reduce row echelon to solve the matrix and get a list of cells that are mines and a list of cells that aren’t mines. See this page for a great write-up on the details of the implementation. The main problem with this method is that it is computationally expensive: on larger boards it seems to take n^2 time where n is the number of cells. On the other hand, matrices are inherently computer-friendly: they are easy to store and easy to traverse. These two points offset each other enough that neither of them really effect my choice. <a href="http://quantum-p.livejournal.com/19616.html">Here’s a great resource about using matrices and linear algebra as applied to Minesweeper.</a></p>
+<figure class="align-center">
+ <img src="http://localhost:4000/assets/images/blog/2017/03/whiteboard.gif" />
+  <figcaption>The whiteboard is still being iterated on, but it's in a very good place. Players can draw and erase, and get new markers from the copier.</figcaption>
+</figure>
 
-<p>Likewise, pattern matching has its pros and cons. It consists of looking at each cell individually, but there are certain times where these patterns can’t correctly assume adjacent mines. There are more advanced patterns that look at surrounding cells, but these need to be checked for symmetrical natures (think the pattern, but rotated, or mirrored). As such, there will be times where it takes longer to find a move. I think pattern matching might be the ‘easier-to-wrap-my-head-around’ approach. <a href="http://computronium.org/minesweeper/basics.html">Here are a couple of resources</a> on <a href="http://www.minesweeper.info/archive/MinesweeperStrategy/website.html">pattern matching and the numerous patterns</a> found <a href="http://www.personal.kent.edu/~bherzog/tips.html">in Minesweeper.</a></p>
+<p>Once we were all back in the Green Mountain state, production was right back in full swing. <a href="https://npaquettewordpress.wordpress.com">Norman</a> started working on the fifth character head, and <a href="http://andrewmessier.blogspot.com">Andrew</a> was working on new animations for our ‘win’ room at the end of the work week, while <a href="http://www.tim-healey.com">Tim</a> has been working on a third set of levels, which I can’t wait to implement.  Richard has been working on lobby music for the start and break rooms, which are eerily quiet right now. The biggest change we brought to QA testing was character customization: <a href="http://andrewmillsap.weebly.com">Andy</a> worked diligently to add in swappable bodies and heads, which has been a really great addition judging by the feedback from QA.</p>
 
-<p>After this round of preliminary research, I’m going to first try to implement pattern matching. but if it becomes to spaghetti-like (if X is true, and Y is false, but Z is also true, do A), I think it would make sense to try to implement the linear algebra method, as it would be more concise, even if more complicated in theory. Regardless of which method I end up implementing, <a href="http://www.minesweeper.info/archive/MinesweeperStrategy/mine_guess.html">there are cases in Minesweeper where you have to guess.</a> There’s no way around it. With our supplied version of Minesweeper, there is no timer, so time in not a factor, and thus our only focus is being as robust and win as often as possible. Therefore, the end-game moves where guessing is necessary are arguably the most important to get right for this assignment. There are ways to improve our odds: Monte Carlo distributions, Bayesian inference, and simple statistics can get us far. Of course, <a href="http://www.dartmouth.edu/~aryeh/uploads/MinesweeperProbability.pdf">there are a ton</a> of <a href="http://math.stackexchange.com/questions/42494/odds-of-winning-at-minesweeper-with-perfect-play">studies and resources</a> on <a href="http://www.minesweeper.info/archive/MinesweeperStrategy/mine_guess.html">how to best guess in Minesweeper.</a></p>
+<figure class="align-center">
+  <img src="http://localhost:4000/assets/images/blog/2017/03/character_selection.gif" />
+  <figcaption>If you look carefully, there <em>is</em> a headless option in there. We're unsure if it will stay though – just a joke for now.</figcaption>
+</figure>
 
-<p>I have a game plan of how to complete the agent. Obviously, I need to store a list of flagged mines, as well as cells that have a mine adjacent and aren’t ‘finished.’ Regardless, I have a ton of resources on hand to make the agent as efficient as possible. It seems that the best bots can get a ~40% win rate on the expert difficulty. We’ll see how close mine gets to that. I seriously suggest taking at the numerous links in this post, it’s kind of crazy to think that Minesweeper is at the cutting edge of mathematics.</p>
+<p>I spent this week helping Andy with the rough edges of character customization, as well as implementing new particles I received from <a href="http://jeremynroot.com">Jeremy</a>. We finally made the elevator a breakable object, which leads to some interesting strategies. I also implemented, and removed, group tasks. These tasks worked similar to normal tasks, but they would replace all current tasks, and there would only be one of them – creating a four player rumble of sorts to complete this task. After bringing them to QA, we soon realized that they acted as a pinch point in the game flow, and could very easily let first place keep their lead in certain instances, basically creating a standstill. While fun to work around, we ultimately decided that this wasn’t the type of pace we wanted, and decided to scrap it. We took the time to look deeper at timer tasks – a specific type of group tasks that want players to do the <em>most</em> of something in a given amount of time. These don’t seem to have the same pinch points as normal group tasks, so we plan on implementing these this coming week, and hoping they fare better at QA.</p>
 
-<p>I know there aren’t any pictures or diagrams here, but there will be plenty for the postmortem describing how I went about ‘solving’ Minesweeper. It’ll be pretty to look at. Hopefully.</p>
+<p>We also took the time this week to record some gameplay for an alpha video. Take a watch!</p>
+
+<!-- Courtesy of embedresponsively.com //-->
+<div class="responsive-video-container">
+
+  <iframe src="https://www.youtube.com/embed/839Ih0TVC44" frameborder="0" allowfullscreen=""></iframe>
+
+</div>
+
 
         
       </section>
@@ -311,13 +325,13 @@
     <h4 class="page__share-title">If you liked it, give it a share?</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=How to solve Minesweeper. (Hint: you can't). http://localhost:4000/2016/how-to-solve-minesweeper/" class="btn btn--twitter" title="If you liked it, give it a share? Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?via=tyskwo&text=Back in the swing of things. http://localhost:4000/2017/back-in-the-swing/" class="btn btn--twitter" title="If you liked it, give it a share? Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2016/how-to-solve-minesweeper/" class="btn btn--facebook" title="If you liked it, give it a share? Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2017/back-in-the-swing/" class="btn btn--facebook" title="If you liked it, give it a share? Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2016/how-to-solve-minesweeper/&title=How to solve Minesweeper. (Hint: you can't)." class="btn btn--reddit" title="If you liked it, give it a share? Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
+  <a href="https://www.reddit.com/submit?url=http://localhost:4000/2017/back-in-the-swing/&title=Back in the swing of things." class="btn btn--reddit" title="If you liked it, give it a share? Reddit"><i class="fa fa-fw fa-reddit" aria-hidden="true"></i><span> Reddit</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2016/how-to-solve-minesweeper/" class="btn btn--linkedin" title="If you liked it, give it a share? LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2017/back-in-the-swing/" class="btn btn--linkedin" title="If you liked it, give it a share? LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
       <footer class="page__meta">
@@ -329,12 +343,11 @@
       
   <nav class="pagination">
     
-      <a href="http://localhost:4000/2016/WWDC-and-the-rest-of-summer/" class="pagination--pager" title="WWDC16, and the rest of summer.
+      <a href="http://localhost:4000/2017/PAX-relax/" class="pagination--pager" title="PAX is over, time to relax a little.
 ">Previous</a>
     
     
-      <a href="http://localhost:4000/2016/minesweeper-update/" class="pagination--pager" title="Minesweeper Update
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -350,28 +363,6 @@
         <h4 class="page__related-title">Try these too:</h4>
       
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="http://localhost:4000/2017/back-in-the-swing/" rel="permalink">Back in the swing of things.
-</a>
-      
-    </h2>
-    
-    
-    
-    <p class="archive__item-excerpt" itemprop="description">Six more weeks of mayhem. I wouldn’t want anything else.
-</p>
-  </article>
-</div>
-
         
           
 
@@ -412,6 +403,28 @@
     
     
     <p class="archive__item-excerpt" itemprop="description">Easing, tweening, interpolating. Whatever you know it as – it holds a special place in my heart.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/2017/office-mayhem-is-going-to-pax/" rel="permalink">Office Mayhem is going to PAX!
+</a>
+      
+    </h2>
+    
+    
+    
+    <p class="archive__item-excerpt" itemprop="description">Stay calm. On a different note, so much has been added this past week.
 </p>
   </article>
 </div>
