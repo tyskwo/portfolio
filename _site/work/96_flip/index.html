@@ -13,7 +13,7 @@
 
 
 
-<title>Flip - Tyler Wood</title>
+<title>Flip: A Gravity Game - Tyler Wood</title>
 
 
 
@@ -25,7 +25,7 @@
 
 <meta property="og:locale" content="en">
 <meta property="og:site_name" content="Tyler Wood">
-<meta property="og:title" content="Flip">
+<meta property="og:title" content="Flip: A Gravity Game">
 
 
   <link rel="canonical" href="http://localhost:4000/work/96_flip/">
@@ -38,7 +38,7 @@
 
 
   <meta name="twitter:site" content="@tyskwo">
-  <meta name="twitter:title" content="Flip">
+  <meta name="twitter:title" content="Flip: A Gravity Game">
   <meta name="twitter:description" content="My first released game.">
   <meta name="twitter:url" content="http://localhost:4000/work/96_flip/">
 
@@ -58,7 +58,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-03-28T14:25:02-04:00">
+  <meta property="article:published_time" content="2017-04-04T16:47:08-04:00">
 
 
 
@@ -163,7 +163,7 @@
   style=" "
 >
   
-    <img src="http://localhost:4000/assets/images/portfolio/2014/flip/feature.png" alt="Flip" class="page__hero-image">
+    <img src="http://localhost:4000/assets/images/portfolio/2014/flip/feature.png" alt="Flip: A Gravity Game" class="page__hero-image">
   
   
 </div>
@@ -225,7 +225,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Flip
+          <h1 class="page__title" itemprop="headline">Flip: A Gravity Game
 </h1>
           <!--<p class="page__meta">2014, AS3</p>
           -->
@@ -233,7 +233,29 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>Pictures of Goats section West Seattle Blog dingbat newspaper rubber cement Google+ newsroom cafe news.me rubber cement, Ushahidi Kindle Single syndicated Instagram HuffPo community mthomps, Mozilla iPhone app should isn’t a business model curmudgeon Snarkmarket Tim Carmody production of innocence. Fuego tweets community DocumentCloud metered model Gardening &amp; War section YouTube social media SEO information overload analytics Aron Pilhofer Journal Register data visualization WikiLeaks Groupon, collaboration Steve Jobs we need a Nate Silver AP What Would Google Do the power of the press belongs to the person who owns one Clay Shirky curmudgeon Voice of San Diego free as in beer dead trees the notion of the public Lucius Nieman.</p>
+        <p><em>Flip</em> was my first commercially released game, created with Starling in AS3. It is a puzzle game similar to <a href="http://play.threesgame.com"><em>Threes</em></a> and <a href="https://gabrielecirulli.github.io/2048/"><em>2048</em></a> where the goal is to make the board as empty as possible while placing down new pieces. In <em>Flip</em>, two hollow pieces create a half-piece, and two half pieces create a whole piece. This repeats for two sizes, small and big, and two big whole pieces destroy each other, freeing up space. The defining game mechanic is that the player can flip the board up and down, effectively turning gravity off and on, and thus changing the layout of the board, and where the player places new pieces.</p>
+
+<h3 id="gravity-and-spawning">Gravity and Spawning</h3>
+
+<p>The tiles are held in a column-oriented 2D array that is column based. To turn gravity on/off, I simply shift each column up until there are no more empty tiles above it. I then apply eases on the sprites of the tiles to reflect their new position.</p>
+
+<p>For spawning, I add one of each of the small tiles, and then take the top and bottom of each column to account for both gravity directions. If a column has none or one tile, I add none or two of the tile that it has (because it logically is both the top and bottom of that column). Then, depending on the player’s score, I apply a weighted algorithm to choose between a tile that can make a match with the top/bottom of each column or a random small tile, effectively making it more difficult as the player progresses.</p>
+
+<h3 id="easing">Easing</h3>
+
+<p><em>Flip</em> was the project that introduced me to interpolation and easing. Starling has a built-in interpolation engine, which I used to create the effects:</p>
+
+<figure class="highlight"><pre><code class="language-as3" data-lang="as3"><span class="nx">TweenLite</span><span class="p">.</span><span class="nx">to</span><span class="p">(</span><span class="nx">map</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">],</span> <span class="err">0</span><span class="p">.</span><span class="err">3</span><span class="p">,</span> <span class="p">{</span> <span class="na">y</span><span class="p">:</span> <span class="nx">map</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="nx">j</span><span class="p">].</span><span class="nx">y</span> <span class="err">-</span> <span class="nx">delta</span><span class="p">,</span> <span class="na">ease</span><span class="p">:</span> <span class="nx">Cubic</span><span class="p">.</span><span class="nx">easeInOut</span><span class="p">,</span> <span class="na">onComplete</span><span class="p">:</span> <span class="nx">finishMoving</span><span class="p">,</span> <span class="na">onCompleteParams</span><span class="p">:</span> <span class="p">[</span><span class="nx">i</span><span class="p">,</span><span class="nx">j</span><span class="p">]</span> <span class="p">})</span><span class="o">;</span></code></pre></figure>
+
+<p>I didn’t extract/refactor the interpolation code, and thus it is sprinkled all throughout the codebase. Not best practice, but it allowed me to experiment with different ‘feelings’ attributed to different combinations of ease effects.</p>
+
+<h3 id="the-final-10">The Final 10%</h3>
+
+<p>Being my first released game, <em>Flip</em> allowed me to experience and learn all of the work that goes into a project after the final semicolon is written. I learned basic marketing techniques like SEO and basic psychology, the backend of Apple’s developer portal, and pitching in person. Although not related to programming, I felt this experience was invaluable to my growth as a person and learning to be confident in myself and the product. With a grand budget of $0, <em>Flip</em> sold a little over five hundred copies.</p>
+
+<h3 id="retrospection-and-postmortem">Retrospection and Postmortem</h3>
+
+<p>It’s been a couple of years since I created <em>Flip,</em> to put this section of the page into perspective. Sales have stagnated (obviously), but I still chalk this project up to being the most beneficial for me in seeing the entire production cycle and just how difficult and rewarding it all is. It has allowed me to learn the skills to become a more rounded developer, and use these skills and tools to create better games, and pay attention to certain details throughout an entire development cycle as opposed to just the end. In fact, much of what I’ve learned here I applied when working on <a href="http://localhost:4000/work/84_office-mayhem/"><em>Office Mayhem</em></a>.</p>
 
         
       </section>

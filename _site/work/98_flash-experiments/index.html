@@ -58,7 +58,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-03-28T14:25:02-04:00">
+  <meta property="article:published_time" content="2017-04-04T16:47:08-04:00">
 
 
 
@@ -199,7 +199,7 @@
 
 <p>Quick iteration.</p>
 
-<p>Finishing a game loop.</p>
+<p>Rapid prototyping.</p>
 
       
     
@@ -233,7 +233,47 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>Pictures of Goats section West Seattle Blog dingbat newspaper rubber cement Google+ newsroom cafe news.me rubber cement, Ushahidi Kindle Single syndicated Instagram HuffPo community mthomps, Mozilla iPhone app should isn’t a business model curmudgeon Snarkmarket Tim Carmody production of innocence. Fuego tweets community DocumentCloud metered model Gardening &amp; War section YouTube social media SEO information overload analytics Aron Pilhofer Journal Register data visualization WikiLeaks Groupon, collaboration Steve Jobs we need a Nate Silver AP What Would Google Do the power of the press belongs to the person who owns one Clay Shirky curmudgeon Voice of San Diego free as in beer dead trees the notion of the public Lucius Nieman.</p>
+        <p>These ‘Flash Experiments’ were one week exercises in both design and execution. Each week a new prototype was created in a different genre. This process taught me the value of quick iteration coupled with clean execution, and allowed me to become a better designer in the process. The experiments include <em>Rodspin, Blur, Lines, Orbit</em>, and <em>Simple.</em> All of these games have a complete game loop with start, win, and instruction scenes, and can standalone as finished (albeit, small) projects.</p>
+
+<h3 id="rodspin">Rodspin</h3>
+
+<p><a href="http://localhost:4000/assets/images/portfolio/2014/flash-experiments/rodspin/example.gif"><img src="http://localhost:4000/assets/images/portfolio/2014/flash-experiments/rodspin/example.gif" alt="rodspin" style="width: 350px" class="align-right" /></a>
+The goal with <em>Rodspin</em> was to create a unique twist on a simple maze game. The player controls a spinning rod (really creative name, huh?), and when it collides with the wall, it slowly fades away. If the rod becomes completely transparent, it’s game over. Depending on the difficulty level chosen, the rod may or may not regenerate ‘health.’ In total, there are 5 levels with 3 levels of difficulty.</p>
+
+<h3 id="blur">Blur</h3>
+
+<p><a href="http://localhost:4000/assets/images/portfolio/2014/flash-experiments/blur/example.gif"><img src="http://localhost:4000/assets/images/portfolio/2014/flash-experiments/blur/example.gif" alt="blur" style="width: 200px" class="align-left" /></a>
+<em>Blur</em> is a vertical shooter with a twist. The player can survive on the dark gray lanes. To move from lane to lane if there is a gap, the player must ‘blur’ and hop between them. Enemies come down from the top, and the player must shoot them, which uses a little of their blur meter. As the player lasts longer and longer, the speed and number of enemies ramp up.</p>
+
+<p>The image to the right does a much better job of defining the gameplay. The backend of the game consists of an object pool for enemies and bullets, as well as a simple procedural content generator for the lane construction that uses a formula to make players use their blur more as they survive longer and longer. The lane collision detection is based on three points within the triangle, checking the color underneath, allowing for some fudging for the players, and theoretically allowing for multiple difficulty levels.</p>
+
+<h3 id="lines">Lines</h3>
+
+<p><em>Lines</em> is a little bit more experimental. It is a spin on the side scrolling shooter, but there’s no shooting. The sine wave in the background is the player’s health, and as enemies hit the left side of the screen, its amplitude (and the player’s health) decreases. The player can hit enemies to destroy them, and add to their ‘tail.’ When the player crosses over their tail, they create a barrier, who’s size is determined by how big the overlapped area is. After a while, the barrier depletes and turns red, which the player can then pick up to add back to their health.</p>
+
+<p>Overall, the design is interesting, but is very unbalanced. I think the concept is novel though, and has merit, but the current gameplay doesn’t do it justice. This is a concept I would like to return to.</p>
+
+<p><img src="http://localhost:4000/assets/images/portfolio/2014/flash-experiments/lines/example.gif" alt="lines" class="align-center" /></p>
+
+<h3 id="orbit">Orbit</h3>
+
+<p><a href="http://localhost:4000/assets/images/portfolio/2014/flash-experiments/orbit/doubles.gif"><img src="http://localhost:4000/assets/images/portfolio/2014/flash-experiments/orbit/doubles.gif" alt="orbit" style="width: 300px" class="align-left" /></a>
+<em>Orbit</em> was created with mobile in mind. There’s two controls: move in a ring and move out a ring, with the goal being to avoid the orbiting red circles. The blue orbs act as health, restoring the player’s lives, but removing five from their score. Each green orb the player collects adds one to their score.</p>
+
+<p>The backend features a procedural difficulty generator, allowing the game to get more and more difficult in spawning waves as the player’s score increases.</p>
+
+<h3 id="simple">Simple</h3>
+
+<p><a href="http://localhost:4000/assets/images/portfolio/2014/flash-experiments/simple/example.gif"><img src="http://localhost:4000/assets/images/portfolio/2014/flash-experiments/simple/example.gif" alt="orbit" style="width: 350px" class="align-right" /></a>
+In the vein of <em>Super Meat Boy</em>, <em>Simple</em> is a hard-as-nails platformer – just reach the end, it’s simple! Featuring simple AABB collision detection, <em>Simple</em> contains two levels (as if the first wasn’t hard enough).</p>
+
+<p>I faked simple physics for the player movement, allowing it to be more predictable for the player. The game is hard, but it’s fair.</p>
+
+<h3 id="retrospection-and-postmortem">Retrospection and Postmortem</h3>
+
+<p>Looking back, these projects were fun. They were not complicated, but they each had their small challenges, and I really enjoyed designing and iterating on them. Although AS3 is an almost-dead language, others like Haxe and Swift have a similar syntax, so not all is lost. I inadvertently learned the advantages of a node-based scene graph with how I created the architecture for these projects.</p>
+
+<p>The executable in the sidebar to the left contains a .swf for each of these projects.</p>
 
         
       </section>

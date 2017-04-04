@@ -11,7 +11,7 @@ title                    : "Tyler Wood"
 title_separator          : "-"
 name                     : "Tyler Wood"
 description              : "A game programmer soon to be graduating from Champlain College."
-url                      : "https://tyskwo.github.io"
+url                      : "https://tyskwo.com"
 baseurl                  : ""
 repository               : "tyskwo/tyskwo.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -43,7 +43,7 @@ analytics:
 # Site Author
 author:
   name             : "Tyler Wood"
-  avatar           : "/assets/images/bio-photo.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo3.png" 
   bio              : "A game programmer soon to be graduating from Champlain College."
   location         : "Burlington VT"
   email            : "me@tyskwo.com"

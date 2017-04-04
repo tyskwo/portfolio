@@ -8,7 +8,7 @@ header:
 
 language: "Unreal"
 year: "2016"
-portfolio: "true"
+portfolio: "false"
 
 sidebar:
   - text: "## 2016, Unreal ##"
@@ -16,8 +16,7 @@ sidebar:
 
   - title: "Description"
 
-    text: "An online, asymmetrical game where you plank, or nab the plankers!
-"
+    text: "An online, asymmetrical game where you plank, or nab the plankers!"
 
 
   - title: "Outcomes"
