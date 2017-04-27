@@ -10,7 +10,7 @@ locale                   : "en"
 title                    : "Tyler Wood"
 title_separator          : "-"
 name                     : "Tyler Wood"
-description              : "A game programmer soon to be graduating from Champlain College."
+description              : "A game programmer soon to be graduating from Champlain College that has an intense passion for UI and AI."
 url                      : "https://tyskwo.com"
 baseurl                  : ""
 repository               : "tyskwo/tyskwo.github.io"
@@ -43,7 +43,7 @@ analytics:
 # Site Author
 author:
   name             : "Tyler Wood"
-  avatar           : "/assets/images/bio-photo3.png" 
+  avatar           : "/assets/images/bio-photo3.png"
   bio              : "A game programmer soon to be graduating from Champlain College."
   location         : "Burlington VT"
   email            : "me@tyskwo.com"
