@@ -12,7 +12,7 @@ Graduation is almost here – a week and a day away – and I think it could go 
 The senior show was last Friday, and it could not have been a more resounding success. The recruiters has an absolute blast playing _Office Mayhem_, and there's [even a picture of Don Laackman](https://twitter.com/officemayhem/status/858699193803845633), president of Champlain College, enjoying the game. The team finished the win screen, including balloon popping. It's quite a lot of fun:
 
 <figure class="align-center">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/blog/2017/05/balloon.gif">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/blog/2017/05/balloons.gif">
   <figcaption>Each player's trophy spawns a balloon of the color, and can be inflated. When popped, they shoot out colored confetti.</figcaption>
 </figure>
 
